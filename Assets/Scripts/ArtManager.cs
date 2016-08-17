@@ -5,6 +5,8 @@ using System;
 public class ArtManager : MonoBehaviour {
 
 	public GvrViewer gvrViewer;
+	public Camera mainCamera;
+	public GameObject gallery;
 	public GameObject art;
 	public float shiftArtTime = 15f;
 	public Texture[] artMainTextures;
@@ -89,6 +91,9 @@ public class ArtManager : MonoBehaviour {
 		artMaterial.SetTexture ("_MainTex", artMainTextures [textureIndex % textureCount]);
 		artMaterial.SetTexture ("_BumpMap", artNRMTextures [textureIndex % textureCount]);
 		adjustScaleScript.AdjustSize();
+
+		Vector3 rotFollowGaze = new Vector3 (0f,mainCamera.transform.eulerAngles.y,0f);
+		gallery.transform.eulerAngles = rotFollowGaze;
 	}
 
 	void ChangeArtScale(){
