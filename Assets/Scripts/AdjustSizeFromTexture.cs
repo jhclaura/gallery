@@ -6,7 +6,8 @@ public class AdjustSizeFromTexture : MonoBehaviour {
 
 	Material mat;
 	Texture tex;
-
+	public GameObject artPanel;
+	public GameObject fakeShadow;
 
 	void Start () {
 		mat = GetComponent<Renderer> ().material;
@@ -32,10 +33,18 @@ public class AdjustSizeFromTexture : MonoBehaviour {
 		int imgX = imgSize.x;
 		int imgY = imgSize.y;
 		float scaleNumber = (float)imgY / imgX;
-		Debug.Log("scaleNumber: " + scaleNumber);
+		//Debug.Log("scaleNumber: " + scaleNumber);
 
 		gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x,
 			gameObject.transform.localScale.y,
 			gameObject.transform.localScale.x * scaleNumber);
+
+		artPanel.transform.localScale = new Vector3 (artPanel.transform.localScale.x,
+			artPanel.transform.localScale.x * scaleNumber,
+			artPanel.transform.localScale.z);
+
+		fakeShadow.transform.localScale = new Vector3 (fakeShadow.transform.localScale.x,
+			gameObject.transform.localScale.y,
+			fakeShadow.transform.localScale.x * scaleNumber);
 	}
 }
