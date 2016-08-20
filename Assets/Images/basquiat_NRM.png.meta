@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: cad093686d11c41dc8f5d02dc0838225
-timeCreated: 1471280670
+guid: 6d0a8c1a792644903a1794211f514e14
+timeCreated: 1471660193
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
@@ -19,7 +19,7 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-  isReadable: 1
+  isReadable: 0
   grayScaleToAlpha: 0
   generateCubemap: 0
   cubemapConvolution: 0
@@ -47,7 +47,7 @@ TextureImporter:
   spritePixelsToUnits: 100
   alphaIsTransparency: 0
   spriteTessellationDetail: -1
-  textureType: 5
+  textureType: -1
   buildTargetSettings: []
   spriteSheet:
     serializedVersion: 2

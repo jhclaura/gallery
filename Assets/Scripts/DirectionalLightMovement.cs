@@ -31,8 +31,8 @@ public class DirectionalLightMovement : MonoBehaviour {
 		// when Mathf.Sin(time) == 0, fs yPos = 1
 		// when Mathf.Sin(time) == 1 & -1, fs yPos = 0.7
 
-		xPos_shadow = 0.5f * Mathf.Sin(time);
-		yPos_shadow = 1f - (0.3f * Mathf.Abs(Mathf.Sin(time)));
+		xPos_shadow = 0.45f * Mathf.Sin(time);
+		yPos_shadow = 1f - (0.4f * Mathf.Abs(Mathf.Sin(time)));
 		fakeShadow.transform.localPosition = new Vector3 (xPos_shadow, yPos_shadow, zPos_shadow);
 	}
 }

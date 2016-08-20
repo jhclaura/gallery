@@ -30,6 +30,8 @@ public class ArtManager : MonoBehaviour {
 	IEnumerator coroutine;
 
 	bool toZoomIn = true;
+	Vector3 closePos = new Vector3 (0f,0f,7f);
+	Vector3 backPos = new Vector3 (0f,0f,0f);
 
 	//Action toScale;
 	Action change_M_T;
@@ -78,6 +80,7 @@ public class ArtManager : MonoBehaviour {
 		} while (!toPause);
 	}
 
+	float exp1, exp2, time;
 	void Update () {
 		if(Input.GetKeyDown("space")){
 //			StopCoroutine (coroutine);
@@ -88,9 +91,15 @@ public class ArtManager : MonoBehaviour {
 		if(gvrViewer.Triggered){
 			Debug.Log ("triggered! Zoom in/out art");
 			ChangeArtScale ();
-			//
-//			CameraFade.StartAlphaFadeInOut(fadeColor, fadeTime, fadeDelayTime, toScale);
+//			CameraLooksClose();
 		}
+
+		// animating skybox
+		time = Time.time;
+		exp1 = 1f + 0.5f*Mathf.Sin(time);
+		exp2 = 1f + 0.5f*Mathf.Cos(time);
+		skyboxMat.SetFloat("_Exponent1", exp1);
+		skyboxMat.SetFloat("_Exponent2", exp2);
 	}
 
 	void ChangeMatText(Material _mat, Texture _mainTex, Texture _bumpMap){
@@ -132,6 +141,15 @@ public class ArtManager : MonoBehaviour {
 		toZoomIn = !toZoomIn;
 	}
 
+	void CameraLooksClose(){
+		if (toZoomIn) {
+			mainCamera.transform.position = closePos;
+		} else {
+			mainCamera.transform.position = backPos;
+		}
+		toZoomIn = !toZoomIn;
+	}
+
 //	Texture2D t;
 //	Texture2D texCopy;
 	void ChangeSkyboxColor( Texture _texture ) {
@@ -143,12 +161,18 @@ public class ArtManager : MonoBehaviour {
 //		texCopy.Apply ();
 
 		Color32[] pix = t.GetPixels32();	// texCopy
-//		Debug.Log (pix.Length);
 		int firstPixToSample = Mathf.FloorToInt(pix.Length / 4);
 
 		Color32 topColor = AverageColor (pix,3,1);
 		Color32 midColor = AverageColor (pix,3,2);
 		Color32 bottomColor = AverageColor (pix,3,3);
+
+//		Color midC = midColor;
+//		float h, s, v;
+//		Color.RGBToHSV (midC, out h, out s, out v);
+//		Debug.Log (midC + " => (" + h + ", " + s + ", " + v + ")");
+//		float newH = HueShift (h, 0.5f);
+//		midC = Color.HSVToRGB (newH,s,v);
 
 		skyboxMat.SetColor ("_Color1", topColor);
 		skyboxMat.SetColor ("_Color2", midColor);
@@ -158,7 +182,6 @@ public class ArtManager : MonoBehaviour {
 	public Color32 AverageColor( Color32[] _pix, int division, int divisionIndex ) {
 		int total = _pix.Length;
 		int pixScopeToSample = Mathf.FloorToInt(total/division);
-//		Debug.Log ("pixScopeToSample: " + pixScopeToSample);
 		float r = 0;
 		float g = 0;
 		float b = 0;
@@ -172,5 +195,14 @@ public class ArtManager : MonoBehaviour {
 		}
 
 		return new Color32((byte)(r / (pixScopeToSample/100)) , (byte)(g / (pixScopeToSample/100)) , (byte)(b / (pixScopeToSample/100)) , 0);
+	}
+
+	float HueShift(float _h, float _s) {
+		_h += _s;
+		while (_h>=1f) _h-=1f;
+		while (_h<0f) _h+=1f;
+
+		Debug.Log ("newH => " + _h);
+		return _h;
 	}
 }
