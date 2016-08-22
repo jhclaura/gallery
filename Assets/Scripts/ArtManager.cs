@@ -7,7 +7,7 @@ public class ArtManager : MonoBehaviour {
 	public GvrViewer gvrViewer;
 	public Camera mainCamera;
 	public GameObject gallery;
-	public GameObject art;
+	public GameObject painting;
 	public GameObject artPanel;
 	public GameObject fakeShadow;
 	public float shiftArtTime = 15f;
@@ -20,6 +20,10 @@ public class ArtManager : MonoBehaviour {
 
 	public Light pointLight;
 	PointLightMovement pLightMovScript;
+	public Light directionalLight;
+	DirectionalLightMovement dLightMovScript;
+	public GameObject art;
+	public Light spotLight;
 
 	Material artMaterial;
 	int textureIndex;
@@ -30,7 +34,7 @@ public class ArtManager : MonoBehaviour {
 	IEnumerator coroutine;
 
 	bool toZoomIn = true;
-	Vector3 closePos = new Vector3 (0f,0f,7f);
+	Vector3 closePos = new Vector3 (0f,0f,5f);
 	Vector3 backPos = new Vector3 (0f,0f,0f);
 
 	//Action toScale;
@@ -43,8 +47,8 @@ public class ArtManager : MonoBehaviour {
 		textureIndex = 0;
 		textureCount = artMainTextures.Length;
 
-		artMaterial = art.GetComponent<Renderer> ().material;
-		adjustScaleScript = art.GetComponent<AdjustSizeFromTexture> ();
+		artMaterial = painting.GetComponent<Renderer> ().material;
+		adjustScaleScript = painting.GetComponent<AdjustSizeFromTexture> ();
 
 		ChangeMatText (artMaterial,
 			artMainTextures[textureIndex%textureCount],
@@ -59,6 +63,7 @@ public class ArtManager : MonoBehaviour {
 		change_M_T += ChangeMaterialAndTexture;
 
 		pLightMovScript = pointLight.GetComponent<PointLightMovement> ();
+		dLightMovScript = directionalLight.GetComponent<DirectionalLightMovement> ();
 	}
 
 	public IEnumerator ShiftArtTexture(float waitTime) {
@@ -91,13 +96,12 @@ public class ArtManager : MonoBehaviour {
 		if(gvrViewer.Triggered){
 			Debug.Log ("triggered! Zoom in/out art");
 			ChangeArtScale ();
-//			CameraLooksClose();
 		}
 
 		// animating skybox
 		time = Time.time;
-		exp1 = 1f + 0.5f*Mathf.Sin(time);
-		exp2 = 1f + 0.5f*Mathf.Cos(time);
+		exp1 = 2f + 1f*Mathf.Sin(time);
+		exp2 = 2f + 1f*Mathf.Cos(time);
 		skyboxMat.SetFloat("_Exponent1", exp1);
 		skyboxMat.SetFloat("_Exponent2", exp2);
 	}
@@ -110,6 +114,8 @@ public class ArtManager : MonoBehaviour {
 	void ChangeMaterialAndTexture(){
 		artMaterial.SetTexture ("_MainTex", artMainTextures [textureIndex % textureCount]);
 		artMaterial.SetTexture ("_BumpMap", artNRMTextures [textureIndex % textureCount]);
+//		artMaterial.SetFloat("_BumpScale", 6f);
+
 		adjustScaleScript.AdjustSize();
 
 		Vector3 rotFollowGaze = new Vector3 (0f,mainCamera.transform.eulerAngles.y,0f);
@@ -123,30 +129,31 @@ public class ArtManager : MonoBehaviour {
 		Vector3 newScale, newScalePanel, newScaleShadow;
 
 		if (toZoomIn) {
-			newScale = art.transform.localScale * 3.0F;
+			newScale = painting.transform.localScale * 3.0F;
 			newScalePanel = artPanel.transform.localScale * 3.0F;
 			newScaleShadow = fakeShadow.transform.localScale * 3.0f;
+			art.transform.localPosition = closePos;
 			pLightMovScript.distance *= 2f;
 			pLightMovScript.zPos -= 1f;
+			dLightMovScript.shadowDistance *= 2.5f;
+			spotLight.spotAngle *= 2f;
+			spotLight.range *= 1.5f;
+			spotLight.intensity *= 2f;
 		} else {
-			newScale = art.transform.localScale / 3.0F;
+			newScale = painting.transform.localScale / 3.0F;
 			newScalePanel = artPanel.transform.localScale / 3.0F;
 			newScaleShadow = fakeShadow.transform.localScale / 3.0f;
+			art.transform.localPosition = backPos;
 			pLightMovScript.distance /= 2f;
 			pLightMovScript.zPos += 1f;
+			dLightMovScript.shadowDistance /= 2f;
+			spotLight.spotAngle /= 2f;
+			spotLight.range /= 1.5f;
+			spotLight.intensity /= 2f;
 		}
-		art.transform.localScale = newScale;
+		painting.transform.localScale = newScale;
 		artPanel.transform.localScale = newScalePanel;
 		fakeShadow.transform.localScale = newScaleShadow;
-		toZoomIn = !toZoomIn;
-	}
-
-	void CameraLooksClose(){
-		if (toZoomIn) {
-			mainCamera.transform.position = closePos;
-		} else {
-			mainCamera.transform.position = backPos;
-		}
 		toZoomIn = !toZoomIn;
 	}
 

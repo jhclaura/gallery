@@ -9,6 +9,7 @@ public class DirectionalLightMovement : MonoBehaviour {
 	Transform transform;
 	public float speed;
 	public float angle;
+	public float shadowDistance;
 
 	public GameObject fakeShadow;
 	float xPos_shadow, yPos_shadow, zPos_shadow;
@@ -19,6 +20,7 @@ public class DirectionalLightMovement : MonoBehaviour {
 		zRot = transform.localEulerAngles.z;
 
 		zPos_shadow = fakeShadow.transform.localPosition.z;
+		yPos_shadow = fakeShadow.transform.localPosition.y;
 	}
 
 	void Update () {
@@ -31,8 +33,8 @@ public class DirectionalLightMovement : MonoBehaviour {
 		// when Mathf.Sin(time) == 0, fs yPos = 1
 		// when Mathf.Sin(time) == 1 & -1, fs yPos = 0.7
 
-		xPos_shadow = 0.45f * Mathf.Sin(time);
-		yPos_shadow = 1f - (0.4f * Mathf.Abs(Mathf.Sin(time)));
+		xPos_shadow = shadowDistance * Mathf.Sin(time);
+//		yPos_shadow = 1f - (shadowDistance * Mathf.Abs(Mathf.Sin(time)));
 		fakeShadow.transform.localPosition = new Vector3 (xPos_shadow, yPos_shadow, zPos_shadow);
 	}
 }
