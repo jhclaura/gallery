@@ -138,7 +138,7 @@ public class ArtManager : MonoBehaviour {
 			dLightMovScript.shadowDistance *= 2.5f;
 			spotLight.spotAngle *= 2f;
 			spotLight.range *= 1.5f;
-			spotLight.intensity *= 2f;
+			spotLight.intensity *= 1.5f;
 		} else {
 			newScale = painting.transform.localScale / 3.0F;
 			newScalePanel = artPanel.transform.localScale / 3.0F;
@@ -146,10 +146,10 @@ public class ArtManager : MonoBehaviour {
 			art.transform.localPosition = backPos;
 			pLightMovScript.distance /= 2f;
 			pLightMovScript.zPos += 1f;
-			dLightMovScript.shadowDistance /= 2f;
+			dLightMovScript.shadowDistance /= 2.5f;
 			spotLight.spotAngle /= 2f;
 			spotLight.range /= 1.5f;
-			spotLight.intensity /= 2f;
+			spotLight.intensity /= 1.5f;
 		}
 		painting.transform.localScale = newScale;
 		artPanel.transform.localScale = newScalePanel;
