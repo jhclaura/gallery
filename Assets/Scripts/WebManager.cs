@@ -4,9 +4,10 @@ using System.Collections;
 public class WebManager : MonoBehaviour {
 
 	public GameObject panel;
+	Color[] myNormalMapColor;
 
 	void Start () {
-		string url = "https://lh3.googleusercontent.com/Fto3M8gXlz1rQEn4lhmd0SrK4rS8tvBwmTnqCWxpdiwTRmApRwd92t4HAJ2zeDh7gXVn-k-f65GXfhLMFgmXcObefRAr06XcraoCbo8XLBmGr34WWdiq0LkVl_T3Tvi18l-L2VlIDXyh0BCpXbztoNzbt1cpO3qgKjyygOHpRF-jTOcgjSFFxYV-jxJoe_5kl5pCvH1AGg9Cxba5Cvt8EapsQcrjNLFVPQ3E9KX1exJvEDD3CeKdk51vDv-aHQYbwqIPz-Jn2cO6v28fcC2yIi-EWnHLeg3Atk-3xaQ4YWuZ7Uk0AYnx5qm07Drn3KRTp57Dl7zlsOeDOKBa5Y4H-TKroRhNwPo2gyFS4f5n8YrRJGpmDqRVbsDgKfbj7Y7EV4d1ecGwaUbHDE78srUOMhqwBCBr2N9QYWFIe0NfGcmE516_liMF8Cu7xrpAgbYfn9qGsmet5qOlnSmKA-va6x_5QdT8_ROkHrrwye9DfIrh3UO4nqqdJvG9Q1QxxOq1g7zGaIO64-qTyvCWk_IFvHq1SsO7B-98jsYDAcWH4TVUN3yLD4LTXwI=s1334-w1334-h750-no";
+		string url = "https://lh3.googleusercontent.com/Kldo4P2YHsJDiEZ5w6StZA-flQwD61p_S_o64JkLE8ajqe-tJlfr_jOwZ1DD5QpmHUrHBNUfmGfs7v92d4le7HuPZoFmdz-Wn8y3NDwZQoJBpK4SIH7xqixpCsBc6tg7_c5HKt6nY5GqxKX7vFmo31BwSdZlQ80eIw9IfdzxDAbWz9NOiLQkQBICKRlF9LbLnsl2LIBHk7JOZJu9H566G8jvya40dtKb6JAFUhpbBFdVlmjIphFAX4pZL9aBUSJNP7SWy6mCVAmoTOpzYaRqpK6M46QntNOQu48G3QxEYDOeT_6o1Jf8B8C9WyzMCnY0mkBHpTYur0mg67PKnAOjyK_xLdkDUyazjMQoS3z32cV-1zf4ir7L1ZVyzePVIZsA0PC2VM9ykUT3sm1A2ybpUpT7m5tLaPfPi3DoUMF5AF-wlMn0iShr5MOr9Jt06Tla8fwgGTzgs4Ni0wykpiRXIPvV8U-E3PRGRfFXqcFnib_3_bQmu4ThDQ2GfXT28ROlDvpWJECzTqTcSkET6h_kbrfL6JDeLIQYf6-QGW-AYZNQ5WddT3N0UR_lPdeHeZ2KCYihdPQ1yk8ZX5hvUhFHlf6jOox3TcetWNX2IOa1Cj9xrw_QHQ=w992-h1486-no";
 		WWW www = new WWW(url);
 		StartCoroutine(WaitForRequest(www, "_MainTex"));
 
@@ -24,7 +25,26 @@ public class WebManager : MonoBehaviour {
 		{
 			Debug.Log("WWW Ok!: " + texName + www.data);
 			Renderer renderer = panel.GetComponent<Renderer>();
-			renderer.material.SetTexture(texName, www.texture);
+			if (texName != "_BumpMap") {
+				renderer.material.SetTexture (texName, www.texture);
+			} else {
+				Texture2D normalMap = new Texture2D (www.texture.width, www.texture.height, TextureFormat.ARGB32, false);
+				myNormalMapColor = www.texture.GetPixels ();
+				for(int i=0; i<myNormalMapColor.Length; i++){
+					myNormalMapColor [i].a = myNormalMapColor [i].r;
+					myNormalMapColor [i].r = 0;
+					myNormalMapColor [i].b = 0;
+				}
+				normalMap.SetPixels (myNormalMapColor);
+				normalMap.Apply ();
+				renderer.material.SetTexture (texName, normalMap);
+			}
+
+			float scaleNumber = (float)www.texture.height / www.texture.width;
+			panel.transform.localScale = new Vector3(panel.transform.localScale.x,
+				panel.transform.localScale.y,
+				panel.transform.localScale.x * scaleNumber);
+				
 		} else {
 			Debug.Log("WWW Error: "+ www.error);
 		}    
