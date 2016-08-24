@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.IO;
+using SimpleJSON;
 
 public class AdjustSizeFromTexture : MonoBehaviour {
 
@@ -8,30 +9,23 @@ public class AdjustSizeFromTexture : MonoBehaviour {
 	Texture tex;
 	public GameObject artPanel;
 	public GameObject fakeShadow;
+	public GameObject gallery;
+	DataManager dataManager;
 
 	void Start () {
 		mat = GetComponent<Renderer> ().material;
 
-//		Debug.Log ( Pathing.AppContentDataUri );
-
-		AdjustSize ();
-
-//		string myStreamingAssetsPath = Pathing.AppContentDataUri+"";
+//		AdjustSize ();
+		#if UNITY_ANDROID
+			dataManager = gallery.GetComponent<DataManager>();
+			GetSizeFromData();
+		#else
+			GetSize ();
+		#endif
 	}
 
-	public void AdjustSize() {
-		tex = mat.GetTexture ("_MainTex");
-//		Debug.Log ("art: " + tex.name);
-		string relativePath = tex.name + ".jpg";
-		string fullPath = Path.Combine( Application.streamingAssetsPath, relativePath );
+	public void AdjustSize(int imgX, int imgY) {
 
-		// Vector2Int imgSize  = ImageHeader.GetDimensions(Application.persistentDataPath+"/Images/Amedeo_Modigliani_Christina.jpg");
-//		Vector2Int imgSize  = ImageHeader.GetDimensions(Application.dataPath+"/Images/" + tex.name + ".jpg");
-		Vector2Int imgSize  = ImageHeader.GetDimensions(fullPath);
-		Debug.Log("art: " + tex.name + ", size.x =" + imgSize.x + ", size.y =" + imgSize.y);
-
-		int imgX = imgSize.x;
-		int imgY = imgSize.y;
 		float scaleNumber = (float)imgY / imgX;
 		//Debug.Log("scaleNumber: " + scaleNumber);
 
@@ -46,5 +40,24 @@ public class AdjustSizeFromTexture : MonoBehaviour {
 		fakeShadow.transform.localScale = new Vector3 (fakeShadow.transform.localScale.x,
 			gameObject.transform.localScale.y,
 			fakeShadow.transform.localScale.x * scaleNumber);
+	}
+
+	public void GetSize() {
+		tex = mat.GetTexture ("_MainTex");
+		string relativePath = tex.name + ".jpg";
+		string fullPath = Path.Combine( Application.streamingAssetsPath, relativePath );
+		Vector2Int imgSize  = ImageHeader.GetDimensions(fullPath);
+		Debug.Log("art: " + tex.name + ", size.x =" + imgSize.x + ", size.y =" + imgSize.y);
+
+		AdjustSize (imgSize.x, imgSize.y);
+	}
+
+	public void GetSizeFromData() {
+		tex = mat.GetTexture ("_MainTex");
+		string texName = tex.name;
+		int imgX = dataManager.artDictionary [texName].width;
+		int imgY = dataManager.artDictionary [texName].height;
+
+		AdjustSize (imgX, imgY);
 	}
 }

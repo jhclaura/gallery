@@ -42,7 +42,6 @@ public class ArtManager : MonoBehaviour {
 
 	public Material skyboxMat;
 
-	// Use this for initialization
 	void Start () {
 		textureIndex = 0;
 		textureCount = artMainTextures.Length;
@@ -116,7 +115,12 @@ public class ArtManager : MonoBehaviour {
 		artMaterial.SetTexture ("_BumpMap", artNRMTextures [textureIndex % textureCount]);
 //		artMaterial.SetFloat("_BumpScale", 6f);
 
-		adjustScaleScript.AdjustSize();
+//		adjustScaleScript.AdjustSize();
+		#if UNITY_ANDROID
+			adjustScaleScript.GetSizeFromData();
+		#else
+			adjustScaleScript.GetSize ();
+		#endif
 
 		Vector3 rotFollowGaze = new Vector3 (0f,mainCamera.transform.eulerAngles.y,0f);
 		gallery.transform.eulerAngles = rotFollowGaze;
