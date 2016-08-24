@@ -4,7 +4,7 @@ using System.Collections;
 public class WebManager : MonoBehaviour {
 
 	public GameObject panel;
-	Color[] myNormalMapColor;
+	Color32[] myNormalMapColor;
 
 	void Start () {
 		string url = "https://lh3.googleusercontent.com/pcMrs1Q4o7dTNzyYd7fx9gb8R_GEM_S_bjrthUVSPHQg-SE1i7JT74BpHiqqEbKW05gx0WgYYebodVZ-MM-POYHi726dgHzjd6fpXZtGDgmGdDWXKzxyCDs6xjJDXrNhiRwhkgg5eW_ndowPishSoLLghHd5vKo0JZhBeVhiXzAZx1St7Mzdem8kEzoUqtCEP_wYuVT-BJiS89288_NR_MUDtCL8nyNtrnvXFJqQzm1B9zfIarxuowuMxDAQF7maqItDFCqDCC9V9Z0hnyfdTNzQnOwJ7xlNyzAF-Y5mwYVwj1aTu92vJRRT9LwGtatr6RGU5Ml7G6Dyqz81_b20atWSFOc1Vw3kYzIELxPoTidq6zDi4IBt2YpqVnWEq0By41EUvPNWhgYAqS_V8LM2dMATtjk_6Pawl6NWuSpbS9_JlAK6i-_nWj7V57Tmpp8HI186PcrAbJ0cxPBNqqvXlUtgCtNkrnf0ts0vzjRN9Wwd0FXNJu4kNL045jg_zex8ZI3jky7UM8tur6JSr9IvBnGIb4j-rnwgVTXZuogxmIIP9SiX7j0aeyjfBuoipfhM3FSXRpQAj_WXx6S_g_2bvq1cuTxheMxwDWhH3zgIbCOoaY_Mng=w1206-h1398-no";
@@ -29,14 +29,14 @@ public class WebManager : MonoBehaviour {
 			if (texName != "_BumpMap") {
 				renderer.material.SetTexture (texName, www.texture);
 			} else {
-				Texture2D normalMap = new Texture2D (www.texture.width, www.texture.height, TextureFormat.ARGB32, false);
-				myNormalMapColor = www.texture.GetPixels ();
+				Texture2D normalMap = new Texture2D (www.texture.width, www.texture.height, TextureFormat.ARGB32, true);
+				myNormalMapColor = www.texture.GetPixels32 ();
 				for(int i=0; i<myNormalMapColor.Length; i++){					
 					myNormalMapColor [i].a = myNormalMapColor [i].r;
 					myNormalMapColor [i].r = 0;
 					myNormalMapColor [i].b = 0;
 				}
-				normalMap.SetPixels (myNormalMapColor);
+				normalMap.SetPixels32 (myNormalMapColor);
 				normalMap.Apply ();
 				renderer.material.SetTexture (texName, normalMap);
 			}
