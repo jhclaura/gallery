@@ -122,8 +122,8 @@ public class ArtManager : MonoBehaviour {
 			adjustScaleScript.GetSize ();
 		#endif
 
-		Vector3 rotFollowGaze = new Vector3 (0f,mainCamera.transform.eulerAngles.y,0f);
-		gallery.transform.eulerAngles = rotFollowGaze;
+//		Vector3 rotFollowGaze = new Vector3 (0f,mainCamera.transform.eulerAngles.y,0f);
+//		gallery.transform.eulerAngles = rotFollowGaze;
 
 		// change skybox color
 		ChangeSkyboxColor(artMainTextures [textureIndex % textureCount]);
