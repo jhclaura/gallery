@@ -34,7 +34,7 @@ public class CamLayerManager : MonoBehaviour {
 				leftEyeScript.toggleCullingMask = leftEyeMask;
 
 				leftEyeCam = leftEye.gameObject.GetComponent<Camera>();
-				leftEyeCam.cullingMask = ~leftEyeMask;
+				leftEyeCam.cullingMask = leftEyeMask;
 				//
 				foundLeftEye = true;
 			}
