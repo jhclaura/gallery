@@ -11,6 +11,11 @@
 [Ll]ibrary/
 [Bb]uild/
 [Mm]ockups/
+
+# =============== #
+# Big Asset #
+# =============== #
+[Aa]ssets/StreamingAssets/
  
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
