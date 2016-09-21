@@ -1,0 +1,154 @@
+fileFormatVersion: 2
+guid: 66ccb26a58c89a64d87a6a33b10ab3e5
+timeCreated: 1474314181
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: chair
+    100002: door
+    100004: fireplace
+    100006: hr_room
+    100008: hr_room2
+    100010: photo1
+    100012: photo2
+    100014: photo3
+    100016: photo4
+    100018: photo5
+    100020: //RootNode
+    100022: shelf
+    100024: Sofa
+    100026: Sofa2
+    100028: table
+    100030: wall_side
+    100032: window
+    400000: chair
+    400002: door
+    400004: fireplace
+    400006: hr_room
+    400008: hr_room2
+    400010: photo1
+    400012: photo2
+    400014: photo3
+    400016: photo4
+    400018: photo5
+    400020: //RootNode
+    400022: shelf
+    400024: Sofa
+    400026: Sofa2
+    400028: table
+    400030: wall_side
+    400032: window
+    2300000: chair
+    2300002: door
+    2300004: fireplace
+    2300006: hr_room
+    2300008: hr_room2
+    2300010: photo1
+    2300012: photo2
+    2300014: photo3
+    2300016: photo4
+    2300018: photo5
+    2300020: shelf
+    2300022: Sofa
+    2300024: Sofa2
+    2300026: table
+    2300028: wall_side
+    2300030: window
+    3300000: chair
+    3300002: door
+    3300004: fireplace
+    3300006: hr_room
+    3300008: hr_room2
+    3300010: photo1
+    3300012: photo2
+    3300014: photo3
+    3300016: photo4
+    3300018: photo5
+    3300020: shelf
+    3300022: Sofa
+    3300024: Sofa2
+    3300026: table
+    3300028: wall_side
+    3300030: window
+    4300000: photo5
+    4300002: photo4
+    4300004: photo3
+    4300006: photo1
+    4300008: photo2
+    4300010: fireplace
+    4300012: hr_room
+    4300014: door
+    4300016: shelf
+    4300018: chair
+    4300020: Sofa
+    4300022: Sofa2
+    4300024: table
+    4300026: window
+    4300028: wall_side
+    4300030: hr_room2
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

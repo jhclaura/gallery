@@ -1,0 +1,58 @@
+{
+  "floors": {
+    "1": {
+      "name": "Contemporary in Dark",
+      "object": {
+        "Untitle": "Various Artists",
+        "Fish Tank": "Youtube Video"
+      },
+      "description": {
+        "Untitle": "Classical painting with bump.",
+        "Fish Tank": "Pop-up video"
+      }
+    },
+    "2": {
+      "name": "Dollhouse",
+      "object": {
+        "Fancy Pants": "Philips",
+        "Wormy": "Julian Glander"
+      },
+      "description": {
+        "Fancy Pants": "It is a painting about fancy pants",
+        "Wormy": "It is a gif about wobble worm."
+      }
+    },
+    "3": {
+      "name": "Ocean",
+      "object": {
+        "Stereography": "Unknown",
+        "Cat": "Someone",
+        "Sound Cube": "Free Sound"
+      },
+      "description": {
+        "Stereography": "It is a painting about fancy pants",
+        "Cat": "It is a gif about wobble worm.",
+        "Sound Cube": "A cube that emits sound."
+      }
+    },
+    "4": {
+      "name": "Old",
+      "object": {
+        "TV": "Unknown"
+      },
+      "description": {
+        "TV": "Unknown"
+      }
+    }
+    //,
+    //"5": {
+    //  "name": "Hall",
+    //  "object": {
+    //    "Unknown": "Unknown"
+    //  },
+    //  "description": {
+    //    "Unknown": "Unknown"
+    //  }
+    //}
+  }
+}
