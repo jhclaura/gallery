@@ -49,16 +49,18 @@
       }
     },
     "5": {
-      "name": "Mirror",
+      "name": "Neon Room",
       "object": {
-        "Kinkade-Spirit": "///",
-        "NUCLEUS": "Winson Duke",
-        "Untitled": "James Kerr"
+        "Untitled1": "John Fogarty",
+        "Untitled2": "Martin Olsson",
+        "Untitled3": "Karan Singh",
+        "Untitled4": "Phyllis Ma"
       },
       "description": {
-        "Kinkade-Spirit": "Unknown object in the Mirror room.",
-        "NUCLEUS": "Unknown object in the Mirror room.",
-        "Untitled": "Unknown object in the Mirror room."
+        "Untitled1": "John Fogarty",
+        "Untitled2": "Martin Olsson",
+        "Untitled3": "Karan Singh",
+        "Untitled4": "Phyllis Ma"
       }
     },
     "6": {
