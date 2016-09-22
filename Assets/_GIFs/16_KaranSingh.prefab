@@ -59,6 +59,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011585276614}
+  - 114: {fileID: 114000012731786988}
   m_Layer: 0
   m_Name: 16_KaranSingh
   m_TagString: Untagged
@@ -465,6 +466,17 @@ MonoBehaviour:
     overridePath: 0
     pathLocation: 2
     path: 
+--- !u!114 &114000012731786988
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013526531190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20bb44ccdcf1c0f49900ea40bf308685, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000012910483952
 MonoBehaviour:
   m_ObjectHideFlags: 1

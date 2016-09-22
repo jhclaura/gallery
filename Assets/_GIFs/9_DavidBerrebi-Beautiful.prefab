@@ -56,6 +56,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010118554016}
+  - 114: {fileID: 114000012979113874}
   m_Layer: 0
   m_Name: 9_DavidBerrebi-Beautiful
   m_TagString: Untagged
@@ -463,6 +464,17 @@ MonoBehaviour:
   _mesh: {fileID: 23000011274776532}
   _media: {fileID: 114000010066266948}
   _defaultTexture: {fileID: 0}
+--- !u!114 &114000012979113874
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013230647210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20bb44ccdcf1c0f49900ea40bf308685, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212000010271772922
 SpriteRenderer:
   m_ObjectHideFlags: 1

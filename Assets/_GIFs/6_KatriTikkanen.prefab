@@ -109,6 +109,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010860955280}
+  - 114: {fileID: 114000011059768880}
   m_Layer: 0
   m_Name: 6_KatriTikkanen
   m_TagString: Untagged
@@ -994,6 +995,17 @@ MonoBehaviour:
   _mesh: {fileID: 23000010735429690}
   _media: {fileID: 114000011846823176}
   _defaultTexture: {fileID: 0}
+--- !u!114 &114000011059768880
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011582052592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20bb44ccdcf1c0f49900ea40bf308685, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000011072125958
 MonoBehaviour:
   m_ObjectHideFlags: 1
