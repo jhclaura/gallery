@@ -10,6 +10,18 @@ public class RemoteManager : MonoBehaviour {
     Vector3 leftDownAngle = new Vector3(0,0,-17);
     Vector3 rightDownAngle = new Vector3(0, 0, 17);
 
+    public OldRoomGifData oldRoomGifData;
+
+    void OnEnable()
+    {
+        // TODO - not a good wayyyyyyy
+        if (oldRoomGifData == null)
+        {
+            oldRoomGifData = GameObject.Find("Floor_4").GetComponent<OldRoomGifData>();
+            Debug.Log("Got old room gif data");
+        }
+    }
+
     public void PressLeftButton()
     {
         leftButton.transform.localEulerAngles = leftDownAngle;
@@ -23,11 +35,15 @@ public class RemoteManager : MonoBehaviour {
     public void ReleaseLeftButton()
     {
         leftButton.transform.localEulerAngles = resetAngle;
+
+        oldRoomGifData.ShuffleGifs();
     }
 
     public void ReleaseRightButton()
     {
         rightButton.transform.localEulerAngles = resetAngle;
+
+        oldRoomGifData.ShuffleGifs();
     }
 
 }
