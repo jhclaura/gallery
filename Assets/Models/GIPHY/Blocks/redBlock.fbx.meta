@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8d0fcc045de79aa40a2e782d82dbdfde
+guid: 446f9345869d4c5489f4422ef09eab42
 timeCreated: 1474564422
 licenseType: Free
 ModelImporter:
@@ -10,7 +10,6 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Red_Corner
-    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -54,7 +53,7 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     human: []
@@ -69,7 +68,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

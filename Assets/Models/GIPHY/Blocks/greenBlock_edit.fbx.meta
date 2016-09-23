@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 848b37ce2840091409f902b05fe04723
+guid: 43eccdb6acae54b439f772b83d909818
 timeCreated: 1474564422
 licenseType: Free
 ModelImporter:
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Blue_Block
+    4300000: Green_Block
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -54,7 +54,7 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     human: []
@@ -69,7 +69,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

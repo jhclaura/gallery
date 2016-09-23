@@ -1,5 +1,14 @@
 {
   "floors": {
+    "0": {
+      "name": "Void",
+      "object": {
+        "Hm?": "Hm agina?"
+      },
+      "description": {
+        "Hm?": "I beg your pardon??"
+      }
+    },
     "1": {
       "name": "Dark Room",
       "object": {

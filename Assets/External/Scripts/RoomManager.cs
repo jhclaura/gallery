@@ -19,6 +19,7 @@ public class RoomData {
 public class RoomManager : MonoBehaviour {
 
     private RoomData[] roomData = new RoomData[] {
+       new RoomData("IntroRoom"),
        new RoomData("DarkRoom"),
        new RoomData("MiniRoom"),
        new RoomData("OceanRoom"),
@@ -42,14 +43,14 @@ public class RoomManager : MonoBehaviour {
 
             foreach (Room room in rooms)
             {
-                Debug.Log(room.roomName + " " + roomDataItem.name);
+                //Debug.Log(room.roomName + " " + roomDataItem.name);
                 if (roomDataItem.name == room.roomName) {
                     roomDataItem.room = room;
                 }
             }
         }
 
-        // Debug.Log(roomData);
+       //Debug.Log(roomData);
     }
     
     public void ActivateRoom(int roomIndex)

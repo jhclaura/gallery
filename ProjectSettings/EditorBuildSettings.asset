@@ -8,14 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/_Main.unity
   - enabled: 1
-    path: Assets/_Scenes/MiniRoom.unity
+    path: Assets/_Scenes/IntroRoom.unity
   - enabled: 1
-    path: Assets/_Scenes/MirrorRoom.unity
+    path: Assets/_Scenes/DarkRoom.unity
+  - enabled: 1
+    path: Assets/_Scenes/MiniRoom.unity
   - enabled: 1
     path: Assets/_Scenes/OceanRoom.unity
   - enabled: 1
     path: Assets/_Scenes/OldRoom.unity
   - enabled: 1
-    path: Assets/_Scenes/BigHall.unity
+    path: Assets/_Scenes/MirrorRoom.unity
   - enabled: 1
-    path: Assets/_Scenes/DarkRoom.unity
+    path: Assets/_Scenes/BigHall.unity

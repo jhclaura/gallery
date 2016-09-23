@@ -82,7 +82,7 @@ public class CameraTeleport : MonoBehaviour {
                         /// FLYER ////////////////////////////////////////////////////////////////////////////////////
                         // update flyer(front)
                         int floorNum = int.Parse(splitString[1]);
-                        GalleryFloor currentGF = floorDataManager.galleryFloors[floorNum - 1];
+                        GalleryFloor currentGF = floorDataManager.galleryFloors[floorNum]; //floorNum - 1
 
                         string newText = "Room - " + currentGF.name + "\n\n"
                                        + "Floor - " + currentGF.level + "\n\n"
@@ -103,33 +103,53 @@ public class CameraTeleport : MonoBehaviour {
                         flyerContentDeets.text = newTextBack;
 
                         /// LevelManaging /////////////////////////////////////////////////////////////////////////////
-                        // turn on floor(+0) if not already(eg.on floor_2, turn on floor_3, which is floors[2])
-                        int floorToTurnOn = floorNum;
+                        // turn on floor(+1) if not already(eg.on floor_2, turn on floor_3, which is floors[2])
+                        int floorToTurnOn = floorNum+1; //floorNum
                         if (floorNum == 6) floorToTurnOn = 0;
 
                         roomManager.ActivateRoom(floorToTurnOn);
 
-                        // turn off floor (-3) if not already (eg. on floor_3, turn off floor_1, which is floors[0])
-                        if (floorNum == 1)
+                        // v.1
+                        //// turn off floor (-3) if not already (eg. on floor_3, turn off floor_1, which is floors[0])
+                        //if (floorNum == 1)
+                        //{
+                        //    // turn off floor 3~6
+                        //    for (var i = 2; i < 6; i++)
+                        //    {
+                        //        roomManager.DeactivateRoom(i);
+                        //    }
+
+                        //    Debug.Log("turn off floors[3~6]");
+                        //}
+                        //else if (floorNum != 2) // don't need to turn off anything if on floor_2
+                        //{
+                        //    int floorToTurnOff = floorNum - 3;
+
+                        //    roomManager.DeactivateRoom(floorToTurnOff);
+                        //}
+
+                        // v.2
+                        // turn off floor (-2) if not already (eg. on floor_3, turn off floor_1)
+                        if (floorNum == 0)
                         {
-                            // turn off floor 3~6
-                            for (var i = 2; i < 6; i++)
+                            // turn off floor 2~7
+                            for (var i = 2; i < 7; i++)
                             {
                                 roomManager.DeactivateRoom(i);
                             }
 
-                            Debug.Log("turn off floors[3~6]");
+                            Debug.Log("turn off floors[2~6]");
                         }
-                        else if (floorNum != 2) // don't need to turn off anything if on floor_2
+                        else if (floorNum != 1) // don't need to turn off anything if on floor_1
                         {
-                            int floorToTurnOff = floorNum - 3;
+                            int floorToTurnOff = floorNum - 2;
 
                             roomManager.DeactivateRoom(floorToTurnOff);
                         }
 
                         /// SKYBOX ////////////////////////////////////////////////////////////////////////////////////
-                        skyColorManager.UpdateSkyboxColor(floorNum - 1);
-                        skyColorManager.UpdateAmbientColor(floorNum - 1);
+                        skyColorManager.UpdateSkyboxColor(floorNum); //floorNum - 1
+                        skyColorManager.UpdateAmbientColor(floorNum); //floorNum - 1
                         //RenderSettings.ambientLight = skyColorManager.
 
 
@@ -137,7 +157,7 @@ public class CameraTeleport : MonoBehaviour {
                         //lightManager.SwitchLightOfFloor(floorNum - 1);
 
                         /// TOOL ////////////////////////////////////////////////////////////////////////////////////////
-                        toolManager.SwitchToolOfFloor(floorNum - 1);
+                        toolManager.SwitchToolOfFloor(floorNum); //floorNum - 1
                     }
                 }
 

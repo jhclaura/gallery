@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: cc233b8115ab7b149a2a2cfb100dd497
-timeCreated: 1474564423
+guid: 0bf56217abc80ac4c9ce49425695a178
+timeCreated: 1474564421
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,8 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Blue_Block
+    4300000: Yellow_Block
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -53,7 +54,7 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     human: []
