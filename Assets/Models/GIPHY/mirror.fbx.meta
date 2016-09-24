@@ -1,15 +1,22 @@
 fileFormatVersion: 2
-guid: 9dd183682a0d17f45b04da82e2978a42
-timeCreated: 1474564422
+guid: 8e63ab46c931c20438b10517851031c3
+timeCreated: 1474739476
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
+    100000: Mirror
+    100002: //RootNode
+    100004: Mirror_2
+    400000: Mirror
+    400002: //RootNode
+    400004: Mirror_2
+    2300000: Mirror
+    2300002: Mirror_2
+    3300000: Mirror
+    3300002: Mirror_2
     4300000: Mirror
+    4300002: Mirror_2
   materials:
     importMaterials: 1
     materialName: 0
