@@ -9,14 +9,9 @@ public class ToolManager : MonoBehaviour {
     {
         for (var i = 0; i < tools.Length; i++)
         {
-            if (i != currentFloorIndex)
-            {
-                if (tools[i].activeSelf) tools[i].SetActive(false);
-            }
-            else
-            {
-                if (!tools[i].activeSelf) tools[i].SetActive(true);
-            }
+             if (tools[i].activeSelf) tools[i].SetActive(false);
         }
+
+        tools[currentFloorIndex].SetActive(true);
     }
 }

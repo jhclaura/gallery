@@ -65,6 +65,8 @@ public class CameraTeleport : MonoBehaviour {
         float eyeCamHeight = eyeCamera.transform.localPosition.y * cameraScale;
         fallDistance = eyeCamToFloorDist - eyeCamHeight;
 
+        // Debug.Log(rayCollidedWith.transform.gameObject.name);
+
         if (rayHit)
         {
             if (CurrentFloorChanged(rayCollidedWith)) {
