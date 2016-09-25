@@ -71,7 +71,8 @@ LightmapSettings:
     m_FinalGatherFiltering: 1
     m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000001, guid: 03b65eef01fb9d34f9c6853f4f435ecc,
+    type: 2}
   m_RuntimeCPUUsage: 25
 --- !u!196 &4
 NavMeshSettings:
@@ -209,7 +210,17 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 3.3814764
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 23000011297129028, guid: 08778616147dd304db238014eb5c3a3f,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 74b07582f03326f438c5e7bdcb4044fa, type: 2}
+    - target: {fileID: 4000012506394334, guid: 08778616147dd304db238014eb5c3a3f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.48
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114000012371622996, guid: 08778616147dd304db238014eb5c3a3f, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 08778616147dd304db238014eb5c3a3f, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &961756325
