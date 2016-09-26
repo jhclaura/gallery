@@ -106,7 +106,7 @@ public class CameraTeleport : MonoBehaviour {
 
                         /// LevelManaging /////////////////////////////////////////////////////////////////////////////
                         // turn on floor(+1) if not already(eg.on floor_2, turn on floor_3, which is floors[2])
-                        int floorToTurnOn = floorNum+1; //floorNum
+                        int floorToTurnOn = floorNum+1;
                         if (floorNum == 6) floorToTurnOn = 0;
 
                         roomManager.ActivateRoom(floorToTurnOn);
@@ -164,7 +164,9 @@ public class CameraTeleport : MonoBehaviour {
                 }
 
 
-                // if reaching the last floor, time to restart
+                // if reaching the last floor
+                // will be inside intro room's warp tunnel pt1
+                // prepare to restart
                 if (currentFloor == theLastFloor)
                 {
                     toRestart = true;
@@ -194,10 +196,9 @@ public class CameraTeleport : MonoBehaviour {
                 }
                 else
                 {
-                    shouldFall = false;
-                    // restart to floor 1
+                    // shouldFall = false;
+                    // restart to intro room's warp tunnel pt2
                     transform.position = restartPoint.transform.position;
-                    
                 }
             }
             
