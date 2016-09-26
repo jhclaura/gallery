@@ -14,10 +14,9 @@ public class RemoteManager : MonoBehaviour {
 
     void OnEnable()
     {
-        // TODO - not a good wayyyyyyy
         if (oldRoomGifData == null)
         {
-            oldRoomGifData = GameObject.Find("Floor_4").GetComponent<OldRoomGifData>();
+            oldRoomGifData = GameObject.FindObjectOfType<OldRoomGifData>();
             Debug.Log("Got old room gif data");
         }
     }
@@ -36,14 +35,14 @@ public class RemoteManager : MonoBehaviour {
     {
         leftButton.transform.localEulerAngles = resetAngle;
 
-        oldRoomGifData.ShuffleGifs();
+        oldRoomGifData.ShowPreviousGif();
     }
 
     public void ReleaseRightButton()
     {
         rightButton.transform.localEulerAngles = resetAngle;
 
-        oldRoomGifData.ShuffleGifs();
+        oldRoomGifData.ShowNextGif();
     }
 
 }
