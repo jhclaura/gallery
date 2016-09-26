@@ -7,8 +7,8 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: loopDream
-  m_Shader: {fileID: 4800000, guid: ef510abd96a28e540858758c7f935848, type: 3}
-  m_ShaderKeywords: S_SPECULAR_NONE S_UNLIT
+  m_Shader: {fileID: 4800000, guid: c6bb76d9890439e4093c50441dd42e50, type: 3}
+  m_ShaderKeywords: S_RECEIVE_SHADOWS S_RENDER_BACKFACES S_SPECULAR_NONE S_UNLIT
   m_LightmapFlags: 6
   m_CustomRenderQueue: -1
   stringTagMap:
@@ -88,7 +88,7 @@ Material:
       second: 1
     - first:
         name: _Cull
-      second: 2
+      second: 0
     - first:
         name: _Cutoff
       second: 0.5
