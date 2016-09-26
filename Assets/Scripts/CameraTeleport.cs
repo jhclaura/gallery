@@ -150,8 +150,7 @@ public class CameraTeleport : MonoBehaviour {
                         }
 
                         /// SKYBOX ////////////////////////////////////////////////////////////////////////////////////
-                        skyColorManager.UpdateSkyboxColor(floorNum); //floorNum - 1
-                        skyColorManager.UpdateAmbientColor(floorNum); //floorNum - 1
+                        skyColorManager.SetFloor(floorNum);
                         //RenderSettings.ambientLight = skyColorManager.
 
 
