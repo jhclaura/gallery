@@ -135,6 +135,12 @@ Material:
         name: _Parallax
       second: 0.02
     - first:
+        name: _Phi0
+      second: 0
+    - first:
+        name: _Phi1
+      second: 1
+    - first:
         name: _SmoothnessTextureChannel
       second: 0
     - first:
@@ -147,8 +153,20 @@ Material:
         name: _SrcBlend
       second: 1
     - first:
+        name: _Theta0
+      second: 0
+    - first:
+        name: _Theta1
+      second: 1
+    - first:
+        name: _UScale
+      second: 1
+    - first:
         name: _UVSec
       second: 0
+    - first:
+        name: _VScale
+      second: 1
     - first:
         name: _ZWrite
       second: 1
@@ -182,13 +200,28 @@ Material:
     m_Colors:
     - first:
         name: _Color
-      second: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+      second: {r: 1, g: 1, b: 1, a: 1}
     - first:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}
     - first:
+        name: _N
+      second: {r: 0, g: 0, b: 0, a: 0}
+    - first:
         name: _SpecColor
       second: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - first:
+        name: _UAxis
+      second: {r: 0, g: 0, b: 0, a: 0}
+    - first:
+        name: _UOrigin
+      second: {r: 0, g: 0, b: 0, a: 0}
+    - first:
+        name: _VAxis
+      second: {r: 0, g: 0, b: 0, a: 0}
+    - first:
+        name: _VOrigin
+      second: {r: 0, g: 0, b: 0, a: 0}
     - first:
         name: g_vWorldAlignedNormalTangentU
       second: {r: -1, g: 0, b: 0, a: 0}
