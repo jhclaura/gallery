@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.8455882, g: 0.8455882, b: 0.8455882, a: 1}
+  m_AmbientSkyColor: {r: 0.71323526, g: 0.71323526, b: 0.71323526, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -67,7 +67,7 @@ LightmapSettings:
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
     m_DirectLightInLightProbes: 0
-    m_FinalGather: 0
+    m_FinalGather: 1
     m_FinalGatherFiltering: 1
     m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
@@ -897,6 +897,7 @@ MonoBehaviour:
   - {fileID: 1000011923659068, guid: 8f7fdd23365cfdd42b78b330f61fbeca, type: 2}
   - {fileID: 1000011422135072, guid: e17ce26bd9e5cb44f95dbb309b8546ff, type: 2}
   - {fileID: 1000011437497396, guid: e07c56f453de5374e9c1f90e38516946, type: 2}
+  animateObjects: 0
 --- !u!1001 &728997541
 Prefab:
   m_ObjectHideFlags: 0
@@ -1414,7 +1415,7 @@ Light:
   serializedVersion: 7
   m_Type: 2
   m_Color: {r: 1, g: 0.9758621, b: 0.89705884, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.6
   m_Range: 13
   m_SpotAngle: 30
   m_CookieSize: 10
