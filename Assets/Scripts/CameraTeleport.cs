@@ -29,6 +29,9 @@ public class CameraTeleport : MonoBehaviour {
 
     private bool initialized = false;
 
+    public Animator eyeMaskAnimator;
+    bool eyeMaskOn = false;
+
     IEnumerator Start ()
     {
         skyColorManager = GetComponent<SkyColorManager>();
@@ -105,7 +108,7 @@ public class CameraTeleport : MonoBehaviour {
                         flyerContentDeets.text = newTextBack;
 
                         /// LevelManaging /////////////////////////////////////////////////////////////////////////////
-                        // turn on floor(+1) if not already(eg.on floor_2, turn on floor_3, which is floors[2])
+                        // turn on floor(+1) if not already(eg.on floor_2, turn on floor_3)
                         int floorToTurnOn = floorNum+1;
                         if (floorNum == 6) floorToTurnOn = 0;
 
@@ -131,10 +134,10 @@ public class CameraTeleport : MonoBehaviour {
                         //}
 
                         // v.2
-                        // turn off floor (-2) if not already (eg. on floor_3, turn off floor_1)
+                        // turn off floors
                         if (floorNum == 0)
                         {
-                            // turn off floor 2~7
+                            // turn off floor 2~7 if on floor_0
                             for (var i = 2; i < 7; i++)
                             {
                                 roomManager.DeactivateRoom(i);
@@ -144,6 +147,7 @@ public class CameraTeleport : MonoBehaviour {
                         }
                         else if (floorNum != 1) // don't need to turn off anything if on floor_1
                         {
+                            //  turn off floor (-2) if not already (eg. on floor_3, turn off floor_1)
                             int floorToTurnOff = floorNum - 2;
 
                             roomManager.DeactivateRoom(floorToTurnOff);
@@ -153,18 +157,15 @@ public class CameraTeleport : MonoBehaviour {
                         skyColorManager.SetFloor(floorNum);
                         //RenderSettings.ambientLight = skyColorManager.
 
-
                         /// LIGHTING ////////////////////////////////////////////////////////////////////////////////////
                         //lightManager.SwitchLightOfFloor(floorNum - 1);
 
                         /// TOOL ////////////////////////////////////////////////////////////////////////////////////////
-                        toolManager.SwitchToolOfFloor(floorNum); //floorNum - 1
+                        toolManager.SwitchToolOfFloor(floorNum);
                     }
                 }
 
-
-                // if reaching the last floor
-                // will be inside intro room's warp tunnel pt1
+                // if inside rabbit hole
                 // prepare to restart
                 if (currentFloor == theLastFloor)
                 {
@@ -189,6 +190,16 @@ public class CameraTeleport : MonoBehaviour {
                 }
             }
             else {
+                /// EyeMasking --------------------------------------------------------
+                if (fallDistance < 5f && !eyeMaskOn)
+                {
+                    // trigger eye mask fade in
+                    eyeMaskOn = true;
+                    eyeMaskAnimator.SetTrigger("FadeIn");
+                    Debug.Log("fade in eye mask");
+                }
+
+                // Falling ------------------------------------------------------------
                 if (fallDistance > 0.1f)
                 {
                     shouldFall = true;
@@ -196,8 +207,12 @@ public class CameraTeleport : MonoBehaviour {
                 else
                 {
                     // shouldFall = false;
-                    // restart to intro room's warp tunnel pt2
-                    transform.position = restartPoint.transform.position;
+
+                    // restart into intro room's fake rabbit hole
+                    // transform.position = restartPoint.transform.position;
+
+                    // trigger eye mask fade out
+                    Invoke("EyeMaskFadeOut", 2.5f);
                 }
             }
             
@@ -213,5 +228,15 @@ public class CameraTeleport : MonoBehaviour {
         if (shouldFall) {
             transform.Translate(Vector3.down * Time.deltaTime * fallSpeed, Space.World);
         }
+    }
+
+    void EyeMaskFadeOut()
+    {
+        // trigger eye mask fade out
+        transform.position = restartPoint.transform.position;
+        eyeMaskAnimator.SetTrigger("FadeOut");
+
+        Debug.Log("fade out eye mask");
+        eyeMaskOn = false;
     }
 }
