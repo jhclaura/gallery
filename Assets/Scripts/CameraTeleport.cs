@@ -212,7 +212,8 @@ public class CameraTeleport : MonoBehaviour {
                     // transform.position = restartPoint.transform.position;
 
                     // trigger eye mask fade out
-                    Invoke("EyeMaskFadeOut", 2.5f);
+                    if(eyeMaskOn)
+                        Invoke("EyeMaskFadeOut", 2f);
                 }
             }
             
