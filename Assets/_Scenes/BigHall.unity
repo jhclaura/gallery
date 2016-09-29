@@ -2977,9 +2977,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   count: 50
-  scatterX: 50
+  scatterX: 30
   scatterY: 100
-  scatterZ: 50
+  scatterZ: 30
+  scatterX_2nd: 150
+  scatterY_2nd: 100
+  scatterZ_2nd: 150
   seed: 3
   prefabs:
   - {fileID: 1000010079612880, guid: 924d8bb7d4c728a40a4cbc927bbb6205, type: 2}
