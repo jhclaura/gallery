@@ -632,10 +632,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 975181050}
-  - 114: {fileID: 975181049}
-  - 82: {fileID: 975181048}
   - 114: {fileID: 975181051}
   - 114: {fileID: 975181052}
+  - 82: {fileID: 975181048}
   m_Layer: 0
   m_Name: 3_Ocean
   m_TagString: Untagged
@@ -649,10 +648,10 @@ AudioSource:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 975181047}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7a1d06d4ac38948469f232ee3d0190ad, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d44ba1194d4970d4986c123ebf81221d, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -717,20 +716,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &975181049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 975181047}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5e0b0421da3d814a8bbf20b834517eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraEye: {fileID: 0}
-  minDistance: 2
-  maxDistance: 10
 --- !u!4 &975181050
 Transform:
   m_ObjectHideFlags: 0
@@ -769,6 +754,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomName: OceanRoom
   lights: []
+  audios:
+  - {fileID: 975181048}
 --- !u!114 &975181052
 MonoBehaviour:
   m_ObjectHideFlags: 0

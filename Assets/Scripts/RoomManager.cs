@@ -43,9 +43,10 @@ public class RoomManager : MonoBehaviour {
 
             foreach (Room room in rooms)
             {
-                //Debug.Log(room.roomName + " " + roomDataItem.name);
+
                 if (roomDataItem.name == room.roomName) {
                     roomDataItem.room = room;
+                    Debug.Log(room.roomName + " " + roomDataItem.name);
                 }
             }
         }
@@ -61,5 +62,15 @@ public class RoomManager : MonoBehaviour {
     public void DeactivateRoom(int roomIndex)
     {
         roomData[roomIndex].room.Deactivate();
+    }
+
+    public void ActivateAudio(int roomIndex)
+    {
+        roomData[roomIndex].room.PlayAudios();
+    }
+
+    public void DeactivateAudio(int roomIndex)
+    {
+        roomData[roomIndex].room.PauseAudios();
     }
 }

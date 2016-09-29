@@ -32,6 +32,8 @@ public class CameraTeleport : MonoBehaviour {
     public Animator eyeMaskAnimator;
     bool eyeMaskOn = false;
 
+    AudioSource rabbitHole;
+
     IEnumerator Start ()
     {
         skyColorManager = GetComponent<SkyColorManager>();
@@ -42,6 +44,9 @@ public class CameraTeleport : MonoBehaviour {
         cameraScale = transform.localScale.x;
 
         yield return StartCoroutine(roomManager.LoadAll());
+
+        rabbitHole = GetComponent<AudioSource>();
+        rabbitHole.enabled = false;
 
         initialized = true;
     }
@@ -153,6 +158,30 @@ public class CameraTeleport : MonoBehaviour {
                             roomManager.DeactivateRoom(floorToTurnOff);
                         }
 
+                        /// Audios /////////////////////////////////////////////////////////////////////////////////////
+                        // turn on
+                        // (eg.on floor_2, turn on floor_2)
+                        int floorAudioToTurnOn = floorNum;
+                        roomManager.ActivateAudio(floorAudioToTurnOn);
+                        Debug.Log("turn on audio floor" + floorAudioToTurnOn);
+
+                        // turn off
+                        if (floorNum == 0)
+                        {
+                            // turn off floor 1~7 if on floor_0
+                            for (var i = 1; i < 7; i++)
+                            {
+                                roomManager.DeactivateAudio(i);
+                            }
+                            Debug.Log("turn off audio floors[1~6]");
+                        }
+                        else
+                        {
+                            //  turn off floor (-1) (eg. on floor_3, turn off floor_2)
+                            int floorToTurnOff = floorNum - 1;
+                            roomManager.DeactivateAudio(floorToTurnOff);
+                        }
+
                         /// SKYBOX ////////////////////////////////////////////////////////////////////////////////////
                         skyColorManager.SetFloor(floorNum);
                         //RenderSettings.ambientLight = skyColorManager.
@@ -170,6 +199,9 @@ public class CameraTeleport : MonoBehaviour {
                 if (currentFloor == theLastFloor)
                 {
                     toRestart = true;
+
+                    // AUDIO
+                    rabbitHole.enabled = true;
                 }
                 else {
                     toRestart = false;
@@ -212,11 +244,14 @@ public class CameraTeleport : MonoBehaviour {
                     // transform.position = restartPoint.transform.position;
 
                     // trigger eye mask fade out
-                    if(eyeMaskOn)
+                    if (eyeMaskOn)
+                    {
                         Invoke("EyeMaskFadeOut", 2f);
+                        // AUDIO
+                        rabbitHole.enabled = false;
+                    }
                 }
             }
-            
         }
         else
         {
