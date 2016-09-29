@@ -6,18 +6,6 @@ public class OldRoomGifData : MonoBehaviour {
 
     public bool autorun;
 
-    public GameObject[] allTheGifs;
-
-    public Sprite[] gifRenderSource;
-    public RuntimeAnimatorController[] gifAnimatorSource;
-
-    public GameObject wallPaper;
-    public Texture weirdWallPaper;
-    Texture originalWallPaper;
-    Renderer wallPaperRenderer;
-
-    SpriteRenderer[] gifRenders;
-    Animator[] gifAnimators;
     int gifIndex = 0;
     int gifObjectCount;
     int gifSourceCount;
@@ -29,6 +17,10 @@ public class OldRoomGifData : MonoBehaviour {
 
     bool roomTextureNormal;
 
+    public GameObject oldRoom;
+    AudioSource[] radioAudios;
+    int audioCount;
+
     // Use this for initialization
     void Start () {
         SetGifState();
@@ -37,11 +29,23 @@ public class OldRoomGifData : MonoBehaviour {
         {
             StartCoroutine(Autorun());
         }
+
+        // AUDIO
+        Room room = oldRoom.GetComponent<Room>();
+        radioAudios = room.audios;
+        audioCount = radioAudios.Length;
+
+        ShuffeAudio();
     }
 
     void OnDisable()
     {
         ResetMaterial();
+    }
+
+    void OnEnable()
+    {
+        ShuffeAudio();
     }
 
     IEnumerator Autorun()
@@ -61,6 +65,8 @@ public class OldRoomGifData : MonoBehaviour {
         }
 
         SetGifState();
+
+        ShuffeAudio();
     }
 	
 	public void ShowNextGif()
@@ -73,6 +79,8 @@ public class OldRoomGifData : MonoBehaviour {
         }
 
         SetGifState();
+
+        ShuffeAudio();
     }
 
     private void SetGifState()
@@ -128,6 +136,17 @@ public class OldRoomGifData : MonoBehaviour {
             {
                 workingMaterial.DisableKeyword("S_UNLIT");
             }
+        }
+    }
+
+    public void ShuffeAudio()
+    {
+        for (int i = 0; i < audioCount; i++)
+        {
+            if (i == (gifIndex % audioCount))
+                radioAudios[i].UnPause();
+            else
+                radioAudios[i].Pause();
         }
     }
 }

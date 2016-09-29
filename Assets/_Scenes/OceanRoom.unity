@@ -190,15 +190,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000010708236266, guid: bba3f49ec518ca543b96c91ea0fb97bf, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2.99
+      value: 2.77
       objectReference: {fileID: 0}
     - target: {fileID: 4000010708236266, guid: bba3f49ec518ca543b96c91ea0fb97bf, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -27.24
+      value: -27.240002
       objectReference: {fileID: 0}
     - target: {fileID: 4000010708236266, guid: bba3f49ec518ca543b96c91ea0fb97bf, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -8.76
+      value: -8.12
       objectReference: {fileID: 0}
     - target: {fileID: 4000010708236266, guid: bba3f49ec518ca543b96c91ea0fb97bf, type: 2}
       propertyPath: m_LocalRotation.x
@@ -206,15 +206,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000010708236266, guid: bba3f49ec518ca543b96c91ea0fb97bf, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4000010708236266, guid: bba3f49ec518ca543b96c91ea0fb97bf, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000010708236266, guid: bba3f49ec518ca543b96c91ea0fb97bf, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4000010708236266, guid: bba3f49ec518ca543b96c91ea0fb97bf, type: 2}
       propertyPath: m_RootOrder
@@ -223,6 +223,10 @@ Prefab:
     - target: {fileID: 1000013893722624, guid: bba3f49ec518ca543b96c91ea0fb97bf, type: 2}
       propertyPath: m_Name
       value: Floor_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010708236266, guid: bba3f49ec518ca543b96c91ea0fb97bf, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bba3f49ec518ca543b96c91ea0fb97bf, type: 2}
@@ -749,7 +753,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: d44ba1194d4970d4986c123ebf81221d, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 0.9
   Loop: 1
   Mute: 0
   Spatialize: 0
@@ -818,7 +822,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 975181047}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.18, y: -23.7, z: -2.35}
+  m_LocalPosition: {x: -3.89, y: -23.7, z: -3.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:

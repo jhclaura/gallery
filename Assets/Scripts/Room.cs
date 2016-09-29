@@ -6,6 +6,7 @@ public class Room : MonoBehaviour {
     public string roomName;
     public Light[] lights;
     public AudioSource[] audios;
+    public OldRoomGifData gifData;
 
 	// Use this for initialization
 	void Start () {
@@ -37,14 +38,18 @@ public class Room : MonoBehaviour {
                 audio.enabled = true;
             }
         }
-        
+
+        if (gifData != null)
+        {
+            gifData.ShuffeAudio();
+        }
     }
 
     public void PauseAudios()
     {
         if (audios.Length > 0)
         {
-                foreach (AudioSource audio in audios)
+            foreach (AudioSource audio in audios)
             {
                 //audio.Pause();
                 audio.enabled = false;

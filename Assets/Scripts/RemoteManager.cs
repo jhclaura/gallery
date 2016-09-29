@@ -24,11 +24,15 @@ public class RemoteManager : MonoBehaviour {
     public void PressLeftButton()
     {
         leftButton.transform.localEulerAngles = leftDownAngle;
+
+        //Debug.Log("Press left!");
     }
 
     public void PressRightButton()
     {
         rightButton.transform.localEulerAngles = rightDownAngle;
+
+        //Debug.Log("Press right!");
     }
 
     public void ReleaseLeftButton()

@@ -145,7 +145,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1000014085049732, guid: 73c22070aa86e7249888232d0fdf0025, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 73c22070aa86e7249888232d0fdf0025, type: 2}
@@ -202,6 +202,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: cebd3546017982540adacfeee89bea3f, type: 2}
+    - target: {fileID: 100000, guid: eeac249a6139df944ac34657765b10e6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eeac249a6139df944ac34657765b10e6, type: 3}
   m_IsPrefabParent: 0
@@ -1006,6 +1010,7 @@ MonoBehaviour:
   lights: []
   audios:
   - {fileID: 1668610167}
+  gifData: {fileID: 0}
 --- !u!114 &1668610166
 MonoBehaviour:
   m_ObjectHideFlags: 0

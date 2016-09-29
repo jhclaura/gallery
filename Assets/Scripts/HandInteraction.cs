@@ -62,7 +62,7 @@ public class HandInteraction : MonoBehaviour {
 
                 colorIndex ++;
             }
-            Debug.Log("start touching logo!");
+            //Debug.Log("start touching logo!");
         }
     }
 
@@ -81,7 +81,7 @@ public class HandInteraction : MonoBehaviour {
                 // logoMaterial.SetColor("_Color1", oriColors[0]);
                 // logoMaterial.SetColor("_Color2", oriColors[1]);
             }
-            Debug.Log("stop touching logo!");
+            //Debug.Log("stop touching logo!");
         }
     }
 }

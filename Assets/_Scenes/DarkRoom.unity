@@ -380,7 +380,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &137432072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3250,7 +3250,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &778380199
 Transform:
   m_ObjectHideFlags: 0
@@ -8240,6 +8240,7 @@ MonoBehaviour:
   - {fileID: 1668610168}
   - {fileID: 1668610167}
   - {fileID: 1668610166}
+  gifData: {fileID: 0}
 --- !u!82 &1668610166
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8325,8 +8326,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9aab84f5a08e1e84bacdae80981cd234, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: 0.4
+  m_Pitch: 0.9
   Loop: 1
   Mute: 0
   Spatialize: 0
@@ -8399,7 +8400,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 78ef674161460e74fbe50af2057ea8a3, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
