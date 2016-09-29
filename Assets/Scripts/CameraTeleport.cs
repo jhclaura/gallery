@@ -89,6 +89,8 @@ public class CameraTeleport : MonoBehaviour {
                     // if hit the floor
                     if (splitString[0] == "Floor")
                     {
+                        int floorNum = int.Parse(splitString[1]);
+
                         /// LevelManaging /////////////////////////////////////////////////////////////////////////////
                         // turn on floor(+1) if not already(eg.on floor_2, turn on floor_3)
                         int floorToTurnOn = floorNum+1;
