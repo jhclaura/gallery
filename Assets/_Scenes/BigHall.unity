@@ -2864,6 +2864,8 @@ MonoBehaviour:
   lights: []
   audios:
   - {fileID: 1063058712}
+  - {fileID: 1063058713}
+  gifData: {fileID: 0}
 --- !u!114 &1063058711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3051,13 +3053,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e775af96a3850c74aa6523c7bca103c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 50
-  scatterX: 30
+  count: 60
+  scatterX: 20
   scatterY: 100
-  scatterZ: 30
-  scatterX_2nd: 150
+  scatterZ: 20
+  scatterX_2nd: 250
   scatterY_2nd: 80
-  scatterZ_2nd: 150
+  scatterZ_2nd: 250
   seed: 3
   prefabs:
   - {fileID: 1000010079612880, guid: 924d8bb7d4c728a40a4cbc927bbb6205, type: 2}
@@ -3082,7 +3084,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1064173246}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.54, y: -159.1, z: -0.87}
+  m_LocalPosition: {x: 1.3, y: -159.1, z: -13.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -7291,7 +7293,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 420908, guid: 4d293c8e162f3874b982baadd71153d2, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -4.5
+      value: 1.41
       objectReference: {fileID: 0}
     - target: {fileID: 420908, guid: 4d293c8e162f3874b982baadd71153d2, type: 2}
       propertyPath: m_LocalPosition.y
@@ -7299,7 +7301,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 420908, guid: 4d293c8e162f3874b982baadd71153d2, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -12.2
+      value: -9.66
       objectReference: {fileID: 0}
     - target: {fileID: 420908, guid: 4d293c8e162f3874b982baadd71153d2, type: 2}
       propertyPath: m_LocalRotation.x

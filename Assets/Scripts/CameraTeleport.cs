@@ -181,6 +181,7 @@ public class CameraTeleport : MonoBehaviour {
 
                     // AUDIO
                     rabbitHole.enabled = true;
+                    fallSpeed = 6f;
                 }
                 else {
                     toRestart = false;
@@ -228,6 +229,9 @@ public class CameraTeleport : MonoBehaviour {
                         Invoke("EyeMaskFadeOut", 2f);
                         // AUDIO
                         rabbitHole.enabled = false;
+                        fallSpeed = 4f;
+
+                        eyeMaskOn = false;
                     }
                 }
             }
@@ -252,6 +256,5 @@ public class CameraTeleport : MonoBehaviour {
         eyeMaskAnimator.SetTrigger("FadeOut");
 
         Debug.Log("fade out eye mask");
-        eyeMaskOn = false;
     }
 }

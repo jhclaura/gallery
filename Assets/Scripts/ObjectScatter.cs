@@ -31,7 +31,7 @@ public class ObjectScatter : MonoBehaviour {
             GameObject prefab = prefabs[Random.Range(0, prefabs.Length)];
             float x, y, z;
 
-            if (i>(count/4) )
+            if (i>(count/2) )
             {
                 x = Random.Range(-scatterX, scatterX);
                 y = Random.Range(-scatterY, scatterY);
