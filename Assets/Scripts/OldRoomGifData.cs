@@ -57,7 +57,7 @@ public class OldRoomGifData : MonoBehaviour {
 
         if (gifIndex < 0)
         {
-            gifIndex = 0;
+            gifIndex = transform.childCount - 1;
         }
 
         SetGifState();
@@ -69,7 +69,7 @@ public class OldRoomGifData : MonoBehaviour {
 
         if (gifIndex > transform.childCount - 1)
         {
-            gifIndex = transform.childCount - 1;
+            gifIndex = 0;
         }
 
         SetGifState();
