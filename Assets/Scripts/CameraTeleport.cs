@@ -89,29 +89,6 @@ public class CameraTeleport : MonoBehaviour {
                     // if hit the floor
                     if (splitString[0] == "Floor")
                     {
-                        /// FLYER ////////////////////////////////////////////////////////////////////////////////////
-                        // update flyer(front)
-                        int floorNum = int.Parse(splitString[1]);
-                        GalleryFloor currentGF = floorDataManager.galleryFloors[floorNum]; //floorNum - 1
-
-                        string newText = "Room - " + currentGF.name + "\n\n"
-                                       + "Floor - " + currentGF.level + "\n\n"
-                                       + "Objects" + "\n\n";
-
-                        for (int i = 0; i < currentGF.arts.Count; i++)
-                        {
-                            newText += ("- " + currentGF.arts[i]["name"].str + ", by " + currentGF.arts[i]["artist"].str + "\n");
-                        }
-                        flyerContents.text = newText;
-
-                        // update flyer(back)
-                        string newTextBack = "/// Deets ///\n\n";
-                        for (int i = 0; i < currentGF.arts.Count; i++)
-                        {
-                            newTextBack += ("- " + currentGF.arts[i]["name"].str + "\n" + currentGF.arts[i]["description"].str + "\n\n");
-                        }
-                        flyerContentDeets.text = newTextBack;
-
                         /// LevelManaging /////////////////////////////////////////////////////////////////////////////
                         // turn on floor(+1) if not already(eg.on floor_2, turn on floor_3)
                         int floorToTurnOn = floorNum+1;
