@@ -2430,6 +2430,11 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "Room_Con\xB7tem\xB7po\xB7rar\xB7y\n\nFloor_1\n\nObjects\n- Fancy Pants.
     2016. Philips Goggy\n- Wormy. 2015. Julian Glander"
+--- !u!4 &983966182 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4000013062699236, guid: 6f218fdb9e9524c218ecd406ed3a683b,
+    type: 2}
+  m_PrefabInternal: {fileID: 2076671967}
 --- !u!1 &992310239
 GameObject:
   m_ObjectHideFlags: 0
@@ -3420,6 +3425,7 @@ Transform:
   m_Children:
   - {fileID: 1994232630}
   - {fileID: 1915483292}
+  - {fileID: 983966182}
   m_Father: {fileID: 1063058709}
   m_RootOrder: 1
 --- !u!1 &1182878322
@@ -7614,6 +7620,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.9193142
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012317244926, guid: 821ad508e59715e429f4fd8daa572d97, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 821ad508e59715e429f4fd8daa572d97, type: 2}
   m_IsPrefabParent: 0
@@ -7873,6 +7883,64 @@ Prefab:
 GameObject:
   m_PrefabParentObject: {fileID: 100004, guid: 7d402d0794a57fc4c9935bd5438c3917, type: 3}
   m_PrefabInternal: {fileID: 1884484418}
+--- !u!1001 &2076671967
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1172921076}
+    m_Modifications:
+    - target: {fileID: 4000013062699236, guid: 6f218fdb9e9524c218ecd406ed3a683b, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013062699236, guid: 6f218fdb9e9524c218ecd406ed3a683b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 11.569381
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013062699236, guid: 6f218fdb9e9524c218ecd406ed3a683b, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -9.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013062699236, guid: 6f218fdb9e9524c218ecd406ed3a683b, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013062699236, guid: 6f218fdb9e9524c218ecd406ed3a683b, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.78195333
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013062699236, guid: 6f218fdb9e9524c218ecd406ed3a683b, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013062699236, guid: 6f218fdb9e9524c218ecd406ed3a683b, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.623337
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013062699236, guid: 6f218fdb9e9524c218ecd406ed3a683b, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013062699236, guid: 6f218fdb9e9524c218ecd406ed3a683b, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 192.58499
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013062699236, guid: 6f218fdb9e9524c218ecd406ed3a683b, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.44982
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013062699236, guid: 6f218fdb9e9524c218ecd406ed3a683b, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.4498205
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013062699236, guid: 6f218fdb9e9524c218ecd406ed3a683b, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.44982034
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 6f218fdb9e9524c218ecd406ed3a683b, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &2089843842
 GameObject:
   m_ObjectHideFlags: 0

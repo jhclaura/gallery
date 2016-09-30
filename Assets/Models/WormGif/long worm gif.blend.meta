@@ -1,0 +1,539 @@
+fileFormatVersion: 2
+guid: c0bb79bfe84444a60b0a7a865205ec17
+timeCreated: 1475185520
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: BezierCircle
+    100002: //RootNode
+    100004: Mball_000
+    100006: Mball_001
+    100008: Plane
+    100010: Plane_001
+    100012: Screen_Shot_2016-08-15_at_8_29_26_PM
+    100014: Sphere_000
+    100016: Sphere_001
+    100018: Sphere_002
+    100020: Sphere_003
+    100022: Sphere_004
+    100024: Sphere_005
+    100026: Sphere_006
+    100028: Sphere_007
+    100030: Sphere_008
+    100032: Sphere_009
+    100034: Sphere_010
+    100036: Sphere_011
+    100038: Sphere_012
+    100040: Sphere_013
+    100042: Sphere_014
+    100044: Sphere_015
+    100046: Sphere_016
+    100048: Sphere_017
+    100050: Sphere_018
+    100052: Sphere_019
+    100054: Sphere_020
+    100056: Sphere_021
+    100058: Sphere_022
+    100060: Sphere_023
+    100062: Sphere_024
+    100064: Sphere_025
+    100066: Sphere_026
+    100068: Sphere_027
+    100070: Sphere_028
+    100072: Sphere_029
+    100074: Sphere_030
+    100076: Sphere_031
+    100078: Sphere_032
+    100080: Sphere_033
+    100082: Sphere_034
+    100084: Sphere_035
+    100086: Sphere_036
+    100088: Sphere_037
+    100090: Sphere_038
+    100092: Sphere_039
+    100094: Sphere_040
+    100096: Sphere_041
+    100098: Sphere_042
+    100100: Sphere_043
+    100102: Sphere_044
+    100104: Sphere_045
+    100106: Sphere_046
+    100108: Sphere_047
+    100110: Sphere_048
+    100112: Sphere_049
+    100114: Sphere_050
+    100116: Sphere_051
+    100118: Sphere_052
+    100120: Sphere_053
+    100122: Sphere_054
+    100124: Sphere_055
+    400000: BezierCircle
+    400002: //RootNode
+    400004: Mball_000
+    400006: Mball_001
+    400008: Plane
+    400010: Plane_001
+    400012: Screen_Shot_2016-08-15_at_8_29_26_PM
+    400014: Sphere_000
+    400016: Sphere_001
+    400018: Sphere_002
+    400020: Sphere_003
+    400022: Sphere_004
+    400024: Sphere_005
+    400026: Sphere_006
+    400028: Sphere_007
+    400030: Sphere_008
+    400032: Sphere_009
+    400034: Sphere_010
+    400036: Sphere_011
+    400038: Sphere_012
+    400040: Sphere_013
+    400042: Sphere_014
+    400044: Sphere_015
+    400046: Sphere_016
+    400048: Sphere_017
+    400050: Sphere_018
+    400052: Sphere_019
+    400054: Sphere_020
+    400056: Sphere_021
+    400058: Sphere_022
+    400060: Sphere_023
+    400062: Sphere_024
+    400064: Sphere_025
+    400066: Sphere_026
+    400068: Sphere_027
+    400070: Sphere_028
+    400072: Sphere_029
+    400074: Sphere_030
+    400076: Sphere_031
+    400078: Sphere_032
+    400080: Sphere_033
+    400082: Sphere_034
+    400084: Sphere_035
+    400086: Sphere_036
+    400088: Sphere_037
+    400090: Sphere_038
+    400092: Sphere_039
+    400094: Sphere_040
+    400096: Sphere_041
+    400098: Sphere_042
+    400100: Sphere_043
+    400102: Sphere_044
+    400104: Sphere_045
+    400106: Sphere_046
+    400108: Sphere_047
+    400110: Sphere_048
+    400112: Sphere_049
+    400114: Sphere_050
+    400116: Sphere_051
+    400118: Sphere_052
+    400120: Sphere_053
+    400122: Sphere_054
+    400124: Sphere_055
+    2300000: BezierCircle
+    2300002: Mball_000
+    2300004: Mball_001
+    2300006: Plane
+    2300008: Plane_001
+    2300010: Screen_Shot_2016-08-15_at_8_29_26_PM
+    2300012: Sphere_000
+    2300014: Sphere_001
+    2300016: Sphere_002
+    2300018: Sphere_003
+    2300020: Sphere_004
+    2300022: Sphere_005
+    2300024: Sphere_006
+    2300026: Sphere_007
+    2300028: Sphere_008
+    2300030: Sphere_009
+    2300032: Sphere_010
+    2300034: Sphere_011
+    2300036: Sphere_012
+    2300038: Sphere_013
+    2300040: Sphere_014
+    2300042: Sphere_015
+    2300044: Sphere_016
+    2300046: Sphere_017
+    2300048: Sphere_018
+    2300050: Sphere_019
+    2300052: Sphere_020
+    2300054: Sphere_021
+    2300056: Sphere_022
+    2300058: Sphere_023
+    2300060: Sphere_024
+    2300062: Sphere_025
+    2300064: Sphere_026
+    2300066: Sphere_027
+    2300068: Sphere_028
+    2300070: Sphere_029
+    2300072: Sphere_030
+    2300074: Sphere_031
+    2300076: Sphere_032
+    2300078: Sphere_033
+    2300080: Sphere_034
+    2300082: Sphere_035
+    2300084: Sphere_036
+    2300086: Sphere_037
+    2300088: Sphere_038
+    2300090: Sphere_039
+    2300092: Sphere_040
+    2300094: Sphere_041
+    2300096: Sphere_042
+    2300098: Sphere_043
+    2300100: Sphere_044
+    2300102: Sphere_045
+    2300104: Sphere_046
+    2300106: Sphere_047
+    2300108: Sphere_048
+    2300110: Sphere_049
+    2300112: Sphere_050
+    2300114: Sphere_051
+    2300116: Sphere_052
+    2300118: Sphere_053
+    2300120: Sphere_054
+    2300122: Sphere_055
+    3300000: BezierCircle
+    3300002: Mball_000
+    3300004: Mball_001
+    3300006: Plane
+    3300008: Plane_001
+    3300010: Screen_Shot_2016-08-15_at_8_29_26_PM
+    3300012: Sphere_000
+    3300014: Sphere_001
+    3300016: Sphere_002
+    3300018: Sphere_003
+    3300020: Sphere_004
+    3300022: Sphere_005
+    3300024: Sphere_006
+    3300026: Sphere_007
+    3300028: Sphere_008
+    3300030: Sphere_009
+    3300032: Sphere_010
+    3300034: Sphere_011
+    3300036: Sphere_012
+    3300038: Sphere_013
+    3300040: Sphere_014
+    3300042: Sphere_015
+    3300044: Sphere_016
+    3300046: Sphere_017
+    3300048: Sphere_018
+    3300050: Sphere_019
+    3300052: Sphere_020
+    3300054: Sphere_021
+    3300056: Sphere_022
+    3300058: Sphere_023
+    3300060: Sphere_024
+    3300062: Sphere_025
+    3300064: Sphere_026
+    3300066: Sphere_027
+    3300068: Sphere_028
+    3300070: Sphere_029
+    3300072: Sphere_030
+    3300074: Sphere_031
+    3300076: Sphere_032
+    3300078: Sphere_033
+    3300080: Sphere_034
+    3300082: Sphere_035
+    3300084: Sphere_036
+    3300086: Sphere_037
+    3300088: Sphere_038
+    3300090: Sphere_039
+    3300092: Sphere_040
+    3300094: Sphere_041
+    3300096: Sphere_042
+    3300098: Sphere_043
+    3300100: Sphere_044
+    3300102: Sphere_045
+    3300104: Sphere_046
+    3300106: Sphere_047
+    3300108: Sphere_048
+    3300110: Sphere_049
+    3300112: Sphere_050
+    3300114: Sphere_051
+    3300116: Sphere_052
+    3300118: Sphere_053
+    3300120: Sphere_054
+    3300122: Sphere_055
+    4300000: Sphere_055
+    4300002: Sphere_051
+    4300004: Plane_001
+    4300006: Plane
+    4300008: Sphere_044
+    4300010: Sphere_043
+    4300012: Sphere_042
+    4300014: Sphere_041
+    4300016: Sphere_040
+    4300018: Sphere_039
+    4300020: Sphere_038
+    4300022: Sphere_037
+    4300024: Sphere_036
+    4300026: Sphere_035
+    4300028: Sphere_034
+    4300030: Sphere_033
+    4300032: Sphere_032
+    4300034: Sphere_031
+    4300036: Sphere_030
+    4300038: Sphere_029
+    4300040: Sphere_028
+    4300042: Sphere_027
+    4300044: Sphere_026
+    4300046: Sphere_025
+    4300048: Sphere_024
+    4300050: Sphere_023
+    4300052: Sphere_022
+    4300054: Sphere_021
+    4300056: Sphere_020
+    4300058: Sphere_019
+    4300060: Sphere_018
+    4300062: Sphere_017
+    4300064: Sphere_016
+    4300066: Sphere_015
+    4300068: Sphere_014
+    4300070: Sphere_013
+    4300072: Sphere_012
+    4300074: Sphere_011
+    4300076: Sphere_010
+    4300078: Sphere_009
+    4300080: Sphere_007
+    4300082: Sphere_006
+    4300084: Sphere_005
+    4300086: Sphere_004
+    4300088: Sphere_003
+    4300090: Sphere_002
+    4300092: Sphere_001
+    4300094: Sphere_008
+    4300096: BezierCircle
+    4300098: Sphere_054
+    4300100: Sphere_053
+    4300102: Sphere_052
+    4300104: Sphere_050
+    4300106: Sphere_049
+    4300108: Sphere_048
+    4300110: Sphere_047
+    4300112: Sphere_046
+    4300114: Mball_000
+    4300116: Sphere_045
+    4300118: Sphere_000
+    4300120: Mball_001
+    4300122: Screen_Shot_2016-08-15_at_8_29_26_PM
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Default Take
+      takeName: Default Take
+      firstFrame: 0
+      lastFrame: 14
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Plane
+        weight: 1
+      - path: Plane_001
+        weight: 1
+      - path: Screen_Shot_2016-08-15_at_8_29_26_PM
+        weight: 1
+      - path: Sphere_001
+        weight: 1
+      - path: Sphere_002
+        weight: 1
+      - path: Sphere_003
+        weight: 1
+      - path: Sphere_004
+        weight: 1
+      - path: Sphere_005
+        weight: 1
+      - path: Sphere_006
+        weight: 1
+      - path: Sphere_007
+        weight: 1
+      - path: Sphere_008
+        weight: 1
+      - path: Sphere_008/BezierCircle
+        weight: 1
+      - path: Sphere_008/BezierCircle/Sphere_046
+        weight: 1
+      - path: Sphere_008/BezierCircle/Sphere_047
+        weight: 1
+      - path: Sphere_008/BezierCircle/Sphere_048
+        weight: 1
+      - path: Sphere_008/BezierCircle/Sphere_049
+        weight: 1
+      - path: Sphere_008/BezierCircle/Sphere_050
+        weight: 1
+      - path: Sphere_008/BezierCircle/Sphere_052
+        weight: 1
+      - path: Sphere_008/BezierCircle/Sphere_053
+        weight: 1
+      - path: Sphere_008/BezierCircle/Sphere_054
+        weight: 1
+      - path: Sphere_008/Mball_000
+        weight: 1
+      - path: Sphere_008/Mball_001
+        weight: 1
+      - path: Sphere_008/Sphere_000
+        weight: 1
+      - path: Sphere_008/Sphere_045
+        weight: 1
+      - path: Sphere_009
+        weight: 1
+      - path: Sphere_010
+        weight: 1
+      - path: Sphere_011
+        weight: 1
+      - path: Sphere_012
+        weight: 1
+      - path: Sphere_013
+        weight: 1
+      - path: Sphere_014
+        weight: 1
+      - path: Sphere_015
+        weight: 1
+      - path: Sphere_016
+        weight: 1
+      - path: Sphere_017
+        weight: 1
+      - path: Sphere_018
+        weight: 1
+      - path: Sphere_019
+        weight: 1
+      - path: Sphere_020
+        weight: 1
+      - path: Sphere_021
+        weight: 1
+      - path: Sphere_022
+        weight: 1
+      - path: Sphere_023
+        weight: 1
+      - path: Sphere_024
+        weight: 1
+      - path: Sphere_025
+        weight: 1
+      - path: Sphere_026
+        weight: 1
+      - path: Sphere_027
+        weight: 1
+      - path: Sphere_028
+        weight: 1
+      - path: Sphere_029
+        weight: 1
+      - path: Sphere_030
+        weight: 1
+      - path: Sphere_031
+        weight: 1
+      - path: Sphere_032
+        weight: 1
+      - path: Sphere_033
+        weight: 1
+      - path: Sphere_034
+        weight: 1
+      - path: Sphere_035
+        weight: 1
+      - path: Sphere_036
+        weight: 1
+      - path: Sphere_037
+        weight: 1
+      - path: Sphere_038
+        weight: 1
+      - path: Sphere_039
+        weight: 1
+      - path: Sphere_040
+        weight: 1
+      - path: Sphere_041
+        weight: 1
+      - path: Sphere_042
+        weight: 1
+      - path: Sphere_043
+        weight: 1
+      - path: Sphere_044
+        weight: 1
+      - path: Sphere_051
+        weight: 1
+      - path: Sphere_055
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
