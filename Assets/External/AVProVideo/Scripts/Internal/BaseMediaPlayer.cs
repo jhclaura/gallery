@@ -9,11 +9,11 @@ namespace RenderHeads.Media.AVProVideo
 	public abstract class BaseMediaPlayer : IMediaPlayer, IMediaControl, IMediaInfo, IMediaProducer, System.IDisposable
 	{
 		public abstract string		GetVersion();
-		
-		public abstract bool		OpenVideoFromFile( string path );
+
+		public abstract bool		OpenVideoFromFile(string path, long offset);
         public abstract void		CloseVideo();
 
-        public abstract void		SetLooping( bool bLooping );
+        public abstract void		SetLooping(bool bLooping);
 		public abstract bool		IsLooping();
 
 		public abstract bool		HasMetaData();
@@ -68,8 +68,13 @@ namespace RenderHeads.Media.AVProVideo
 			return _lastError;
 		}
 
-		protected ErrorCode _lastError = ErrorCode.None;
+		public string GetPlayerDescription()
+		{
+			return _playerDescription;
+		}
 
+		protected string _playerDescription = string.Empty;
+		protected ErrorCode _lastError = ErrorCode.None;
 		private FilterMode _defaultTextureFilterMode = FilterMode.Bilinear;
 		private TextureWrapMode _defaultTextureWrapMode = TextureWrapMode.Clamp;
 		private int _defaultTextureAnisoLevel = 1;

@@ -45,6 +45,7 @@ namespace RenderHeads.Media.AVProVideo
 		private Texture _lastTexture;
 		private static int _propAlphaPack;
 		private static int	_propVertScale;
+		private static int _propStereo;
 #if  UNITY_UGUI_NOSET_TEXELSIZE
 		private static int _propMainTextureTexelSize;
 #endif
@@ -53,6 +54,7 @@ namespace RenderHeads.Media.AVProVideo
 		{
 			if (_propAlphaPack == 0)
 			{
+				_propStereo = Shader.PropertyToID("Stereo");
 				_propAlphaPack = Shader.PropertyToID("AlphaPack");
 				_propVertScale = Shader.PropertyToID("_VertScale");
 #if UNITY_UGUI_NOSET_TEXELSIZE
@@ -129,7 +131,7 @@ namespace RenderHeads.Media.AVProVideo
 				{
 					Helper.SetupAlphaPackedMaterial(material, _mediaPlayer.m_AlphaPacking);
 
-					if (_flipY)
+					if (_flipY && _mediaPlayer.m_AlphaPacking != AlphaPacking.None)
 					{
 						material.SetFloat(_propVertScale, -1f);
 					}
@@ -144,6 +146,12 @@ namespace RenderHeads.Media.AVProVideo
 						material.SetVector(_propMainTextureTexelSize, new Vector4(1.0f / mainTexture.width, 1.0f / mainTexture.height, mainTexture.width, mainTexture.height));
 					}
 #endif
+				}
+
+				// Apply changes for stereo videos
+				if (material.HasProperty(_propStereo))
+				{
+					Helper.SetupStereoMaterial(material, _mediaPlayer.m_StereoPacking, _mediaPlayer.m_DisplayDebugStereoColorTint);
 				}
 			}
 
@@ -206,11 +214,11 @@ namespace RenderHeads.Media.AVProVideo
 
 				if (_mediaPlayer != null)
 				{
-					if (_mediaPlayer.m_AlphaPacking == AlphaPacking.LeftRight)
+					if (_mediaPlayer.m_AlphaPacking == AlphaPacking.LeftRight || _mediaPlayer.m_StereoPacking == StereoPacking.LeftRight)
 					{
 						w /= 2;
 					}
-					else if (_mediaPlayer.m_AlphaPacking == AlphaPacking.TopBottom)
+					else if (_mediaPlayer.m_AlphaPacking == AlphaPacking.TopBottom || _mediaPlayer.m_StereoPacking == StereoPacking.TopBottom)
 					{
 						h /= 2;
 					}
@@ -324,11 +332,11 @@ namespace RenderHeads.Media.AVProVideo
 
 				if (_mediaPlayer != null)
 				{
-					if (_mediaPlayer.m_AlphaPacking == AlphaPacking.LeftRight)
+					if (_mediaPlayer.m_AlphaPacking == AlphaPacking.LeftRight || _mediaPlayer.m_StereoPacking == StereoPacking.LeftRight)
 					{
 						textureSize.x /= 2f;
 					}
-					else if (_mediaPlayer.m_AlphaPacking == AlphaPacking.TopBottom)
+					else if (_mediaPlayer.m_AlphaPacking == AlphaPacking.TopBottom || _mediaPlayer.m_StereoPacking == StereoPacking.TopBottom)
 					{
 						textureSize.y /= 2f;
 					}

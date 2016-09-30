@@ -49,41 +49,45 @@ namespace RenderHeads.Media.AVProVideo
 		
 		private void ApplyMapping(Texture texture, bool requiresYFlip)
 		{
-			if (_mesh != null && _mesh.materials != null)
+			if (_mesh != null)
 			{
-				for (int i = 0; i < _mesh.materials.Length; i++)
+				Material[] meshMaterials = _mesh.materials;
+				if (meshMaterials != null)
 				{
-					Material mat = _mesh.materials[i];
-					if( mat != null )
+					for (int i = 0; i < meshMaterials.Length; i++)
 					{
-						mat.mainTexture = texture;
-
-						if (texture != null )
+						Material mat = meshMaterials[i];
+						if (mat != null)
 						{
-							if (requiresYFlip)
-							{
-								mat.mainTextureScale = new Vector2(_scale.x, -_scale.y);
-								mat.mainTextureOffset = Vector2.up + _offset;
-							}
-							else
-							{
-								mat.mainTextureScale = _scale;
-								mat.mainTextureOffset = _offset;
-							}
-						}
+							mat.mainTexture = texture;
 
-						
-						if (_media != null)
-						{
-							// Apply changes for stereo videos
-							if (mat.HasProperty(_propStereo))
+							if (texture != null)
 							{
-								Helper.SetupStereoMaterial(mat, _media.m_StereoPacking, _media.m_DisplayDebugStereoColorTint);
+								if (requiresYFlip)
+								{
+									mat.mainTextureScale = new Vector2(_scale.x, -_scale.y);
+									mat.mainTextureOffset = Vector2.up + _offset;
+								}
+								else
+								{
+									mat.mainTextureScale = _scale;
+									mat.mainTextureOffset = _offset;
+								}
 							}
-							// Apply changes for alpha videos
-							if (mat.HasProperty(_propAlphaPack))
+
+
+							if (_media != null)
 							{
-								Helper.SetupAlphaPackedMaterial(mat, _media.m_AlphaPacking);
+								// Apply changes for stereo videos
+								if (mat.HasProperty(_propStereo))
+								{
+									Helper.SetupStereoMaterial(mat, _media.m_StereoPacking, _media.m_DisplayDebugStereoColorTint);
+								}
+								// Apply changes for alpha videos
+								if (mat.HasProperty(_propAlphaPack))
+								{
+									Helper.SetupAlphaPackedMaterial(mat, _media.m_AlphaPacking);
+								}
 							}
 						}
 					}

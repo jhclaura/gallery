@@ -43,15 +43,13 @@ var AVProVideoWebGL = {
         var hasSetCanPlay = false;
         var playerIndex;
         var id = _count;
+        
         var vidData = {
             id: id,
             video: vid,
             ready: false,
             hasMetadata: false,
-            buffering: false,
-            textureIsFlipped: false,
-            frameCount: 0,
-            fps: 0
+            buffering: false
         };
 
         _videos.push(vidData);
@@ -75,66 +73,17 @@ var AVProVideoWebGL = {
         vid.onplaying = function () {
             // buffering
             this.buffering = false;
-
-            // Frame rate and count
-            var initialTime = new Date().getTime();
-
-            vidData.checkFrames = setInterval(function () {
-                var vid = vidData.video;
-                var frameCount;
-
-                if (!vid) {
-                    clearInterval(vidData.checkFrames);
-                    return;
-                }
-
-                if (vid.webkitDecodedFrameCount) {
-                    frameCount = vid.webkitDecodedFrameCount;
-                }
-
-                if (vid.mozDecodedFrames) {
-                    frameCount = vid.mozDecodedFrames;
-                }
-
-                if (!frameCount) {
-                    var defaultFPS = 25;
-                    vidData.fps = defaultFPS;
-                    vidData.frameCount = vid.duration * defaultFPS;
-                    console.log("Defaulted FPS to 25");
-
-                    return;
-                }
-
-                var currentTime = new Date().getTime();
-                var totalTime = (currentTime - initialTime) / 1000.0;
-                var decodedFPS = frameCount / totalTime;
-                var decodedFrames = frameCount;
-
-                vidData.fps = decodedFPS;
-                vidData.frameCount = decodedFrames;
-
-            }, 1000);
         };
 
         vid.onwaiting = function () {
             vidData.buffering = true;
-
-            if (vidData.checkFrames) {
-                clearInterval(vidData.checkFrames);
-            }
         };
 
-        vid.onpause = function () {
-            if (vidData.checkFrames) {
-                clearInterval(vidData.checkFrames);
-            }
+        /*vid.onpause = function () {
         };
 
         vid.onended = function () {
-            if (vidData.checkFrames) {
-                clearInterval(vidData.checkFrames);
-            }
-        };
+        };*/
 
         /*vid.ontimeupdate = function() {
          //console.log("vid current time: ", this.currentTime);
@@ -198,6 +147,14 @@ var AVProVideoWebGL = {
 
         return result;
     },
+    AVPPlayerWidth__deps: ["videos", "hasVideos"],
+    AVPPlayerWidth: function (playerIndex) {
+    	if (!_hasVideos(playerIndex)) {
+    		return 0;
+    	}
+
+    	return _videos[playerIndex].video.videoWidth;
+    },
     AVPPlayerHeight__deps: ["videos", "hasVideos"],
     AVPPlayerHeight: function (playerIndex) {
         if (!_hasVideos(playerIndex)) {
@@ -205,14 +162,6 @@ var AVProVideoWebGL = {
         }
 
         return _videos[playerIndex].video.videoHeight;
-    },
-    AVPPlayerWidth__deps: ["videos", "hasVideos"],
-    AVPPlayerWidth: function (playerIndex) {
-        if (!_hasVideos(playerIndex)) {
-            return 0;
-        }
-
-        return _videos[playerIndex].video.videoWidth;
     },
     AVPPlayerReady__deps: ["videos", "hasVideos"],
     AVPPlayerReady: function (playerIndex) {
@@ -238,11 +187,29 @@ var AVProVideoWebGL = {
             return;
         }
 
-        clearInterval(_videos[playerIndex].checkFrames);
-        _videos[playerIndex].video.src = "";
-        _videos[playerIndex].video.load();
+        var vid = _videos[playerIndex].video;
+
+        vid.src = "";
+        vid.load();
+
         _videos[playerIndex].video = null;
-        _videos.splice(playerIndex, 1);
+        _videos[playerIndex] = null;
+
+        var allEmpty = true;
+        for (i = 0; i < _videos.length; i++) {
+        	if (_videos[i] != null) {
+        		allEmpty = false;
+        		break;
+        	}
+        }
+        if (allEmpty)
+        {
+        	_videos = [];
+        }
+        //_videos = _videos.splice(playerIndex, 1);
+
+		// Remove from DOM
+        //vid.parentNode.removeChild(vid);
     },
     AVPPlayerSetLooping__deps: ["videos", "hasVideos"],
     AVPPlayerSetLooping: function (playerIndex, loop) {
@@ -266,7 +233,8 @@ var AVProVideoWebGL = {
             return false;
         }
 
-        return _videos[playerIndex].video.hasMetadata;
+        return (_videos[playerIndex].video.readyState >= 1);
+        //return _videos[playerIndex].video.hasMetadata;
     },
     AVPPlayerIsPlaying__deps: ["videos", "hasVideos"],
     AVPPlayerIsPlaying: function (playerIndex) {
@@ -326,47 +294,26 @@ var AVProVideoWebGL = {
 
         _videos[playerIndex].video.pause();
     },
-    AVPPlayerStop__deps: ["videos", "hasVideos"],
-    AVPPlayerStop: function (playerIndex) {
-        if (!_hasVideos(playerIndex)) {
-            return;
-        }
-
-        _videos[playerIndex].video.pause();
-        _videos[playerIndex].video.currentTime = 0;
-    },
-    AVPPlayerRewind__deps: ["videos", "hasVideos", "AVPPlayerSeekToTime"],
-    AVPPlayerRewind: function (playerIndex) {
-        if (!_hasVideos(playerIndex)) {
-            return;
-        }
-
-        _AVPPlayerSeekToTime(playerIndex, 0, true);
-    },
     AVPPlayerSeekToTime__deps: ["videos", "hasVideos"],
-    AVPPlayerSeekToTime: function (playerIndex, timeMs, fast) {
+    AVPPlayerSeekToTime: function (playerIndex, timeSec, fast) {
         if (!_hasVideos(playerIndex)) {
             return;
         }
 
         var vid = _videos[playerIndex].video;
 
-        if (vid.seekable.length > 0) {
-            for (var i = 0; i < vid.seekable.length; i++) {
-                if(timeMs >= vid.seekable.start(i) && timeMs <= vid.seekable.end(i)) {
-                    vid.currentTime = timeMs;
+        if (vid.seekable && vid.seekable.length > 0) {
+        	for (i = 0; i < vid.seekable.length; i++) {
+            	if (timeSec >= vid.seekable.start(i) && timeSec <= vid.seekable.end(i)) {
+            		vid.currentTime = timeSec;
                     return;
                 }
             }
 
-            if(timeMs == 0) {
+            if (timeSec == 0) {
                 _videos[playerIndex].video.load();
             }
         }
-    },
-    AVPPlayerSeekFast__deps: ["hasVideos"],
-    AVPPlayerSeekFast: function (playerIndex, timeMs) {
-
     },
     AVPPlayerGetCurrentTime__deps: ["videos", "hasVideos"],
     AVPPlayerGetCurrentTime: function (playerIndex) {
@@ -375,14 +322,6 @@ var AVProVideoWebGL = {
         }
 
         return _videos[playerIndex].video.currentTime;
-    },
-    AVPPlayerGetVideoPlaybackRate__deps: ["videos", "hasVideos"],
-    AVPPlayerGetVideoPlaybackRate: function (playerIndex) {
-        if (!_hasVideos(playerIndex)) {
-            return 0;
-        }
-
-        return _videos[playerIndex].video.fps;
     },
     AVPPlayerGetPlaybackRate__deps: ["videos", "hasVideos"],
     AVPPlayerGetPlaybackRate: function (playerIndex) {
@@ -456,41 +395,55 @@ var AVProVideoWebGL = {
 
         return _videos[playerIndex].video.mozHasAudio || Boolean(_videos[playerIndex].video.webkitAudioDecodedByteCount) || Boolean(_videos[playerIndex].video.audioTracks && _videos[playerIndex].video.audioTracks.length);
     },
-    AVPPlayerGetFrameCount__deps: ["hasVideos"],
-    AVPPlayerGetFrameCount: function (playerIndex) {
+    AVPPlayerAudioTrackCount__deps: ["videos", "hasVideos"],
+    AVPPlayerAudioTrackCount: function (playerIndex) {
+    	if (!_hasVideos(playerIndex)) {
+    		return false;
+    	}
+    	var result = 0;
+    	if (_videos[playerIndex].video.audioTracks)
+    	{
+    		result = _videos[playerIndex].video.audioTracks.length;
+    	}
+    	return result;
+    },
+    AVPPlayerSetAudioTrack: function (playerIndex, trackIndex) {
+    	if (!_hasVideos(playerIndex)) {
+    		return;
+    	}
+    	if (_videos[playerIndex].video.audioTracks) {
+    		var audioTracks = _videos[playerIndex].video.audioTracks;
+    		for (i = 0; i < audioTracks.length; i++) {
+    			audioTracks[i].enabled = (i == trackIndex);
+    		}
+    	}
+    },
+    AVPPlayerGetDecodedFrameCount__deps: ["videos, hasVideos"],
+    AVPPlayerGetDecodedFrameCount: function (playerIndex) {
         if (!_hasVideos(playerIndex)) {
-            return false;
+            return 0;
         }
 
         var vid = _videos[playerIndex].video;
-
         if (vid.readyState <= HTMLMediaElement.HAVE_CURRENT_DATA || vid.paused) {
-            return;
+            return 0;
         }
 
-        return _videos[playerIndex].frameCount;
-    },
-    AVPPlayerTextureIsFlipped__deps: ["videos", "hasVideos"],
-    AVPPlayerTextureIsFlipped: function (playerIndex) {
-        if (!_hasVideos(playerIndex)) {
-            return false;
+        var frameCount = 0;
+
+        if (vid.webkitDecodedFrameCount) {
+        	frameCount = vid.webkitDecodedFrameCount;
         }
 
-        return !_videos[playerIndex].textureIsFlipped;
-    },
-    AVPPlayerGetFrameRate__deps: ["hasVideos"],
-    AVPPlayerGetFrameRate: function (playerIndex) {
-        if (!_hasVideos(playerIndex)) {
-            return false;
+        if (vid.mozDecodedFrames) {
+        	frameCount = vid.mozDecodedFrames;
         }
 
-        var vid = _videos[playerIndex].video;
-        if (vid.readyState <= HTMLMediaElement.HAVE_CURRENT_DATA || vid.paused) {
-            return;
-        }
-
-        return _videos[playerIndex].fps;
+        return frameCount;
     }
 };
 
+autoAddDeps(AVProVideoWebGL, 'count');
+autoAddDeps(AVProVideoWebGL, 'videos');
+autoAddDeps(AVProVideoWebGL, 'hasVideos');
 mergeInto(LibraryManager.library, AVProVideoWebGL);

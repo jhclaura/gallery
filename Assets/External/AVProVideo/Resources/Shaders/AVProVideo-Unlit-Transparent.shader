@@ -1,13 +1,15 @@
-﻿Shader "AVProVideo/Unlit/Transparent"
+﻿Shader "AVProVideo/Unlit/Transparent (texture+color+fog+packed alpha)"
 {
 	Properties
 	{
-		_MainTex ("Texture", 2D) = "white" {}
+		_MainTex ("Base (RGB) Trans (A)", 2D) = "white" {}
+		_Color("Main Color", Color) = (1,1,1,1)
+
 		[KeywordEnum(None, Top_Bottom, Left_Right)] AlphaPack("Alpha Pack", Float) = 0
 	}
 	SubShader
 	{
-		Tags { "RenderType"="Transparent" "Queue"="Transparent" }
+		Tags { "RenderType"="Transparent" "IgnoreProjector"="True" "Queue"="Transparent" }
 		LOD 100
 		ZWrite Off
 		Blend SrcAlpha OneMinusSrcAlpha
@@ -19,8 +21,9 @@
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
+			#pragma multi_compile_fog
 			#pragma multi_compile ALPHAPACK_NONE ALPHAPACK_TOP_BOTTOM ALPHAPACK_LEFT_RIGHT
-			
+						
 			#include "UnityCG.cginc"
 			#include "AVProVideo.cginc"
 
@@ -32,13 +35,18 @@
 
 			struct v2f
 			{
+				float4 vertex : SV_POSITION; 
 				float4 uv : TEXCOORD0;
-				float4 vertex : SV_POSITION;
+
+#if UNITY_VERSION >= 500
+				UNITY_FOG_COORDS(1)
+#endif
 			};
 
 			uniform sampler2D _MainTex;
 			uniform float4 _MainTex_ST;
 			uniform float4 _MainTex_TexelSize;
+			uniform fixed4 _Color;
 			
 			v2f vert (appdata v)
 			{
@@ -53,6 +61,10 @@
 				}
 
 				o.uv = OffsetAlphaPackingUV(_MainTex_TexelSize.xy, o.uv.xy, _MainTex_ST.y < 0.0);
+
+#if UNITY_VERSION >= 500
+				UNITY_TRANSFER_FOG(o, o.vertex);
+#endif
 
 				return o;
 			}
@@ -69,6 +81,12 @@
 				//col.a = (alpha.r + alpha.g + alpha.g + alpha.b) / 4.0;
 
 				//clip(col.a - 0.01);
+
+				col *= _Color;
+
+#if UNITY_VERSION >= 500
+				UNITY_APPLY_FOG(i.fogCoord, col);
+#endif
 
 				return col;
 			}

@@ -36,6 +36,7 @@ namespace RenderHeads.Media.AVProVideo.Editor
 		private SerializedProperty _propAlphaPacking;
 		private SerializedProperty _propDisplayStereoTint;
 
+		private static bool _isTrialVersion = false;
 		private static Texture2D _icon;
 		private static int _platformIndex = -1;
 		private static bool _expandPlatformOverrides = false;
@@ -116,10 +117,26 @@ namespace RenderHeads.Media.AVProVideo.Editor
 			EditorPrefs.SetString(SettingsPrefix + "RecentFiles", recentFilesString);
 		}
 
+		private bool IsTrialVersion()
+		{
+			bool result = false;
+
+			string version = string.Empty;
+#if UNITY_EDITOR_WIN
+			version = System.Runtime.InteropServices.Marshal.PtrToStringAnsi(Native.GetPluginVersion());
+#elif UNITY_EDITOR_OSX
+			version = Native.AVPGetVersion();
+#endif
+			result = version.Contains("t");
+
+			return result;
+		}
+
 		void OnEnable()
 		{
 			LoadSettings();
 
+			_isTrialVersion = IsTrialVersion();
 			_platformNames = Helper.GetPlatformNames();
 
 			_propLocation = serializedObject.FindProperty("m_VideoLocation");
@@ -166,24 +183,80 @@ namespace RenderHeads.Media.AVProVideo.Editor
 			MediaPlayer media = (this.target) as MediaPlayer;
 			return (_expandPreview && media != null && media.Control != null && media.isActiveAndEnabled);
 		}
-		
+
 		public override void OnInspectorGUI()
 		{
 			MediaPlayer media = (this.target) as MediaPlayer;
 
 			serializedObject.Update();
 
+			if (_propLocation == null)
+				return;
+
 			GUILayout.Space(6f);
+
+			// Describe the watermark for trial version
+			if (_isTrialVersion && Application.isPlaying)
+			{
+				string message = string.Empty;
+#if UNITY_EDITOR_WIN
+				message = "The watermark is the horizontal bar that moves vertically and the small 'AVPRO TRIAL' text.";
+				if (media.Info.GetPlayerDescription().Contains("MF-MediaEngine-Hardware"))
+				{
+					message = "The watermark is the shifting and scaling every few seconds.";
+				}
+#elif UNITY_EDITOR_OSX
+				message = "The RenderHeads logo is the watermark.";
+#endif
+
+				GUI.backgroundColor = Color.yellow;
+				EditorGUILayout.BeginVertical(GUI.skin.box);
+				GUI.color = Color.yellow;
+				GUILayout.Label("AVPRO VIDEO - WATERMARKED", EditorStyles.boldLabel);
+				GUI.color = Color.white;
+				GUILayout.Label(message, EditorStyles.wordWrappedLabel);
+				EditorGUILayout.EndVertical();
+				GUI.backgroundColor = Color.white;
+				GUI.color = Color.white;
+			}
+
+			// Warning about linear colour space with GPU decoding
+			if (Application.isPlaying && media.Control != null)
+			{
+				if (QualitySettings.activeColorSpace == ColorSpace.Linear && media.Info.GetPlayerDescription().Contains("MF-MediaEngine-Hardware"))
+				{
+					GUI.backgroundColor = Color.magenta;
+					EditorGUILayout.BeginVertical("box");
+					GUILayout.Label("NOTE", EditorStyles.boldLabel);
+					GUILayout.Label("You're using the GPU video decoder with linear color-space set in Unity.  This can cause videos to become washed out due to our GPU decoder path not supporting sRGB textures.\n\nThis can be fixed easily by:\n1) Switching back to Gamma colour space in Player Settings\n2) Disabling hardware decoding\n3) Adding 'col.rgb = pow(col.rgb, 2.2);' to any shader rendering the video texture.\n\nIf you're using the InsideSphere shader, make sure to tick 'Apply Gamma' on the material.", EditorStyles.wordWrappedLabel);
+					EditorGUILayout.EndVertical();
+					GUI.backgroundColor = Color.white;
+				}
+			}
 
 			/////////////////// FILE PATH
 
 			EditorGUILayout.BeginVertical("box");
 
-			EditorGUILayout.LabelField("File", EditorStyles.boldLabel);
+			OnInspectorGUI_CopyableFilename(media.m_VideoPath);
 
-			EditorGUILayout.PropertyField(_propLocation);
-			EditorGUILayout.PropertyField(_propPath);
-			_propPath.stringValue = _propPath.stringValue.Replace("\\", "/");
+			EditorGUILayout.LabelField("Source Path", EditorStyles.boldLabel);
+
+			EditorGUILayout.PropertyField(_propLocation, GUIContent.none);
+
+			{
+				string oldPath = _propPath.stringValue;
+				string newPath = EditorGUILayout.TextField(string.Empty, _propPath.stringValue);			
+				if (newPath != oldPath)
+				{
+					// Check for invalid characters
+					if (0 > newPath.IndexOfAny(System.IO.Path.GetInvalidPathChars()))
+					{
+						_propPath.stringValue = newPath.Replace("\\", "/");
+						EditorUtility.SetDirty(target);
+					}
+				}
+			}
 
 			//if (!Application.isPlaying)
 			{
@@ -199,7 +272,7 @@ namespace RenderHeads.Media.AVProVideo.Editor
 					MediaPlayer.FileLocation fileLocation = media.m_VideoLocation;
 					if (Browse(startFolder, ref videoPath, ref fileLocation, ref fullPath))
 					{
-						_propPath.stringValue = videoPath;
+						_propPath.stringValue = videoPath.Replace("\\", "/");
 						_propLocation.enumValueIndex = (int)fileLocation;
 						EditorUtility.SetDirty(target);
 
@@ -221,7 +294,7 @@ namespace RenderHeads.Media.AVProVideo.Editor
 				}
 			}
 
-			OnInspectorGUI_CopyableFilename(media.m_VideoPath);
+			
 
 			EditorGUILayout.EndVertical();
 
@@ -385,7 +458,7 @@ namespace RenderHeads.Media.AVProVideo.Editor
 			// Move it to the top of the list
 			AddToRecentFiles(data.path);
 
-			data.propPath.stringValue = videoPath;
+			data.propPath.stringValue = videoPath.Replace("\\", "/");
 			data.propLocation.enumValueIndex = (int)fileLocation;
 
 			serializedObject.ApplyModifiedProperties();
@@ -422,7 +495,7 @@ namespace RenderHeads.Media.AVProVideo.Editor
 		private void OnInspectorGUI_CopyableFilename(string path)
 		{
 			// Display the file name so it's easy to read and copy to the clipboard
-			if (!string.IsNullOrEmpty(path))
+			if (!string.IsNullOrEmpty(path) && 0 > path.IndexOfAny(System.IO.Path.GetInvalidPathChars()))
 			{
 				// Some GUI hacks here because SelectableLabel wants to be double height and it doesn't want to be centered because it's an EditorGUILayout function...
 				GUI.backgroundColor = new Color(0.8f, 0.8f, 0.8f, 0.1f);
@@ -435,6 +508,7 @@ namespace RenderHeads.Media.AVProVideo.Editor
 				GUILayout.FlexibleSpace();
 				string text = System.IO.Path.GetFileName(path);
 				Vector2 textSize = EditorStyles.boldLabel.CalcSize(new GUIContent(text));
+
 				EditorGUILayout.SelectableLabel(text, EditorStyles.boldLabel, GUILayout.Height(textSize.y), GUILayout.Width(textSize.x));
 				GUILayout.FlexibleSpace();
 				GUILayout.EndHorizontal();
@@ -593,7 +667,7 @@ namespace RenderHeads.Media.AVProVideo.Editor
 
 						if (isPlatformIOS)
 						{
-							if (filePath.StartsWith("http://") && !PlayerSettings.iOS.allowHTTPDownload)
+							if (!PlayerSettings.iOS.allowHTTPDownload && filePath.StartsWith("http://"))
 							{
 								GUI.color = Color.yellow;
 								GUILayout.TextArea("Warning: Starting with iOS 9 'allow HTTP downloads' must be enabled for HTTP connections (see Player Settings)");
@@ -615,14 +689,11 @@ namespace RenderHeads.Media.AVProVideo.Editor
 				}
 				else
 				{
-					if (finalPath.StartsWith("/"))
+					if (fileLocation != MediaPlayer.FileLocation.AbsolutePathOrURL && filePath.StartsWith("/"))
 					{
-						if (fileLocation != MediaPlayer.FileLocation.AbsolutePathOrURL)
-						{
-							GUI.color = Color.yellow;
-							GUILayout.TextArea("Warning: Absolute path detected, change location to Absolute path?");
-							GUI.color = Color.white;
-						}
+						GUI.color = Color.yellow;
+						GUILayout.TextArea("Warning: Absolute path detected, change location to Absolute path?");
+						GUI.color = Color.white;
 					}
 
 					// Display warning for Android users if they're trying to use absolute file path without permission
@@ -687,11 +758,9 @@ namespace RenderHeads.Media.AVProVideo.Editor
 			{
 				if (!System.IO.Directory.Exists(Application.streamingAssetsPath))
 				{
-					GUILayout.Space(10f);
 					GUILayout.BeginHorizontal();
 					GUI.color = Color.yellow;
 					GUILayout.TextArea("Warning: No StreamingAssets folder found");
-					GUI.color = Color.white;
 
 					if (GUILayout.Button("Create Folder"))
 					{
@@ -788,23 +857,16 @@ namespace RenderHeads.Media.AVProVideo.Editor
 			GUILayout.EndHorizontal();
 
 			string rateText = "0";
+			string playerText = string.Empty;
 			if (media.Info != null)
 			{
 				rateText = media.Info.GetVideoDisplayRate().ToString("F2");
+				playerText = media.Info.GetPlayerDescription();
 			}
 
-			GUILayout.BeginHorizontal();
-			GUILayout.FlexibleSpace();
-			GUILayout.Label("Display Rate: " + rateText + "fps");
-			GUILayout.FlexibleSpace();
-			GUILayout.EndHorizontal();
-
-			// Show alpha toggle
-			GUILayout.BeginHorizontal();
-			GUILayout.FlexibleSpace();
-			_showAlpha = GUILayout.Toggle(_showAlpha, "Show Alpha Channel");
-			GUILayout.FlexibleSpace();
-			GUILayout.EndHorizontal();
+			EditorGUILayout.LabelField("Display Rate", rateText);
+			EditorGUILayout.LabelField("Using", playerText);
+			_showAlpha = EditorGUILayout.Toggle("Show Alpha", _showAlpha);
 
 			// Draw the texture
 			Matrix4x4 prevMatrix = GUI.matrix;
@@ -1182,7 +1244,7 @@ namespace RenderHeads.Media.AVProVideo.Editor
 
 
 				EditorGUILayout.BeginVertical();
-				GUILayout.Label("Alpha", EditorStyles.boldLabel);
+				GUILayout.Label("Transparency", EditorStyles.boldLabel);
 				EditorGUILayout.PropertyField(_propAlphaPacking, new GUIContent("Packing"));
 				EditorGUILayout.EndVertical();
 
@@ -1225,32 +1287,89 @@ namespace RenderHeads.Media.AVProVideo.Editor
 				GUI.enabled = (!Application.isPlaying);
 				EditorGUILayout.LabelField("Current Platform", EditorUserBuildSettings.selectedBuildTargetGroup.ToString());
 
-				const string TimeScaleDefine = "AVPROVIDEO_BETA_SUPPORT_TIMESCALE";
-
-				string defines = PlayerSettings.GetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup);
-				bool supportsTimeScale = defines.Contains(TimeScaleDefine);
-				bool supportsTimeScaleNew = EditorGUILayout.Toggle("TimeScale Support", supportsTimeScale);
-				if (supportsTimeScale != supportsTimeScaleNew)
+				// TimeScale
 				{
+					const string TimeScaleDefine = "AVPROVIDEO_BETA_SUPPORT_TIMESCALE";
+
+					string defines = PlayerSettings.GetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup);
+					bool supportsTimeScale = defines.Contains(TimeScaleDefine);
+					bool supportsTimeScaleNew = EditorGUILayout.Toggle("TimeScale Support", supportsTimeScale);
+					if (supportsTimeScale != supportsTimeScaleNew)
+					{
+						if (supportsTimeScaleNew)
+						{
+							defines += ";" + TimeScaleDefine + ";";
+						}
+						else
+						{
+							defines = defines.Replace(TimeScaleDefine, "");
+						}
+
+						PlayerSettings.SetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup, defines);
+					}			
+
 					if (supportsTimeScaleNew)
 					{
-						defines += ";" + TimeScaleDefine + ";";
+						GUI.color = Color.yellow;
+						GUILayout.TextArea("Warning: This will affect performance if you change Time.timeScale or Time.captureFramerate.  This feature is useful for supporting video capture system that adjust time scale during capturing.");
+						GUI.color = Color.white;
 					}
-					else
-					{
-						defines = defines.Replace(TimeScaleDefine, "");
-					}
-
-					PlayerSettings.SetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup, defines);
 				}
-				GUI.enabled = true;
 
-				if (supportsTimeScaleNew)
+				// Disable Debug GUI
 				{
-					GUI.color = Color.yellow;
-					GUILayout.TextArea("Warning: This will affect performance if you change Time.timeScale or Time.captureFramerate.  This feature is useful for supporting video capture system that adjust time scale during capturing.");
-					GUI.color = Color.white;
+					const string DisableDebugGUIDefine = "AVPROVIDEO_DISABLE_DEBUG_GUI";
+
+					string defines = PlayerSettings.GetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup);
+					bool disableDebugGUI = defines.Contains(DisableDebugGUIDefine);
+					EditorGUILayout.BeginHorizontal();
+					bool disableDebugGUINew = EditorGUILayout.Toggle("Disable Debug GUI", disableDebugGUI);
+					GUILayout.Label("(in builds only)");
+					EditorGUILayout.EndHorizontal();
+					if (disableDebugGUI != disableDebugGUINew)
+					{
+						if (disableDebugGUINew)
+						{
+							defines += ";" + DisableDebugGUIDefine + ";";
+						}
+						else
+						{
+							defines = defines.Replace(DisableDebugGUIDefine, "");
+						}
+
+						PlayerSettings.SetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup, defines);
+					}
+					if (!disableDebugGUI)
+					{
+						GUI.color = Color.white;
+						GUILayout.TextArea("The Debug GUI can be disabled globally for builds to help reduce garbage generation each frame.");
+						GUI.color = Color.white;
+					}
 				}
+
+				// Disable Logging
+				{
+					const string DisableLogging = "AVPROVIDEO_DISABLE_LOGGING";
+
+					string defines = PlayerSettings.GetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup);
+					bool disableDebugGUI = defines.Contains(DisableLogging);
+					bool disableDebugGUINew = EditorGUILayout.Toggle("Disable Logging", disableDebugGUI);
+					if (disableDebugGUI != disableDebugGUINew)
+					{
+						if (disableDebugGUINew)
+						{
+							defines += ";" + DisableLogging + ";";
+						}
+						else
+						{
+							defines = defines.Replace(DisableLogging, "");
+						}
+
+						PlayerSettings.SetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup, defines);
+					}
+				}
+
+				GUI.enabled = true;
 			}
 
 			GUILayout.EndVertical();
@@ -1470,13 +1589,25 @@ namespace RenderHeads.Media.AVProVideo.Editor
 			SerializedProperty propLocation = serializedObject.FindProperty(optionsVarName + ".pathLocation");
 			if (propLocation != null)
 			{
-				EditorGUILayout.PropertyField(propLocation, new GUIContent("Location"));
+				EditorGUILayout.PropertyField(propLocation, GUIContent.none);
 			}
 			SerializedProperty propPath = serializedObject.FindProperty(optionsVarName + ".path");
 			if (propPath != null)
 			{
-				EditorGUILayout.PropertyField(propPath, new GUIContent("Video Path"));
-				propPath.stringValue = propPath.stringValue.Replace("\\", "/");
+
+				{
+					string oldPath = propPath.stringValue;
+					string newPath = EditorGUILayout.TextField(string.Empty, propPath.stringValue);
+					if (newPath != oldPath)
+					{
+						// Check for invalid characters
+						if (0 > newPath.IndexOfAny(System.IO.Path.GetInvalidPathChars()))
+						{
+							propPath.stringValue = newPath.Replace("\\", "/");
+							EditorUtility.SetDirty(target);
+						}
+					}
+				}
 			}
 
 			GUILayout.BeginHorizontal();
@@ -1491,7 +1622,8 @@ namespace RenderHeads.Media.AVProVideo.Editor
 				string fullPath = string.Empty;
 				if (Browse(startFolder, ref result, ref fileLocation, ref fullPath))
 				{
-					propPath.stringValue = result;
+					propPath.stringValue = result.Replace("\\", "/");
+
 					propLocation.enumValueIndex = (int)fileLocation;
 					EditorUtility.SetDirty(target);			// TODO: not sure if we need this any more.  Was put here to help prefabs save values I think
 				}
@@ -1541,18 +1673,25 @@ namespace RenderHeads.Media.AVProVideo.Editor
 			GUILayout.Space(8f);
 
 			string optionsVarName = MediaPlayer.GetPlatformOptionsVariable((Platform)_platformIndex);
-			SerializedProperty propForceDirectShow = serializedObject.FindProperty(optionsVarName + ".forceDirectShowApi");
-			if (propForceDirectShow != null)
+			SerializedProperty propVideoApi = serializedObject.FindProperty(optionsVarName + ".videoApi");
+			if (propVideoApi != null)
 			{
-				EditorGUILayout.PropertyField(propForceDirectShow, new GUIContent("Force DirectShow", "Only use DirectShow API and ignore Media Foundation API"));
+				EditorGUILayout.PropertyField(propVideoApi, new GUIContent("Video API", "The preferred video API to use"));
 
-				if (propForceDirectShow.boolValue)
+				SerializedProperty propUseHardwareDecoding = serializedObject.FindProperty(optionsVarName + ".useHardwareDecoding");
+				if (propUseHardwareDecoding != null)
 				{
-					SerializedProperty propForceAudioOutputDeviceName = serializedObject.FindProperty(optionsVarName + ".forceAudioOutputDeviceName");
-					if (propForceAudioOutputDeviceName != null)
-					{
-						EditorGUILayout.PropertyField(propForceAudioOutputDeviceName, new GUIContent("Force Audio Output Device Name", "Useful for VR when you need to output to the VR audio device"));
-					}
+					GUI.enabled = (propVideoApi.enumValueIndex == (int)Windows.VideoApi.MediaFoundation);
+					EditorGUILayout.PropertyField(propUseHardwareDecoding, new GUIContent("Hardware Decoding"));
+					GUI.enabled = true;
+				}
+
+				SerializedProperty propForceAudioOutputDeviceName = serializedObject.FindProperty(optionsVarName + ".forceAudioOutputDeviceName");
+				if (propForceAudioOutputDeviceName != null)
+				{
+					GUI.enabled = (propVideoApi.enumValueIndex == (int)Windows.VideoApi.DirectShow);
+					EditorGUILayout.PropertyField(propForceAudioOutputDeviceName, new GUIContent("Force Audio Output Device Name", "Useful for VR when you need to output to the VR audio device"));
+					GUI.enabled = true;
 				}
 			}
 		}
@@ -1579,18 +1718,64 @@ namespace RenderHeads.Media.AVProVideo.Editor
 		{
 			//MediaPlayer media = (this.target) as MediaPlayer;
 			//MediaPlayer.OptionsAndroid options = media._optionsAndroid;
+
+			GUILayout.Space(8f);
+
+			string optionsVarName = MediaPlayer.GetPlatformOptionsVariable((Platform)_platformIndex);
+
+			SerializedProperty propFileOffset = serializedObject.FindProperty(optionsVarName + ".fileOffset");
+			if (propFileOffset != null)
+			{
+				EditorGUILayout.PropertyField(propFileOffset);
+			}
+
+			SerializedProperty propUseFastOesPath = serializedObject.FindProperty(optionsVarName + ".useFastOesPath");
+			if (propUseFastOesPath != null)
+			{
+				EditorGUILayout.PropertyField(propUseFastOesPath, new GUIContent("Use Fast OES Path", "Enables a faster rendering path using OES textures.  This requires that all rendering in Unity uses special GLSL shaders."));
+			}
+
+			/*
+			SerializedProperty propFileOffsetLow = serializedObject.FindProperty(optionsVarName + ".fileOffsetLow");
+			SerializedProperty propFileOffsetHigh = serializedObject.FindProperty(optionsVarName + ".fileOffsetHigh");
+			if (propFileOffsetLow != null && propFileOffsetHigh != null)
+			{
+				propFileOffsetLow.intValue = ;
+
+				EditorGUILayout.PropertyField(propFileOFfset);
+			}*/
 		}
 
 		private void OnInspectorGUI_Override_WindowsPhone()
 		{
 			//MediaPlayer media = (this.target) as MediaPlayer;
 			//MediaPlayer.OptionsWindowsPhone options = media._optionsWindowsPhone;
+
+			GUILayout.Space(8f);
+
+			string optionsVarName = MediaPlayer.GetPlatformOptionsVariable((Platform)_platformIndex);
+
+			SerializedProperty propUseHardwareDecoding = serializedObject.FindProperty(optionsVarName + ".useHardwareDecoding");
+			if (propUseHardwareDecoding != null)
+			{
+				EditorGUILayout.PropertyField(propUseHardwareDecoding, new GUIContent("Hardware Decoding"));
+			}
 		}
 
 		private void OnInspectorGUI_Override_WindowsUWP()
 		{
 			//MediaPlayer media = (this.target) as MediaPlayer;
 			//MediaPlayer.OptionsWindowsUWP options = media._optionsWindowsUWP;
+
+			GUILayout.Space(8f);
+
+			string optionsVarName = MediaPlayer.GetPlatformOptionsVariable((Platform)_platformIndex);
+
+			SerializedProperty propUseHardwareDecoding = serializedObject.FindProperty(optionsVarName + ".useHardwareDecoding");
+			if (propUseHardwareDecoding != null)
+			{
+				EditorGUILayout.PropertyField(propUseHardwareDecoding, new GUIContent("Hardware Decoding"));
+			}
 		}
 
 		private void OnInspectorGUI_Override_WebGL()

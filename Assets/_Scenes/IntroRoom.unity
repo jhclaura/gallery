@@ -91,6 +91,52 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &241407969
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4000012123334152, guid: 5274445f3e028c744974b00782f5397c, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012123334152, guid: 5274445f3e028c744974b00782f5397c, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 14.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012123334152, guid: 5274445f3e028c744974b00782f5397c, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -10.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012123334152, guid: 5274445f3e028c744974b00782f5397c, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012123334152, guid: 5274445f3e028c744974b00782f5397c, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012123334152, guid: 5274445f3e028c744974b00782f5397c, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012123334152, guid: 5274445f3e028c744974b00782f5397c, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012123334152, guid: 5274445f3e028c744974b00782f5397c, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013230712772, guid: 5274445f3e028c744974b00782f5397c, type: 2}
+      propertyPath: m_Name
+      value: VRPanoramaCamera
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 5274445f3e028c744974b00782f5397c, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &313899105
 Prefab:
   m_ObjectHideFlags: 0
@@ -128,7 +174,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012382636356, guid: 73c22070aa86e7249888232d0fdf0025, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1000014085049732, guid: 73c22070aa86e7249888232d0fdf0025, type: 2}
       propertyPath: m_Name
@@ -414,15 +460,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000013817075850, guid: aaa4ad77f500ea64d9f0857e9de84795, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2.04
+      value: -2.083
       objectReference: {fileID: 0}
     - target: {fileID: 4000013817075850, guid: aaa4ad77f500ea64d9f0857e9de84795, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 4.197
+      value: 4.147
       objectReference: {fileID: 0}
     - target: {fileID: 4000013817075850, guid: aaa4ad77f500ea64d9f0857e9de84795, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -9.87
+      value: -9.865
       objectReference: {fileID: 0}
     - target: {fileID: 4000013817075850, guid: aaa4ad77f500ea64d9f0857e9de84795, type: 2}
       propertyPath: m_LocalRotation.x
@@ -446,15 +492,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013817075850, guid: aaa4ad77f500ea64d9f0857e9de84795, type: 2}
       propertyPath: m_LocalScale.x
-      value: 1.8004396
+      value: 1.8544527
       objectReference: {fileID: 0}
     - target: {fileID: 4000013817075850, guid: aaa4ad77f500ea64d9f0857e9de84795, type: 2}
       propertyPath: m_LocalScale.y
-      value: 1.8004409
+      value: 1.854454
       objectReference: {fileID: 0}
     - target: {fileID: 4000013817075850, guid: aaa4ad77f500ea64d9f0857e9de84795, type: 2}
       propertyPath: m_LocalScale.z
-      value: 1.8004409
+      value: 1.854454
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aaa4ad77f500ea64d9f0857e9de84795, type: 2}
@@ -1045,7 +1091,7 @@ Light:
   m_Type: 2
   m_Color: {r: 1, g: 0.9758621, b: 0.89705884, a: 1}
   m_Intensity: 0.6
-  m_Range: 18.49
+  m_Range: 30.146494
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:

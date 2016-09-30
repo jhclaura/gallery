@@ -41,6 +41,7 @@ namespace RenderHeads.Media.AVProVideo
 		private AndroidJavaObject			m_Video;
 		private Texture2D					m_Texture;
         private int                         m_TextureHandle;
+		private bool						m_UseFastOesPath;
 
 		private float						m_DurationMs		= 0.0f;
 		private int							m_Width				= 0;
@@ -104,7 +105,7 @@ namespace RenderHeads.Media.AVProVideo
 #endif
 		}
 
-		public AndroidMediaPlayer()
+		public AndroidMediaPlayer(bool useFastOesPath)
 		{
 			// Create a java-size video class up front
 			m_Video = new AndroidJavaObject("com.RenderHeads.AVProVideo.AVProMobileVideo");
@@ -116,17 +117,28 @@ namespace RenderHeads.Media.AVProVideo
 
                 m_iPlayerIndex = m_Video.Call<int>("GetPlayerIndex");
 
-                // Initialise render, on the render thread
+				SetOptions(useFastOesPath);
+
+				// Initialise render, on the render thread
 				AndroidMediaPlayer.IssuePluginEvent( AVPPluginEvent.PlayerSetup, m_iPlayerIndex );
             }
         }
+
+		public void SetOptions(bool useFastOesPath)
+		{
+			m_UseFastOesPath = useFastOesPath;
+			if (m_Video != null)
+			{
+				m_Video.Call("SetPlayerOptions", m_UseFastOesPath);
+			}
+		}
 
         public override string GetVersion()
 		{
 			return s_Version;
 		}
 
-		public override bool OpenVideoFromFile( string path )
+		public override bool OpenVideoFromFile(string path, long offset)
 		{
 			bool bReturn = false;
 
@@ -137,8 +149,7 @@ namespace RenderHeads.Media.AVProVideo
 #endif
 
 				// Load video file
-				Debug.Log( "OpenVideoFromFile videoFilename: " + path );
-                bReturn = m_Video.Call<bool>( "OpenVideoFromFile", path );
+                bReturn = m_Video.Call<bool>( "OpenVideoFromFile", path, offset );
 			}
 
 			return bReturn;
@@ -522,20 +533,21 @@ namespace RenderHeads.Media.AVProVideo
 						m_Height = newHeight;
 	                    m_TextureHandle = textureHandle;
 
-//						Debug.Log("Video Dimensions: " + m_Width + " x " + m_Height);
+						_playerDescription = "MediaPlayer";
+						Helper.LogInfo("Using playback path: " + _playerDescription + " (" + m_Width + "x" + m_Height + "@" + GetVideoFrameRate().ToString("F2") + ")");
 
 						m_Texture = Texture2D.CreateExternalTexture(m_Width, m_Height, TextureFormat.RGBA32, false, false, new System.IntPtr(textureHandle));
 						if (m_Texture != null)
 						{
 							ApplyTextureProperties(m_Texture);
 						}
-						Debug.Log("Texture ID: " + textureHandle);
+						Helper.LogInfo("Texture ID: " + textureHandle);
 					}
 				}
 				if( m_DurationMs == 0.0f )
 				{
 					m_DurationMs = (float)(m_Video.Call<long>("GetDurationMs"));
-//					if( m_DurationMs > 0.0f ) { Debug.Log("Duration: " + m_DurationMs); }
+//					if( m_DurationMs > 0.0f ) { Helper.LogInfo("Duration: " + m_DurationMs); }
 				}
 			}
 		}
@@ -552,7 +564,7 @@ namespace RenderHeads.Media.AVProVideo
 
 		public override void Dispose()
 		{
-			Debug.LogError("DISPOSE");
+			//Debug.LogError("DISPOSE");
 
 			// Deinitialise player (replaces call directly as GL textures are involved)
 			AndroidMediaPlayer.IssuePluginEvent( AVPPluginEvent.PlayerDestroy, m_iPlayerIndex );

@@ -16,11 +16,14 @@ namespace RenderHeads.Media.AVProVideo
 	{
 		public Camera _camera;
 		public MeshRenderer _renderer;
+		public Material _material;
 		private int _cameraPositionId;
+		private int _viewMatrixId;
 
 		void Awake()
 		{
 			_cameraPositionId = Shader.PropertyToID("_cameraPosition");
+			_viewMatrixId = Shader.PropertyToID("_ViewMatrix");
 			if (_camera == null)
 			{
 				Debug.LogWarning("[AVProVideo] No camera set for UpdateStereoMaterial component. If you are rendering in stereo then it is recommended to set this.");
@@ -35,14 +38,23 @@ namespace RenderHeads.Media.AVProVideo
 			{
 				camera = Camera.main;
 			}
-			if (_renderer == null)
+			if (_renderer == null && _material == null)
 			{
 				_renderer = this.gameObject.GetComponent<MeshRenderer>();
 			}
 
-			if (camera != null && _renderer != null)
+			if (camera != null)
 			{
-				_renderer.material.SetVector(_cameraPositionId, camera.transform.position);
+				if (_renderer != null)
+				{
+					_renderer.material.SetVector(_cameraPositionId, camera.transform.position);
+					_renderer.material.SetMatrix(_viewMatrixId, camera.worldToCameraMatrix.transpose);
+				}
+				if (_material != null)
+				{
+					_material.SetVector(_cameraPositionId, camera.transform.position);
+					_material.SetMatrix(_viewMatrixId, camera.worldToCameraMatrix.transpose);
+				}
 			}
 		}
 	}

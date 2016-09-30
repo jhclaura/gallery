@@ -24,7 +24,7 @@ namespace RenderHeads.Media.AVProVideo.Demos
 
 		private int _width;
 		private int _height;
-		private float _duration;
+		private float _durationSeconds;
 		public bool _useFading = true;
 		private Queue<string> _eventLog = new Queue<string>(8);
         private float _eventTimer = 1f;
@@ -74,7 +74,7 @@ namespace RenderHeads.Media.AVProVideo.Demos
 		{
 			_width = _mediaPlayer.Info.GetVideoWidth();
 			_height = _mediaPlayer.Info.GetVideoHeight();
-			_duration = _mediaPlayer.Info.GetDurationMs() / 1000f;
+			_durationSeconds = _mediaPlayer.Info.GetDurationMs() / 1000f;
 		}
 
 		void Update()
@@ -120,6 +120,16 @@ namespace RenderHeads.Media.AVProVideo.Demos
 			}
 		}
 
+		private static bool VideoIsReady(MediaPlayer mp)
+		{
+			return (mp.TextureProducer.GetTextureFrameCount() <= 0);
+
+		}
+		private static bool AudioIsReady(MediaPlayer mp)
+		{
+			return mp.Control.CanPlay() && mp.Info.HasAudio() && !mp.Info.HasVideo();
+		}
+
 		private IEnumerator LoadVideoWithFading()
 		{
 			const float FadeDuration = 0.25f;
@@ -152,7 +162,7 @@ namespace RenderHeads.Media.AVProVideo.Demos
 				else
 				{
 					// Wait for the first frame to come through (could also use events for this)
-					while (Application.isPlaying && !_mediaPlayer.Control.IsPlaying() && _mediaPlayer.TextureProducer.GetTextureFrameCount() <= 0)
+					while (Application.isPlaying && (VideoIsReady(_mediaPlayer) || AudioIsReady(_mediaPlayer)))
 					{
 						yield return null;
 					}
@@ -221,9 +231,9 @@ namespace RenderHeads.Media.AVProVideo.Demos
 
 				GUILayout.EndHorizontal();
 
-				// Timeline scrubbing
-				float currentTime = _mediaPlayer.Control.GetCurrentTimeMs() / 1000f;
-				float newTime = GUILayout.HorizontalSlider(currentTime, 0f, _duration);
+				// Timeline scrubbing (note as use int as WebGL has float == precision issues)
+				int currentTime = (int)_mediaPlayer.Control.GetCurrentTimeMs();
+				int newTime = (int)GUILayout.HorizontalSlider(currentTime, 0f, _durationSeconds * 1000f);
 				if (newTime != currentTime)
 				{
 					/*if (Event.current.type == EventType.MouseDown)
@@ -232,7 +242,7 @@ namespace RenderHeads.Media.AVProVideo.Demos
 						_seekDragWasPlaying = _mediaPlayer.Control.IsPlaying();
 						_mediaPlayer.Control.Pause();
 					}*/
-					_mediaPlayer.Control.Seek(newTime * 1000f);
+					_mediaPlayer.Control.Seek((float)newTime);
 				}
 
 				/*if (_seekDragWasPlaying && Event.current.type == EventType.MouseUp)
@@ -258,7 +268,25 @@ namespace RenderHeads.Media.AVProVideo.Demos
 						_mediaPlayer.Control.Pause();
 					}
 				}
-			}		
+			}
+
+			// Audio tracks
+			GUILayout.BeginHorizontal();
+			int numAudioTracks = _mediaPlayer.Info.GetAudioTrackCount();
+			int selectedTrackIndex = _mediaPlayer.Control.GetCurrentAudioTrack();
+			for (int i = 0; i < numAudioTracks; i++)
+			{
+				if (i == selectedTrackIndex)
+				{
+					GUI.color = Color.green;
+				}
+				if (GUILayout.Button("Audio Track #" + (i + 1)))
+				{
+					_mediaPlayer.Control.SetAudioTrack(i);
+				}
+				GUI.color = Color.white;
+			}
+			GUILayout.EndHorizontal();
 
 			GUILayout.Label("Select a new file to play:");
 

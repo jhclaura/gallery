@@ -3,6 +3,7 @@
 	Properties
 	{
 		_MainTex ("Texture", 2D) = "black" {}
+		_Color("Main Color", Color) = (1,1,1,1)
 		[KeywordEnum(None, Top_Bottom, Left_Right)] AlphaPack("Alpha Pack", Float) = 0
 	}
 	SubShader
@@ -35,6 +36,7 @@
 			uniform sampler2D _MainTex;
 			uniform float4 _MainTex_ST;
 			uniform float4 _MainTex_TexelSize;
+			uniform fixed4 _Color;
 
 			v2f vert (appdata_img v)
 			{
@@ -74,6 +76,8 @@
 				fixed4 alpha = tex2D(_MainTex, i.uv.zw);
 
 				col.a = (alpha.r + alpha.g + alpha.b) / 3.0;
+
+				col *= _Color;
 
 				return col;
 			}

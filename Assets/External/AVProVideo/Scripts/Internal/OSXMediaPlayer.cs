@@ -281,7 +281,7 @@ namespace RenderHeads.Media.AVProVideo
 			return AVPGetVersion();
 		}
 
-		public override bool OpenVideoFromFile(string path)
+		public override bool OpenVideoFromFile(string path, long offset /* ignored */)
 		{
 			if (path.StartsWith("http://") || path.StartsWith("https://") || path.StartsWith("file://"))
 			{
@@ -516,7 +516,7 @@ namespace RenderHeads.Media.AVProVideo
 			{
 				if (_texture == null || _texture.width != width || _texture.height != height || _texture.format != format)
 				{
-					Debug.Log("CreateExternalTexture(" + width + ", " + height + ", " + format + ", false, false, " + native + ")");
+					Helper.LogInfo("CreateExternalTexture(" + width + ", " + height + ", " + format + ", false, false, " + native + ")");
 					_texture = Texture2D.CreateExternalTexture(width, height, format, /*mipmap*/ false, /*linear*/ false, native);
 					_width = width;
 					_height = height;
@@ -552,6 +552,8 @@ namespace RenderHeads.Media.AVProVideo
 							}
 							_isMetaDataReady = true;
 						}
+						_playerDescription = "AVFoundation";
+						Helper.LogInfo("Using playback path: " + _playerDescription + " (" + _width + "x" + _height + "@" + GetVideoFrameRate().ToString("F2") + ")");
 					}
 					else if (HasAudio())
 					{
@@ -563,22 +565,12 @@ namespace RenderHeads.Media.AVProVideo
 
 		public override void Dispose()
 		{
-			if (_texture != null)
-			{
-				IssuePluginEvent(AVPPluginEventType.PlayerFreeResources);
-				// Have to update with zero to release Metal textures!
-				_texture.UpdateExternalTexture(IntPtr.Zero);
-				Texture2D.Destroy(_texture);
-				_texture = null;
-			}
-
-			if (_player != IntPtr.Zero)
-			{
-				AVPPlayerRelease(_player);
-				_player = IntPtr.Zero;
-			}
+			CloseVideo();
+			AVPPlayerRelease(_player);
+			_player = IntPtr.Zero;
 		}
 
 	}
 }
+
 #endif

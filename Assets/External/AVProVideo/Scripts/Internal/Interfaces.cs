@@ -38,11 +38,11 @@ namespace RenderHeads.Media.AVProVideo
 		// TODO: CanPreRoll() PreRoll()
 		// TODO: audio panning
 
-		bool	OpenVideoFromFile( string path );
+		bool	OpenVideoFromFile(string path, long offset);
 
         void    CloseVideo();
 
-        void	SetLooping( bool bLooping );
+        void	SetLooping(bool bLooping);
 		bool	IsLooping();
 
 		bool	HasMetaData();
@@ -122,6 +122,19 @@ namespace RenderHeads.Media.AVProVideo
 		/// </summary>
 		int GetAudioTrackCount();
 
+		/// <summary>
+		/// Returns the a description of which playback path is used internally.
+		/// This can for example expose whether CPU or GPU decoding is being performed
+		/// For Windows the available player descriptions are:
+		///		"DirectShow" - legacy Microsoft API but still very useful especially with modern filters such as LAV
+		///		"MF-MediaEngine-Software" - uses the Windows 8.1 features of the Microsoft Media Foundation API, but software decoding
+		///		"MF-MediaEngine-Hardware" - uses the Windows 8.1 features of the Microsoft Media Foundation API, but GPU decoding
+		///	Android just has "MediaPlayer"
+		///	macOS / tvOS / iOS just has "AVfoundation"
+		/// </summary>
+		string GetPlayerDescription();
+
+
 		/*
 		string GetMediaDescription();
 		string GetVideoDescription();
@@ -168,8 +181,8 @@ namespace RenderHeads.Media.AVProVideo
 	public enum StereoPacking
 	{
 		None,
-		TopBottom,
-		LeftRight,
+		TopBottom,				// Top is the left eye, bottom is the right eye
+		LeftRight,              // Left is the left eye, right is the right eye
 	}
 
 	public enum AlphaPacking
@@ -185,9 +198,22 @@ namespace RenderHeads.Media.AVProVideo
 		LoadFailed = 100,
 	}
 
+	public static class Windows
+	{
+		public enum VideoApi
+		{
+			MediaFoundation,
+			DirectShow,
+		};
+
+		// WIP: Experimental feature to allow overriding audio device for VR headsets
+		public const string AudioDeviceOutputName_Vive = "HTC VIVE USB Audio";
+		public const string AudioDeviceOutputName_Rift = "Rift Audio";
+	}
+
 	public static class Helper
 	{
-		public const string ScriptVersion = "1.4.4";
+		public const string ScriptVersion = "1.5.0";
 
 		public static string GetName(Platform platform)
 		{
@@ -213,6 +239,14 @@ namespace RenderHeads.Media.AVProVideo
 				GetName(Platform.WindowsUWP),
 				GetName(Platform.WebGL),
 			};
+		}
+
+#if AVPROVIDEO_DISABLE_LOGGING
+		[System.Diagnostics.Conditional("ALWAYS_FALSE")]
+#endif
+		public static void LogInfo(string message)
+		{
+			Debug.Log("[AVProVideo] " + message);
 		}
 
 		public static string GetTimeString(float totalSeconds)
@@ -257,12 +291,13 @@ namespace RenderHeads.Media.AVProVideo
 					break;
 			}
 
-			material.DisableKeyword("STEREO_DEBUG_OFF");
-			material.DisableKeyword("STEREO_DEBUG");
-
 			if (displayDebugTinting)
 			{
 				material.EnableKeyword("STEREO_DEBUG");
+			}
+			else
+			{
+				material.DisableKeyword("STEREO_DEBUG");
 			}
 		}
 

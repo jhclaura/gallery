@@ -31,6 +31,12 @@ namespace RenderHeads.Media.AVProVideo
         private static extern int AVPPlayerHeight(int player);
 
         [DllImport("__Internal")]
+        private static extern int AVPPlayerAudioTrackCount(int player);
+
+		[DllImport("__Internal")]
+		private static extern bool AVPPlayerSetAudioTrack(int player, int index);
+
+		[DllImport("__Internal")]
         private static extern bool AVPPlayerOpenFile(int player, string path);
 
         [DllImport("__Internal")]
@@ -67,16 +73,10 @@ namespace RenderHeads.Media.AVProVideo
         private static extern void AVPPlayerPause(int player);
 
         [DllImport("__Internal")]
-        private static extern void AVPPlayerStop(int player);
-
-        [DllImport("__Internal")]
         private static extern void AVPPlayerSeekToTime(int player, float timeMS, bool fast);
 
         [DllImport("__Internal")]
         private static extern float AVPPlayerGetCurrentTime(int player);
-
-		[DllImport("__Internal")]
-		private static extern float AVPPlayerGetVideoPlaybackRate(int player);
 
 		[DllImport("__Internal")]
         private static extern float AVPPlayerGetPlaybackRate(int player);
@@ -110,13 +110,7 @@ namespace RenderHeads.Media.AVProVideo
         private static extern void AVPPlayerFetchVideoTexture(int player, IntPtr texture);
 
         [DllImport("__Internal")]
-        private static extern int AVPPlayerGetFrameCount(int player);
-
-        [DllImport("__Internal")]
-        private static extern bool AVPPlayerTextureIsFlipped(int player);
-
-        [DllImport("__Internal")]
-        private static extern float AVPPlayerGetFrameRate(int player);
+        private static extern int AVPPlayerGetDecodedFrameCount(int player);
 
         [DllImport("__Internal")]
         private static extern bool AVPPlayerHasMetadata(int player);
@@ -129,17 +123,23 @@ namespace RenderHeads.Media.AVProVideo
         private Texture2D _texture = null;
         private int _width = 0;
         private int _height = 0;
+		private int _audioTrackCount = 0;
+		private int _audioTrackIndex = 0;
 
-        public static void InitialisePlatform()
+		private int _lastFrameCount = 0;
+		private float _displayRateTimer = 0f;
+		private float _displayRate = 0f;
+
+		public static void InitialisePlatform()
         {
         }
 
         public override string GetVersion()
         {
-			return "1.4.4";
+			return "1.4.9";
 		}
 
-        public override bool OpenVideoFromFile(string path)
+        public override bool OpenVideoFromFile(string path, long offset)
         {
             bool result = false;
 
@@ -165,20 +165,28 @@ namespace RenderHeads.Media.AVProVideo
 
         public override void CloseVideo()
         {
-            if (_texture != null)
-            {
-                // Have to update with zero to release Metal textures!
-                //_texture.UpdateExternalTexture(0);
-                Texture2D.Destroy(_texture);
-                _texture = null;
-            }
+			if (_playerIndex != -1)
+			{
+				Pause();
 
-            _width = 0;
-            _height = 0;
+				_width = 0;
+				_height = 0;
+				_audioTrackCount = 0;
+				_audioTrackIndex = 0;
 
-            AVPPlayerClose(_playerIndex);
-            _playerIndex = -1;
-            _playerID = -1;
+				AVPPlayerClose(_playerIndex);
+
+				if (_texture != null)
+				{
+					// Have to update with zero to release Metal textures!
+					//_texture.UpdateExternalTexture(0);
+					Texture2D.Destroy(_texture);
+					_texture = null;
+				}
+
+				_playerIndex = -1;
+				_playerID = -1;
+			}
         }
 
         public override bool IsLooping()
@@ -285,14 +293,14 @@ namespace RenderHeads.Media.AVProVideo
         {
             Debug.Assert(_playerIndex != -1, "no player Seek");
 
-            AVPPlayerSeekToTime(_playerIndex, ms / 1000.0f, false);
+            AVPPlayerSeekToTime(_playerIndex, ms * 0.001f, false);
         }
 
         public override void SeekFast(float ms)
         {
             Debug.Assert(_playerIndex != -1, "no player SeekFast");
 
-            AVPPlayerSeekToTime(_playerIndex, ms / 1000.0f, true);
+            AVPPlayerSeekToTime(_playerIndex, ms * 0.001f, true);
         }
 
         public override float GetCurrentTimeMs()
@@ -312,6 +320,9 @@ namespace RenderHeads.Media.AVProVideo
         public override void SetPlaybackRate(float rate)
         {
             Debug.Assert(_playerIndex != -1, "no player SetPlaybackRate");
+
+			// No HTML implementations allow negative rate yet
+			rate = Mathf.Max(0f, rate);
 
             AVPPlayerSetPlaybackRate(_playerIndex, rate);
         }
@@ -354,20 +365,15 @@ namespace RenderHeads.Media.AVProVideo
 
 		public override float GetVideoFrameRate()
         {
+			// There is no way in HTML5 yet to get the frame rate of the video
             return 0f;
         }
 
         public override float GetVideoDisplayRate()
         {
-            //Debug.Assert(_player != -1, "no player GetVideoPlaybackRate");
-            float result = 0.0f;
 
-            if (_playerIndex != -1)
-            {
-				result = AVPPlayerGetVideoPlaybackRate(_playerIndex);
-			}
+			return _displayRate;
 
-            return result;
         }
 
         public override bool IsSeeking()
@@ -447,7 +453,7 @@ namespace RenderHeads.Media.AVProVideo
 
             if (_playerIndex != -1)
             {
-                result = AVPPlayerGetFrameCount(_playerIndex);
+                result = AVPPlayerGetDecodedFrameCount(_playerIndex);
             }
 
             return result;
@@ -455,15 +461,7 @@ namespace RenderHeads.Media.AVProVideo
 
         public override bool RequiresVerticalFlip()
         {
-            //Debug.Assert(_player != -1, "no player RequiresVerticalFlip");
-            bool result = false;
-
-            if (_playerIndex != -1)
-            {
-                result = AVPPlayerTextureIsFlipped(_playerIndex);
-            }
-
-            return result;
+			return true;
         }
 
         public override bool IsMuted()
@@ -530,46 +528,72 @@ namespace RenderHeads.Media.AVProVideo
                 {
                     _width = AVPPlayerWidth(_playerIndex);
                     _height = AVPPlayerHeight(_playerIndex);
+					if (AVPPlayerHasAudio(_playerIndex))
+					{
+						_audioTrackCount = Mathf.Max(1, AVPPlayerAudioTrackCount(_playerIndex));
+					}
 
                     if (_texture.width != _width || _texture.height != _height)
                     {
                         _texture.Resize(_width, _height, TextureFormat.ARGB32, false);
                         _texture.Apply();
-                        //this.transform.localScale = new Vector3(1, 1, (float)tex.height / (float)tex.width);
                     }
 
                     AVPPlayerFetchVideoTexture(_playerIndex, _texture.GetNativeTexturePtr());
 
-                    //Debug.Log("Frame Rate: " + GetVideoPlaybackRate() / Time.deltaTime);
-                } 
-            } 
+					UpdateDisplayFrameRate();
+				}
+			} 
         }
 
-        public override void Dispose()
+		private void UpdateDisplayFrameRate()
+		{
+			_displayRateTimer += Time.deltaTime;
+			if (_displayRateTimer >= 0.5f)
+			{
+				int frameCount = AVPPlayerGetDecodedFrameCount(_playerIndex);
+				int frames = (frameCount - _lastFrameCount);
+				if (frames > 0)
+				{
+					_displayRate = (float)frames / _displayRateTimer;
+				}
+				else
+				{
+					_displayRate = 0f;
+				}
+				_displayRateTimer = 0f;
+				_lastFrameCount = frameCount;
+			}
+		}
+
+		public override void Dispose()
         {
             CloseVideo();
         }
 
 		public override int GetAudioTrackCount()
 		{
-			// TODO
-			int result = 0;
-			if (this.HasAudio())
-			{
-				result = 1;
-			}
-			return result;
+			return _audioTrackCount;
 		}
 
 		public override int GetCurrentAudioTrack()
 		{
-			// TODO
-			return 0;
+			return _audioTrackIndex;
 		}
 
 		public override void SetAudioTrack(int index)
 		{
-			// TODO
+			if (_playerIndex > -1)
+			{
+				if (index >= 0 && index < _audioTrackCount)
+				{
+					if (index != _audioTrackIndex)
+					{
+						AVPPlayerSetAudioTrack(_playerIndex, index);
+						_audioTrackIndex = index;
+					}
+				}
+			}
 		}
 
 		public override float GetBufferingProgress()

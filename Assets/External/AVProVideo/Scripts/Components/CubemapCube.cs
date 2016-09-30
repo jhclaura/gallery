@@ -27,7 +27,10 @@ namespace RenderHeads.Media.AVProVideo
 		// This value comes from the facebook transform ffmpeg filter and is used to prevent seams appearing along the edges due to bilinear filtering
 		[SerializeField]
 		private float expansion_coeff = 1.01f;
-		
+
+		private Texture _texture;
+		private bool _verticalFlip;
+
 		public MediaPlayer Player
 		{
 			set { _mediaPlayer = value; }
@@ -92,31 +95,23 @@ namespace RenderHeads.Media.AVProVideo
 					{
 						texture = _mediaPlayer.TextureProducer.GetTexture();
 						requiresVerticalFlip = _mediaPlayer.TextureProducer.RequiresVerticalFlip();
-					}
-				}
 
-				UpdateMaterial(texture, requiresVerticalFlip);
-				if (texture != null)
-				{
-					UpdateMeshUV(texture.width, texture.height, _mediaPlayer.TextureProducer.RequiresVerticalFlip());
+						// Detect changes that we need to apply to the material/mesh
+						if (_texture != texture || _verticalFlip != requiresVerticalFlip)
+						{
+							_texture = texture;
+							_verticalFlip = requiresVerticalFlip;
+							if (texture != null)
+							{
+								UpdateMeshUV(texture.width, texture.height, requiresVerticalFlip);
+							}
+						}
+					}
+
+					_renderer.material.mainTexture = _texture;
 				}
 			}
-		}
-		
-		private void UpdateMaterial(Texture texture, bool requiresFlip)
-		{
-			_renderer.material.mainTexture = texture;
-			if (requiresFlip)
-			{
-				_material.mainTextureScale = new Vector2(1f, -1f);
-				_material.mainTextureOffset = Vector2.up;
-			}
-			else
-			{
-				_material.mainTextureScale = Vector2.one;
-				_material.mainTextureOffset = Vector2.zero;
-			}
-		}
+		}	
 
 		private void BuildMesh()
 		{
@@ -228,7 +223,7 @@ namespace RenderHeads.Media.AVProVideo
 			float hO = pixelOffset / texHeight;
 
 			const float third = 1f / 3f;
-			const float half = 1f / 2f;
+			const float half = 0.5f;
 
 			Vector2[] uv = new Vector2[]
 			{

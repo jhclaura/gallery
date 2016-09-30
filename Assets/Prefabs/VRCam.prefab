@@ -1,0 +1,178 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1000013230712772}
+  m_IsPrefabParent: 1
+--- !u!1 &1000013230712772
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000012123334152}
+  - 20: {fileID: 20000013727265884}
+  - 81: {fileID: 81000010545169668}
+  - 114: {fileID: 114000010346479742}
+  - 114: {fileID: 114000010116210204}
+  m_Layer: 0
+  m_Name: VRCam
+  m_TagString: MainCamera
+  m_Icon: {fileID: 2800000, guid: 91977e70d1a29be42aff2b2c6c000188, type: 3}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &4000012123334152
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013230712772}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.5, y: 14.89, z: -10.52}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!20 &20000013727265884
+Camera:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013230712772}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.1
+  far clip plane: 1000
+  field of view: 71
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: 3
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+  m_StereoMirrorMode: 0
+--- !u!81 &81000010545169668
+AudioListener:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013230712772}
+  m_Enabled: 1
+--- !u!114 &114000010116210204
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013230712772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93c5acf727c4d5d43bc69e892a516630, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_valveShadowTextureWidth: 4096
+  m_valveShadowTextureHeight: 4096
+  m_indirectLightmapsOnly: 0
+  m_adaptiveQualityEnabled: 1
+  m_adaptiveQualityDebugVis: 0
+  m_MSAALevel: 4
+  m_minRenderTargetScale: 0.8
+  m_maxRenderTargetScale: 1.4
+  m_maxRenderTargetDimension: 4096
+  m_cullLightsInSceneEditor: 0
+  m_cullLightsFromEditorCamera: 0
+  m_hideAllValveMaterials: 0
+--- !u!114 &114000010346479742
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013230712772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0aa36dc78c58e0647be7eabde4a5b6b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubemapSize: 128
+  oneFacePerFrame: 0
+  cubeCam: {fileID: 0}
+  captureAudio: 0
+  volume: 1
+  mute: 1
+  alignPanoramaWithHorizont: 1
+  camLL: {fileID: 0}
+  camRL: {fileID: 0}
+  camTL: {fileID: 0}
+  camBL: {fileID: 0}
+  camFL: {fileID: 0}
+  camDL: {fileID: 0}
+  camLR: {fileID: 0}
+  camRR: {fileID: 0}
+  camTR: {fileID: 0}
+  camBR: {fileID: 0}
+  camFR: {fileID: 0}
+  camDR: {fileID: 0}
+  camDRX: {fileID: 0}
+  camDLX: {fileID: 0}
+  camTRX: {fileID: 0}
+  camTLX: {fileID: 0}
+  StartFrame: 0
+  panoramaType: 0
+  captureType: 0
+  ImageFormatType: 0
+  Folder: Capture
+  captureKey: 32
+  FPS: 25
+  resolution: 7680
+  resolutionH: 4320
+  step: 0
+  NumberOfFramesToRender: 12250
+  renderFromFrame: 10000
+  sequenceLength: 
+  IPDistance: 0.066
+  EnvironmentDistance: 2
+  restoreFOV: 0
+  openDestinationFolder: 1
+  ambisonicsSupportTest: 0
+  encodeToMp4: 1
+  Mp4Bitrate: 60000
+  renderQuality: 18
+  formatString: .jpg"
+  mailme: 0
+  _mailto: 6e616d6540646f6d61696e2e636f6d
+  _pass: 
+  _mailfrom: 6e616d6540676d61696c2e636f6d
+  _prefix: 696d67
+  RenderInfo: 20
+  bufferSize: 0
+  numBuffers: 0
+  recOutput: 0
+  depth: 0
+  depthBufferSize: 0
+  ambisonics: 0
+  achannels: 0

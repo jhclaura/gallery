@@ -111,7 +111,9 @@ namespace RenderHeads.Media.AVProVideo
 
 			if (_displayInEditor)
 			{
+#if UNITY_EDITOR
 				texture = Texture2D.whiteTexture;
+#endif
 			}
 
 			if (_mediaPlayer.Info != null && !_mediaPlayer.Info.HasVideo())

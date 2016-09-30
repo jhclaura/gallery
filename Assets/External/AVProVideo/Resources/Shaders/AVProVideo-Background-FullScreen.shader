@@ -3,6 +3,7 @@
 	Properties
 	{
 		_MainTex ("Texture", 2D) = "black" {}
+		_Color("Main Color", Color) = (1,1,1,1)
 	}
 	SubShader
 	{
@@ -31,6 +32,7 @@
 			uniform sampler2D _MainTex;
 			uniform float4 _MainTex_ST;
 			uniform float4 _MainTex_TexelSize;
+			uniform fixed4 _Color;
 
 			v2f vert (appdata_img v)
 			{
@@ -56,7 +58,7 @@
 			fixed4 frag (v2f i) : SV_Target
 			{
 				// Sample the texture
-				fixed4 col = tex2D(_MainTex, i.uv);
+				fixed4 col = tex2D(_MainTex, i.uv) * _Color;
 				return fixed4(col.rgb, 1.0);
 			}
 			ENDCG

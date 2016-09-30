@@ -2,6 +2,9 @@
 
 namespace RenderHeads.Media.AVProVideo.Demos
 {
+	/// <summary>
+	/// Small demonstration showing how to script the changing of audio tracks
+	/// </summary>
 	public class ChangeAudioTrack : MonoBehaviour
 	{
 		public MediaPlayer _mediaPlayer;

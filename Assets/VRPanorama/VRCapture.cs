@@ -239,8 +239,7 @@ public class VRCapture : MonoBehaviour
 
 	
 
-		void Start (){
-			
+		void Start (){			
 			Application.runInBackground = true;
 			StartFrame = Time.frameCount;
 	//		gameObject.GetComponent<Camera>().fieldOfView = 100;
@@ -1361,9 +1360,29 @@ public class VRCapture : MonoBehaviour
 				camDLX = cloneCamDLX.GetComponent<Camera>();
 				camTRX = cloneCamTRX.GetComponent<Camera>();
 				camTLX = cloneCamTLX.GetComponent<Camera>();
-				}
 
-			cloneCamLL.transform.SetParent(camll.transform , false);
+                camLL.cullingMask &= ~(1 << LayerMask.NameToLayer("RightEye"));
+                camRL.cullingMask &= ~(1 << LayerMask.NameToLayer("RightEye"));
+                camTL.cullingMask &= ~(1 << LayerMask.NameToLayer("RightEye"));
+                camBL.cullingMask &= ~(1 << LayerMask.NameToLayer("RightEye"));
+                camFL.cullingMask &= ~(1 << LayerMask.NameToLayer("RightEye"));
+                camDL.cullingMask &= ~(1 << LayerMask.NameToLayer("RightEye"));
+
+                camDLX.cullingMask &= ~(1 << LayerMask.NameToLayer("RightEye"));
+                camTLX.cullingMask &= ~(1 << LayerMask.NameToLayer("RightEye"));
+
+                camLR.cullingMask &= ~(1 << LayerMask.NameToLayer("LeftEye"));
+                camRR.cullingMask &= ~(1 << LayerMask.NameToLayer("LeftEye"));
+                camTR.cullingMask &= ~(1 << LayerMask.NameToLayer("LeftEye"));
+                camBR.cullingMask &= ~(1 << LayerMask.NameToLayer("LeftEye"));
+                camFR.cullingMask &= ~(1 << LayerMask.NameToLayer("LeftEye"));
+                camDR.cullingMask &= ~(1 << LayerMask.NameToLayer("LeftEye"));
+
+                camDRX.cullingMask &= ~(1 << LayerMask.NameToLayer("LeftEye"));
+                camTRX.cullingMask &= ~(1 << LayerMask.NameToLayer("LeftEye"));
+            }
+
+            cloneCamLL.transform.SetParent(camll.transform , false);
 			cloneCamRL.transform.SetParent(camrl.transform , false);
 			cloneCamTL.transform.SetParent(camtl.transform , false);
 			cloneCamBL.transform.SetParent(cambl.transform , false);

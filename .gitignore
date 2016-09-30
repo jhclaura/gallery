@@ -1,3 +1,7 @@
+# Ignore video renders
+
+[Cc]apture/
+
 # ====================================================================== #
 # Source: https://github.com/Murkantilism/skylabgame/blob/dev/.gitignore #
 # ====================================================================== #
