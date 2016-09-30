@@ -22,8 +22,9 @@ public class ToolManager : MonoBehaviour {
         tools[currentFloorIndex].SetActive(true);
 
         // right controller vibrates!
-        var deviceIndex = SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Rightmost);
-        if (deviceIndex != -1)
-            SteamVR_Controller.Input(deviceIndex).TriggerHapticPulse(1000);
+        //var deviceIndex = controllerRight.index;
+        //var deviceIndex = SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Rightmost);
+        //if (deviceIndex != -1)
+            //SteamVR_Controller.Input(deviceIndex).TriggerHapticPulse(1000);
     }
 }

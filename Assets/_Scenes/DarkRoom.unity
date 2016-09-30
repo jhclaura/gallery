@@ -289,6 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5bf0ef8e81c7974184eadf0ab290fc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  title: 
   description: Some kind of art! Check it out.
 --- !u!1 &129255136 stripped
 GameObject:
@@ -412,6 +413,7 @@ MonoBehaviour:
   - {fileID: 1151053398}
   - {fileID: 950741187}
   - {fileID: 1932757318}
+  controllerRight: {fileID: 0}
 --- !u!114 &137432074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -445,7 +447,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useGravity: 1
   eyeCamera: {fileID: 1444495818}
-  fallSpeed: 2
+  fallSpeedNormal: 2
+  fallSpeedFast: 4
   theLastFloor: {fileID: 0}
   restartPoint: {fileID: 0}
   shouldFall: 0
@@ -461,6 +464,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   eyeMaskAnimator: {fileID: 0}
+  eyeMaskTop: {fileID: 0}
+  eyeMaskBottom: {fileID: 0}
+  currentFloorNum: 0
 --- !u!114 &137432076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3169,6 +3175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5bf0ef8e81c7974184eadf0ab290fc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  title: 
   description: Some boxes! Anything going on here?
 --- !u!1 &746250991
 GameObject:
@@ -3375,6 +3382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5bf0ef8e81c7974184eadf0ab290fc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  title: 
   description: Some boxes! Anything going on here?
 --- !u!1001 &796826682
 Prefab:
@@ -4618,6 +4626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5bf0ef8e81c7974184eadf0ab290fc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  title: 
   description: The corner box
 --- !u!1 &961711765 stripped
 GameObject:
@@ -4961,6 +4970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5bf0ef8e81c7974184eadf0ab290fc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  title: 
   description: 'A dark room.
 
 
@@ -6113,6 +6123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5bf0ef8e81c7974184eadf0ab290fc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  title: 
   description: Some kind of art! Check it out.
 --- !u!114 &1160345773
 MonoBehaviour:
@@ -6127,7 +6138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_VideoLocation: 2
-  m_VideoPath: VideoGIFs/James_Kerr/james_kerr_right_2.mp4
+  m_VideoPath: VideoGIFs/James_Kerr/james_kerr_right_2.mov
   m_AutoOpen: 1
   m_AutoStart: 1
   m_Loop: 1
@@ -6152,7 +6163,7 @@ MonoBehaviour:
     pathLocation: 2
     path: 
     videoApi: 0
-    useHardwareDecoding: 0
+    useHardwareDecoding: 1
     forceAudioOutputDeviceName: 
   _optionsMacOSX:
     overridePath: 0
@@ -7285,6 +7296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5bf0ef8e81c7974184eadf0ab290fc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  title: 
   description: Some kind of art! Check it out.
 --- !u!114 &1394632068
 MonoBehaviour:
@@ -7299,7 +7311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_VideoLocation: 2
-  m_VideoPath: VideoGIFs/James_Kerr/james_kerr_left_2.mp4
+  m_VideoPath: VideoGIFs/James_Kerr/james_kerr_left_2.mov
   m_AutoOpen: 1
   m_AutoStart: 1
   m_Loop: 1
@@ -7324,7 +7336,7 @@ MonoBehaviour:
     pathLocation: 2
     path: 
     videoApi: 0
-    useHardwareDecoding: 0
+    useHardwareDecoding: 1
     forceAudioOutputDeviceName: 
   _optionsMacOSX:
     overridePath: 0
@@ -10086,6 +10098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5bf0ef8e81c7974184eadf0ab290fc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  title: 
   description: The corner box
 --- !u!64 &2040570114
 MeshCollider:

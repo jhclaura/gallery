@@ -32,6 +32,8 @@ public class CameraTeleport : MonoBehaviour {
     private bool initialized = false;
 
     public Animator eyeMaskAnimator;
+    public GameObject eyeMaskTop;
+    public GameObject eyeMaskBottom;
     bool eyeMaskOn = false;
 
     AudioSource rabbitHole;
@@ -226,6 +228,9 @@ public class CameraTeleport : MonoBehaviour {
                     // AUDIO
                     rabbitHole.enabled = true;
                     fallSpeed = fallSpeedFast;
+
+                    eyeMaskBottom.SetActive(true);
+                    eyeMaskTop.SetActive(true);
                 }
                 else {
                     toRestart = false;
@@ -251,6 +256,7 @@ public class CameraTeleport : MonoBehaviour {
                 {
                     // trigger eye mask fade in
                     eyeMaskOn = true;
+                    Debug.Log("eyeMaskOn = true");
                     eyeMaskAnimator.SetTrigger("FadeIn");
                     Debug.Log("fade in eye mask");
                 }
@@ -268,14 +274,13 @@ public class CameraTeleport : MonoBehaviour {
                     // transform.position = restartPoint.transform.position;
 
                     // trigger eye mask fade out
-                    if (eyeMaskOn)
+                    if (eyeMaskOn && rabbitHole.isActiveAndEnabled)
                     {
                         Invoke("EyeMaskFadeOut", 2f);
                         // AUDIO
                         rabbitHole.enabled = false;
                         fallSpeed = fallSpeedNormal;
 
-                        eyeMaskOn = false;
                     }
                 }
             }
@@ -299,6 +304,18 @@ public class CameraTeleport : MonoBehaviour {
         transform.position = restartPoint.transform.position;
         eyeMaskAnimator.SetTrigger("FadeOut");
 
+        eyeMaskBottom.SetActive(false);
+
+        eyeMaskOn = false;
+        Debug.Log("eyeMaskOn = false");
+
+        Invoke("DisableEyeMask", 3.5f);
+
         Debug.Log("fade out eye mask");
+    }
+
+    void DisableEyeMask()
+    {
+        eyeMaskTop.SetActive(false);
     }
 }

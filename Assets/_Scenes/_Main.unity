@@ -232,7 +232,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 51dc14fcc67b10a42a3e4c9d0baddcca, type: 2}
     - target: {fileID: 100000, guid: 65fcb20158418f44e8436c0829656d4d, type: 3}
       propertyPath: m_Name
-      value: EyeMask_Bottom
+      value: EyeMask_Top
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 65fcb20158418f44e8436c0829656d4d, type: 3}
@@ -314,6 +314,21 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 1407509934}
+    - target: {fileID: 114000011399599574, guid: 04633c39d591e9343aeb1f8c0b4bd637,
+        type: 2}
+      propertyPath: controllerRight
+      value: 
+      objectReference: {fileID: 2069618984}
+    - target: {fileID: 114000013254502850, guid: 04633c39d591e9343aeb1f8c0b4bd637,
+        type: 2}
+      propertyPath: eyeMaskTop
+      value: 
+      objectReference: {fileID: 2094277213}
+    - target: {fileID: 114000013254502850, guid: 04633c39d591e9343aeb1f8c0b4bd637,
+        type: 2}
+      propertyPath: eyeMaskBottom
+      value: 
+      objectReference: {fileID: 1739595186}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 04633c39d591e9343aeb1f8c0b4bd637, type: 2}
   m_IsPrefabParent: 0
@@ -732,7 +747,7 @@ GameObject:
   - 65: {fileID: 1739595189}
   - 23: {fileID: 1739595188}
   m_Layer: 0
-  m_Name: EyeMask_Top
+  m_Name: EyeMask_Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -747,7 +762,7 @@ Transform:
   m_GameObject: {fileID: 1739595186}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -11.359975, y: 0, z: 60.528637}
-  m_LocalScale: {x: 75.790596, y: 0.13937813, z: 47.336903}
+  m_LocalScale: {x: 75.790596, y: 0.13937813, z: 118.8976}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 844988825}
@@ -903,3 +918,13 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &2069618984 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000010103076740, guid: 04633c39d591e9343aeb1f8c0b4bd637,
+    type: 2}
+  m_PrefabInternal: {fileID: 745664860}
+  m_Script: {fileID: 11500000, guid: d37c2cf88f7c59f4c8cf5d3812568143, type: 3}
+--- !u!1 &2094277213 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 65fcb20158418f44e8436c0829656d4d, type: 3}
+  m_PrefabInternal: {fileID: 694314122}
