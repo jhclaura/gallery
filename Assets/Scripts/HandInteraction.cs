@@ -19,10 +19,13 @@ public class HandInteraction : MonoBehaviour {
 
     public GameObject[] logoObjects;
 
+    AudioSource electricalSound;
 
     void Start()
     {
         handCollider = GetComponent<Collider>();
+
+        electricalSound = GetComponent<AudioSource>();
 
         oriColors = new Color[2];
         colorCount = logoColorSets.Length;
@@ -60,6 +63,8 @@ public class HandInteraction : MonoBehaviour {
                 // logoMaterial.SetColor("_Color1", logoColorSets[colorIndex % colorCount].colors[0]);
                 // logoMaterial.SetColor("_Color2", logoColorSets[colorIndex % colorCount].colors[1]);
 
+                electricalSound.Play();
+
                 colorIndex ++;
             }
             //Debug.Log("start touching logo!");
@@ -77,6 +82,8 @@ public class HandInteraction : MonoBehaviour {
                     logoMaterial[i].SetColor("_Color1", oriColors[0]);
                     logoMaterial[i].SetColor("_Color2", oriColors[1]);
                 }
+
+                electricalSound.Stop();
 
                 // logoMaterial.SetColor("_Color1", oriColors[0]);
                 // logoMaterial.SetColor("_Color2", oriColors[1]);
