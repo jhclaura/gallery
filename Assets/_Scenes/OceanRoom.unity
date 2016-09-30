@@ -314,6 +314,24 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ebe97a59a12b1647bf2c0d33a6460b7, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &160401329 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100004, guid: 0ebe97a59a12b1647bf2c0d33a6460b7, type: 3}
+  m_PrefabInternal: {fileID: 160401328}
+--- !u!114 &160401330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 160401329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5bf0ef8e81c7974184eadf0ab290fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: 
+  description: An island in the distance. The coconuts on the beach are arranged in
+    a strangely regular pattern.
 --- !u!1 &166430843
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,6 +538,48 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!1001 &316371642
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4000013817075850, guid: aaa4ad77f500ea64d9f0857e9de84795, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013817075850, guid: aaa4ad77f500ea64d9f0857e9de84795, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -60.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013817075850, guid: aaa4ad77f500ea64d9f0857e9de84795, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -11.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013817075850, guid: aaa4ad77f500ea64d9f0857e9de84795, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013817075850, guid: aaa4ad77f500ea64d9f0857e9de84795, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.05239538
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013817075850, guid: aaa4ad77f500ea64d9f0857e9de84795, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013817075850, guid: aaa4ad77f500ea64d9f0857e9de84795, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.9986264
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013817075850, guid: aaa4ad77f500ea64d9f0857e9de84795, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: aaa4ad77f500ea64d9f0857e9de84795, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &341210329 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000010417836300, guid: d6e2b428e56e18147a08acda15f11da8,
@@ -780,7 +840,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100020, guid: 7a4fc3dd54357464ba44c95dcb2b9598, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a4fc3dd54357464ba44c95dcb2b9598, type: 3}
@@ -789,6 +849,23 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400020, guid: 7a4fc3dd54357464ba44c95dcb2b9598, type: 3}
   m_PrefabInternal: {fileID: 749837516}
+--- !u!1 &749837518 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100020, guid: 7a4fc3dd54357464ba44c95dcb2b9598, type: 3}
+  m_PrefabInternal: {fileID: 749837516}
+--- !u!114 &749837519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 749837518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5bf0ef8e81c7974184eadf0ab290fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: 
+  description: Maybe the ruins of some ancient structure?
 --- !u!1 &761059557
 GameObject:
   m_ObjectHideFlags: 0
@@ -879,6 +956,24 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d6e2b428e56e18147a08acda15f11da8, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &863796356 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000013208552244, guid: d6e2b428e56e18147a08acda15f11da8,
+    type: 2}
+  m_PrefabInternal: {fileID: 863796355}
+--- !u!114 &863796357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 863796356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5bf0ef8e81c7974184eadf0ab290fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: V Hiatus
+  description: Nicole Ginelli
 --- !u!1001 &909094844
 Prefab:
   m_ObjectHideFlags: 0
@@ -965,6 +1060,23 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 2}
   m_PrefabInternal: {fileID: 909094844}
+--- !u!1 &909094846 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 2}
+  m_PrefabInternal: {fileID: 909094844}
+--- !u!114 &909094847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 909094846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5bf0ef8e81c7974184eadf0ab290fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: 
+  description: A vast sheet of water extends to the horizon.
 --- !u!1 &975181047
 GameObject:
   m_ObjectHideFlags: 0
@@ -1381,6 +1493,23 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400020, guid: ade85d64a4fb0d043a1464df9a7ba3ea, type: 3}
   m_PrefabInternal: {fileID: 1148351591}
+--- !u!1 &1148351593 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100020, guid: ade85d64a4fb0d043a1464df9a7ba3ea, type: 3}
+  m_PrefabInternal: {fileID: 1148351591}
+--- !u!114 &1148351594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1148351593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5bf0ef8e81c7974184eadf0ab290fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: 
+  description: 
 --- !u!1001 &1243427215
 Prefab:
   m_ObjectHideFlags: 0
@@ -1435,6 +1564,24 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 679337fc8d01e9d4a981ea671272286e, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1243427216 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000013230647210, guid: 679337fc8d01e9d4a981ea671272286e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1243427215}
+--- !u!114 &1243427217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1243427216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5bf0ef8e81c7974184eadf0ab290fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Incredible
+  description: David Berrebi
 --- !u!1001 &1334779156
 Prefab:
   m_ObjectHideFlags: 0
@@ -1735,6 +1882,24 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c407f7a73e9c09041897a252a728212e, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1428901534 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000010066185654, guid: c407f7a73e9c09041897a252a728212e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1428901533}
+--- !u!114 &1428901535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1428901534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5bf0ef8e81c7974184eadf0ab290fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Incredible
+  description: David Berrebi
 --- !u!1001 &1523252879
 Prefab:
   m_ObjectHideFlags: 0
@@ -1797,6 +1962,24 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 074484c2ecaa9794d93df27b6a002409, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1523252880 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000010900704010, guid: 074484c2ecaa9794d93df27b6a002409,
+    type: 2}
+  m_PrefabInternal: {fileID: 1523252879}
+--- !u!114 &1523252881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1523252880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5bf0ef8e81c7974184eadf0ab290fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Pell-Mell Drum None
+  description: Lauren Pelc McArthur
 --- !u!4 &1592948966 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000010223081316, guid: 074484c2ecaa9794d93df27b6a002409,
