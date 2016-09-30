@@ -10,6 +10,7 @@ public class CameraTeleport : MonoBehaviour {
     float fallSpeed;
     public float fallSpeedNormal = 2f;
     public float fallSpeedFast = 4f;
+    public float fallSpeedSlow = 0.5f;
     //public bool detectOnlyWhenFloorChanges = false;
     public GameObject theLastFloor;
     public GameObject restartPoint;
@@ -18,6 +19,7 @@ public class CameraTeleport : MonoBehaviour {
     float fallDistance = 0f;
     bool toRestart = false;
     public float cameraScale = 2f;
+    bool toFallIntoWater = false;
 
     public FloorDataManager floorDataManager;
     public Text flyerContents;
@@ -134,25 +136,6 @@ public class CameraTeleport : MonoBehaviour {
 
                         roomManager.ActivateRoom(floorToTurnOn);
 
-                        // v.1
-                        //// turn off floor (-3) if not already (eg. on floor_3, turn off floor_1, which is floors[0])
-                        //if (floorNum == 1)
-                        //{
-                        //    // turn off floor 3~6
-                        //    for (var i = 2; i < 6; i++)
-                        //    {
-                        //        roomManager.DeactivateRoom(i);
-                        //    }
-
-                        //    Debug.Log("turn off floors[3~6]");
-                        //}
-                        //else if (floorNum != 2) // don't need to turn off anything if on floor_2
-                        //{
-                        //    int floorToTurnOff = floorNum - 3;
-
-                        //    roomManager.DeactivateRoom(floorToTurnOff);
-                        //}
-
                         // v.2
                         // turn off floors
                         if (floorNum == 0)
@@ -205,14 +188,14 @@ public class CameraTeleport : MonoBehaviour {
                                 waterManager = currentFloor.GetComponent<WaterManager>();
                                 water = waterManager.surfaceWater;
                             }
+
+                            // prepare to fall into water
+                            toFallIntoWater = true;
                         }
 
                         /// SKYBOX ////////////////////////////////////////////////////////////////////////////////////
                         skyColorManager.SetFloor(floorNum);
                         //RenderSettings.ambientLight = skyColorManager.
-
-                        /// LIGHTING ////////////////////////////////////////////////////////////////////////////////////
-                        //lightManager.SwitchLightOfFloor(floorNum - 1);
 
                         /// TOOL ////////////////////////////////////////////////////////////////////////////////////////
                         toolManager.SwitchToolOfFloor(floorNum);
@@ -237,6 +220,8 @@ public class CameraTeleport : MonoBehaviour {
                 }
             }
 
+            /// FALLING ////////////////////////////////////////////////////////////////
+            // NORMAL_FALL
             if (!toRestart)
             {
                 // if the eyeCam to floor distance is bigger than eyeCam height
@@ -249,8 +234,23 @@ public class CameraTeleport : MonoBehaviour {
                 {
                     shouldFall = false;
                 }
+
+                // WATER
+                if (toFallIntoWater)
+                {
+                    if(fallDistance < 2.2f)
+                    {
+                        // decrease fall speed!
+                        fallSpeed = fallSpeedSlow;
+                        toFallIntoWater = false;
+
+                        Invoke("ResetFallSpeed", 5f);
+                    }
+                }
             }
-            else {
+            // RABBIT_HOLE
+            else
+            {
                 /// EyeMasking --------------------------------------------------------
                 if (fallDistance < 5f && !eyeMaskOn)
                 {
@@ -317,5 +317,10 @@ public class CameraTeleport : MonoBehaviour {
     void DisableEyeMask()
     {
         eyeMaskTop.SetActive(false);
+    }
+
+    void ResetFallSpeed()
+    {
+        fallSpeed = fallSpeedNormal;
     }
 }
