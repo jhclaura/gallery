@@ -21,8 +21,9 @@ GameObject:
   - 4: {fileID: 4000013817075850}
   - 33: {fileID: 33000013716681504}
   - 23: {fileID: 23000010565928588}
+  - 114: {fileID: 114000013420439364}
   m_Layer: 0
-  m_Name: ring_for_floor_hole (1)
+  m_Name: ExitRing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,8 +36,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011754688634}
   m_LocalRotation: {x: -0, y: 0.05239538, z: -0, w: 0.9986264}
-  m_LocalPosition: {x: 0.216, y: -3.858, z: -13.243}
-  m_LocalScale: {x: 1.6315129, y: 1.6315128, z: 1.6315128}
+  m_LocalPosition: {x: 1.24, y: -60.24, z: -11.91}
+  m_LocalScale: {x: 3.650631, y: 3.6506312, z: 3.6506312}
   m_LocalEulerAnglesHint: {x: 0, y: 5.839, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,3 +78,16 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011754688634}
   m_Mesh: {fileID: 4300000, guid: 265fb210b56686f4daceeef1edecbab3, type: 3}
+--- !u!114 &114000013420439364
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011754688634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5bf0ef8e81c7974184eadf0ab290fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: 
+  description: This ring marks the exit hole! Drop through to see the next room.

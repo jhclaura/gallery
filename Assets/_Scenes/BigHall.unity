@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.01858976, g: 0.002882564, b: 0.015573537, a: 1}
+  m_IndirectSpecularColor: {r: 0.14550096, g: 0.037242725, b: 0.1312432, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -174,6 +174,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1658924011}
   m_RootOrder: 0
+--- !u!1 &28250118 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000013594742762, guid: c1b3d67d82791d246855d6e2d4dbdba7,
+    type: 2}
+  m_PrefabInternal: {fileID: 401467085}
+--- !u!114 &28250119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 28250118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5bf0ef8e81c7974184eadf0ab290fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Kinkade Spirit Board
+  description: LaTurbo Avedon
 --- !u!1 &44230879
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,6 +408,24 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 123153564}
   m_Mesh: {fileID: 0}
+--- !u!1 &130896194 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000011516370376, guid: 64c687292340fc3439e48319bcfa18fb,
+    type: 2}
+  m_PrefabInternal: {fileID: 1915483291}
+--- !u!114 &130896195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 130896194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5bf0ef8e81c7974184eadf0ab290fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Lumpy Buddy
+  description: Stuart Wade
 --- !u!1 &131973672
 GameObject:
   m_ObjectHideFlags: 0
@@ -610,6 +646,7 @@ GameObject:
   - 33: {fileID: 208137338}
   - 23: {fileID: 208137337}
   - 64: {fileID: 208137339}
+  - 114: {fileID: 208137340}
   m_Layer: 0
   m_Name: Floor_6
   m_TagString: Untagged
@@ -680,6 +717,19 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: 987b7292d14e1b940859d009c662d61b, type: 3}
+--- !u!114 &208137340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 208137335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5bf0ef8e81c7974184eadf0ab290fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: 
+  description: It's a big empty white room. Inside, there are GIFs.
 --- !u!1 &224462600
 GameObject:
   m_ObjectHideFlags: 0
@@ -1611,6 +1661,24 @@ MonoBehaviour:
   m_cullLightsInSceneEditor: 0
   m_cullLightsFromEditorCamera: 0
   m_hideAllValveMaterials: 0
+--- !u!1 &579951869 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000011606220900, guid: 688144eb55f8d28468cb31ec72b92133,
+    type: 2}
+  m_PrefabInternal: {fileID: 2068001879}
+--- !u!114 &579951870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 579951869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5bf0ef8e81c7974184eadf0ab290fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Wave Patterns
+  description: John Fogarty
 --- !u!1 &580910971
 GameObject:
   m_ObjectHideFlags: 0
@@ -2852,6 +2920,7 @@ Transform:
   - {fileID: 842085254}
   - {fileID: 208137336}
   - {fileID: 1064173248}
+  - {fileID: 1488465467}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!114 &1063058710
@@ -3423,7 +3492,6 @@ Transform:
   m_LocalScale: {x: 2.2231107, y: 2.2231097, z: 2.2231135}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1994232630}
   - {fileID: 1915483292}
   - {fileID: 983966182}
   m_Father: {fileID: 1063058709}
@@ -3712,6 +3780,26 @@ RectTransform:
   m_AnchoredPosition: {x: -0.00190876, y: -20.1}
   m_SizeDelta: {x: 261.9, y: 445.9}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1293366416 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000013526531190, guid: 92616aa271031c248a94f9badf65cf06,
+    type: 2}
+  m_PrefabInternal: {fileID: 336283939}
+--- !u!114 &1293366417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1293366416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5bf0ef8e81c7974184eadf0ab290fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Traffic
+  description: 'Karen Singh
+
+'
 --- !u!1 &1304262197
 GameObject:
   m_ObjectHideFlags: 0
@@ -4183,6 +4271,53 @@ MonoBehaviour:
   index: 0
   origin: {fileID: 0}
   isValid: 0
+--- !u!1001 &1488465466
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1063058709}
+    m_Modifications:
+    - target: {fileID: 4000013817075850, guid: aaa4ad77f500ea64d9f0857e9de84795, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013817075850, guid: aaa4ad77f500ea64d9f0857e9de84795, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -60.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013817075850, guid: aaa4ad77f500ea64d9f0857e9de84795, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -11.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013817075850, guid: aaa4ad77f500ea64d9f0857e9de84795, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013817075850, guid: aaa4ad77f500ea64d9f0857e9de84795, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.05239538
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013817075850, guid: aaa4ad77f500ea64d9f0857e9de84795, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013817075850, guid: aaa4ad77f500ea64d9f0857e9de84795, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.9986264
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013817075850, guid: aaa4ad77f500ea64d9f0857e9de84795, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: aaa4ad77f500ea64d9f0857e9de84795, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1488465467 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4000013817075850, guid: aaa4ad77f500ea64d9f0857e9de84795,
+    type: 2}
+  m_PrefabInternal: {fileID: 1488465466}
 --- !u!1 &1493935285
 GameObject:
   m_ObjectHideFlags: 0
@@ -4241,6 +4376,24 @@ Transform:
   - {fileID: 849276320}
   m_Father: {fileID: 1463264893}
   m_RootOrder: 0
+--- !u!1 &1512205829 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000011030933734, guid: 67158e0691256584c881904c9001ae2b,
+    type: 2}
+  m_PrefabInternal: {fileID: 304596309}
+--- !u!114 &1512205830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1512205829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5bf0ef8e81c7974184eadf0ab290fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: RED
+  description: Eno Swinnen
 --- !u!1 &1526120136
 GameObject:
   m_ObjectHideFlags: 0
@@ -4317,6 +4470,24 @@ Transform:
   - {fileID: 1732061690}
   m_Father: {fileID: 1463264893}
   m_RootOrder: 1
+--- !u!1 &1549958150 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000013443417988, guid: 6f218fdb9e9524c218ecd406ed3a683b,
+    type: 2}
+  m_PrefabInternal: {fileID: 2076671967}
+--- !u!114 &1549958151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1549958150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5bf0ef8e81c7974184eadf0ab290fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Long worm
+  description: Julian Glander
 --- !u!1 &1559953802
 GameObject:
   m_ObjectHideFlags: 0
@@ -6808,7 +6979,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000014094167818, guid: 64c687292340fc3439e48319bcfa18fb, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000014094167818, guid: 64c687292340fc3439e48319bcfa18fb, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -7511,7 +7682,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 146900, guid: 4d293c8e162f3874b982baadd71153d2, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11420968, guid: 4d293c8e162f3874b982baadd71153d2, type: 2}
@@ -7561,77 +7732,6 @@ MonoBehaviour:
   index: 0
   origin: {fileID: 0}
   isValid: 0
---- !u!1001 &1994232629
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1172921076}
-    m_Modifications:
-    - target: {fileID: 4000011107276062, guid: 821ad508e59715e429f4fd8daa572d97, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -0.13494535
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011107276062, guid: 821ad508e59715e429f4fd8daa572d97, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 12.280097
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011107276062, guid: 821ad508e59715e429f4fd8daa572d97, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -8.411631
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011107276062, guid: 821ad508e59715e429f4fd8daa572d97, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011107276062, guid: 821ad508e59715e429f4fd8daa572d97, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011107276062, guid: 821ad508e59715e429f4fd8daa572d97, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011107276062, guid: 821ad508e59715e429f4fd8daa572d97, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011107276062, guid: 821ad508e59715e429f4fd8daa572d97, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000012317244926, guid: 821ad508e59715e429f4fd8daa572d97, type: 2}
-      propertyPath: m_Name
-      value: JulianGlander-1080-Stereo
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011107276062, guid: 821ad508e59715e429f4fd8daa572d97, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011107276062, guid: 821ad508e59715e429f4fd8daa572d97, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.9193152
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011107276062, guid: 821ad508e59715e429f4fd8daa572d97, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.9193147
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011107276062, guid: 821ad508e59715e429f4fd8daa572d97, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.9193142
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000012317244926, guid: 821ad508e59715e429f4fd8daa572d97, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 821ad508e59715e429f4fd8daa572d97, type: 2}
-  m_IsPrefabParent: 0
---- !u!4 &1994232630 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4000011107276062, guid: 821ad508e59715e429f4fd8daa572d97,
-    type: 2}
-  m_PrefabInternal: {fileID: 1994232629}
 --- !u!1 &2010239934
 GameObject:
   m_ObjectHideFlags: 0
@@ -7920,7 +8020,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013062699236, guid: 6f218fdb9e9524c218ecd406ed3a683b, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4000013062699236, guid: 6f218fdb9e9524c218ecd406ed3a683b, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
