@@ -7,7 +7,9 @@ public class CameraTeleport : MonoBehaviour {
     GameObject currentFloor = null;
     public bool useGravity = false;
     public GameObject eyeCamera;
-    public float fallSpeed = 2f;
+    float fallSpeed;
+    public float fallSpeedNormal = 2f;
+    public float fallSpeedFast = 4f;
     //public bool detectOnlyWhenFloorChanges = false;
     public GameObject theLastFloor;
     public GameObject restartPoint;
@@ -33,6 +35,11 @@ public class CameraTeleport : MonoBehaviour {
     bool eyeMaskOn = false;
 
     AudioSource rabbitHole;
+    WaterManager waterManager;
+    GameObject water;
+    bool cameraAboveWaterStatus = true;
+    bool cameraAboveWaterPastStatus = true;
+    public int currentFloorNum;
 
     IEnumerator Start ()
     {
@@ -45,6 +52,7 @@ public class CameraTeleport : MonoBehaviour {
 
         yield return StartCoroutine(roomManager.LoadAll());
 
+        fallSpeed = fallSpeedNormal;
         rabbitHole = GetComponent<AudioSource>();
         rabbitHole.enabled = false;
 
@@ -56,6 +64,31 @@ public class CameraTeleport : MonoBehaviour {
         if (initialized)
         {
             DetectFloorAndFall();
+        }
+
+        if (currentFloorNum == 3)
+        {
+            // if camera(head) lower than surface water, turn off surface water, turn on under water. vice versa
+            if(eyeCamera.transform.position.y < water.transform.position.y)
+            {
+                cameraAboveWaterStatus = false;
+                if(cameraAboveWaterStatus != cameraAboveWaterPastStatus)
+                {
+                    waterManager.TurnOnSurfaceWater(false);
+                    cameraAboveWaterPastStatus = false;
+                }
+                
+            }
+
+            if (eyeCamera.transform.position.y >= water.transform.position.y)
+            {
+                cameraAboveWaterStatus = true;
+                if (cameraAboveWaterStatus != cameraAboveWaterPastStatus)
+                {
+                    waterManager.TurnOnSurfaceWater(true);
+                    cameraAboveWaterPastStatus = true;
+                }
+            }
         }
     }
 
@@ -90,6 +123,7 @@ public class CameraTeleport : MonoBehaviour {
                     if (splitString[0] == "Floor")
                     {
                         int floorNum = int.Parse(splitString[1]);
+                        currentFloorNum = floorNum;
 
                         /// LevelManaging /////////////////////////////////////////////////////////////////////////////
                         // turn on floor(+1) if not already(eg.on floor_2, turn on floor_3)
@@ -161,6 +195,16 @@ public class CameraTeleport : MonoBehaviour {
                             roomManager.DeactivateAudio(floorToTurnOff);
                         }
 
+                        /// Water //////////////////////////////////////////////////////////////////////////////////////
+                        if (floorNum == 3)
+                        {
+                            if(waterManager==null)
+                            {
+                                waterManager = currentFloor.GetComponent<WaterManager>();
+                                water = waterManager.surfaceWater;
+                            }
+                        }
+
                         /// SKYBOX ////////////////////////////////////////////////////////////////////////////////////
                         skyColorManager.SetFloor(floorNum);
                         //RenderSettings.ambientLight = skyColorManager.
@@ -181,7 +225,7 @@ public class CameraTeleport : MonoBehaviour {
 
                     // AUDIO
                     rabbitHole.enabled = true;
-                    fallSpeed = 6f;
+                    fallSpeed = fallSpeedFast;
                 }
                 else {
                     toRestart = false;
@@ -229,7 +273,7 @@ public class CameraTeleport : MonoBehaviour {
                         Invoke("EyeMaskFadeOut", 2f);
                         // AUDIO
                         rabbitHole.enabled = false;
-                        fallSpeed = 4f;
+                        fallSpeed = fallSpeedNormal;
 
                         eyeMaskOn = false;
                     }

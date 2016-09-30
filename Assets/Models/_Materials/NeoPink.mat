@@ -8,7 +8,7 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: NeoPink
   m_Shader: {fileID: 4800000, guid: 908b379d4818cd64184b95a21123d909, type: 3}
-  m_ShaderKeywords: S_RECEIVE_SHADOWS S_SPECULAR_METALLIC _EMISSION
+  m_ShaderKeywords: S_SPECULAR_NONE S_UNLIT _EMISSION
   m_LightmapFlags: 2
   m_CustomRenderQueue: -1
   stringTagMap:
@@ -142,7 +142,7 @@ Material:
       second: 1
     - first:
         name: _SpecularMode
-      second: 2
+      second: 0
     - first:
         name: _SrcBlend
       second: 1
@@ -160,7 +160,7 @@ Material:
       second: 0
     - first:
         name: g_bUnlit
-      second: 0
+      second: 1
     - first:
         name: g_bWorldAlignedTexture
       second: 0
@@ -185,7 +185,7 @@ Material:
       second: {r: 0.9019608, g: 0.27450982, b: 0.7137255, a: 1}
     - first:
         name: _EmissionColor
-      second: {r: 0.9, g: 0.27391297, b: 0.71217376, a: 1}
+      second: {r: 0.9, g: 0.2739129, b: 0.71217376, a: 1}
     - first:
         name: _SpecColor
       second: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
