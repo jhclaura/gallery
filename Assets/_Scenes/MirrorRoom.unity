@@ -149,7 +149,7 @@ Prefab:
     - target: {fileID: 2300000, guid: 065ecad0e58ab414f8dde7288f232309, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c65eaf5509a028c4db9c9d7cbef2183f, type: 2}
+      objectReference: {fileID: 2100000, guid: 7f35fdaf2a0cbe34f8edd1e6cdff5c77, type: 2}
     - target: {fileID: 2300000, guid: 065ecad0e58ab414f8dde7288f232309, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
@@ -681,7 +681,7 @@ Prefab:
     - target: {fileID: 2300000, guid: f7413896f1a21964ab03054e88f9adef, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c65eaf5509a028c4db9c9d7cbef2183f, type: 2}
+      objectReference: {fileID: 2100000, guid: 7f35fdaf2a0cbe34f8edd1e6cdff5c77, type: 2}
     - target: {fileID: 100000, guid: f7413896f1a21964ab03054e88f9adef, type: 3}
       propertyPath: m_Name
       value: Ceiling
@@ -689,6 +689,10 @@ Prefab:
     - target: {fileID: 100000, guid: f7413896f1a21964ab03054e88f9adef, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: f7413896f1a21964ab03054e88f9adef, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f7413896f1a21964ab03054e88f9adef, type: 3}
@@ -842,7 +846,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &900050394
 Transform:
   m_ObjectHideFlags: 0
