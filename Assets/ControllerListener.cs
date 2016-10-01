@@ -36,7 +36,7 @@ public class ControllerListener : MonoBehaviour {
     {
         //DebugLogger(e.controllerIndex, "TOUCHPAD", "pressed down", e);
 
-        if (e.touchpadAxis.x > 0)
+        if (e.touchpadAxis.y > 0)
             isLeft = false;
         else
             isLeft = true;

@@ -3,12 +3,12 @@ using System.Collections;
 
 public class RemoteManager : MonoBehaviour {
 
-    public GameObject leftButton;
-    public GameObject rightButton;
-
+    public GameObject topButton;
+    public GameObject downButton;
+    
     Vector3 resetAngle = new Vector3();
-    Vector3 leftDownAngle = new Vector3(0,0,-17);
-    Vector3 rightDownAngle = new Vector3(0, 0, 17);
+    Vector3 topDownAngle = new Vector3(-12.5f, 0, 0);
+    Vector3 downDownAngle = new Vector3(0, 0, 12.5f);
 
     public OldRoomGifData oldRoomGifData;
 
@@ -23,28 +23,28 @@ public class RemoteManager : MonoBehaviour {
 
     public void PressLeftButton()
     {
-        leftButton.transform.localEulerAngles = leftDownAngle;
+        downButton.transform.localEulerAngles = downDownAngle;
 
         //Debug.Log("Press left!");
     }
 
     public void PressRightButton()
     {
-        rightButton.transform.localEulerAngles = rightDownAngle;
+        topButton.transform.localEulerAngles = topDownAngle;
 
         //Debug.Log("Press right!");
     }
 
     public void ReleaseLeftButton()
     {
-        leftButton.transform.localEulerAngles = resetAngle;
+        downButton.transform.localEulerAngles = resetAngle;
 
         oldRoomGifData.ShowPreviousGif();
     }
 
     public void ReleaseRightButton()
     {
-        rightButton.transform.localEulerAngles = resetAngle;
+        topButton.transform.localEulerAngles = resetAngle;
 
         oldRoomGifData.ShowNextGif();
     }
