@@ -71,7 +71,7 @@
 #if UNITY_VERSION >= 500
 				UNITY_APPLY_FOG(i.fogCoord, col);
 #endif
-
+				col.rgb = pow(col.rgb, 2.2);
 				return fixed4(col.rgb, 1.0);
 			}
 			ENDCG

@@ -21,6 +21,8 @@ GameObject:
   - 4: {fileID: 4000012604864716}
   - 33: {fileID: 33000010331576982}
   - 23: {fileID: 23000010030721062}
+  - 65: {fileID: 65000011110529360}
+  - 114: {fileID: 114000010745356746}
   m_Layer: 0
   m_Name: RedCorner
   m_TagString: Untagged
@@ -77,3 +79,28 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011465477350}
   m_Mesh: {fileID: 4300000, guid: b34f089002c888e41957aaf3ea9bbc3d, type: 3}
+--- !u!65 &65000011110529360
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011465477350}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000002, y: 3.0000002, z: 3}
+  m_Center: {x: 0.000000037252903, y: 1.0000038, z: -0.0000038146973}
+--- !u!114 &114000010745356746
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011465477350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5bf0ef8e81c7974184eadf0ab290fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: 
+  description: Powerful essence of GIPHY.

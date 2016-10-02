@@ -134,6 +134,10 @@ Prefab:
       propertyPath: m_Name
       value: VRPanoramaCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 1000013230712772, guid: 5274445f3e028c744974b00782f5397c, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5274445f3e028c744974b00782f5397c, type: 2}
   m_IsPrefabParent: 0
@@ -311,6 +315,35 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: 38df7460ff006da449d5324bc1ee1b12, type: 3}
+--- !u!1 &573448048 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100004, guid: 38df7460ff006da449d5324bc1ee1b12, type: 3}
+  m_PrefabInternal: {fileID: 573448042}
+--- !u!65 &573448049
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 573448048}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 2, z: 0.2}
+  m_Center: {x: 0.35, y: -0.2, z: 0}
+--- !u!114 &573448050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 573448048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5bf0ef8e81c7974184eadf0ab290fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: 
+  description: This is the name of the art show you're at.
 --- !u!1001 &650960255
 Prefab:
   m_ObjectHideFlags: 0
@@ -362,6 +395,10 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: eeac249a6139df944ac34657765b10e6, type: 3}
+      propertyPath: m_LightmapParameters
+      value: 
+      objectReference: {fileID: 15203, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eeac249a6139df944ac34657765b10e6, type: 3}
   m_IsPrefabParent: 0
@@ -385,6 +422,19 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: eeac249a6139df944ac34657765b10e6, type: 3}
+--- !u!114 &650960259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 650960257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5bf0ef8e81c7974184eadf0ab290fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: 
+  description: A big circle floating in space.
 --- !u!1 &961756325
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,7 +459,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 961756325}
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: -3.6, y: 5.7, z: 16.2}
+  m_LocalPosition: {x: -3.6, y: 9.69, z: 16.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
   m_Children: []
@@ -1185,14 +1235,14 @@ MonoBehaviour:
   - {fileID: 1000010886102936, guid: 41118f3a96b279540b9d4e8193b13013, type: 2}
   - {fileID: 1000013976007230, guid: 9de5034b53cf7a949aba085093f649e1, type: 2}
   - {fileID: 1000013118520984, guid: b5a1e1a2a0c3e3e46a360eeeafc4559d, type: 2}
-  blocksTotalAmount: 20
+  blocksTotalAmount: 40
   travelDistance: 50
   taravelSpeed: 10
   spawnPoint: {fileID: 961756325}
   scatterX: 10
-  scatterY: 10
+  scatterY: 5
   scatterZ: 4
-  blockScale: 0.25
+  blockScale: 0.4
   minDuration: 10
   maxDuration: 20
 --- !u!82 &1668610167

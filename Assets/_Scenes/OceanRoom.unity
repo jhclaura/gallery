@@ -694,6 +694,22 @@ MonoBehaviour:
   title: 
   description: An island in the distance. The coconuts on the beach are arranged in
     a strangely regular pattern.
+--- !u!1 &160401331 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100002, guid: 0ebe97a59a12b1647bf2c0d33a6460b7, type: 3}
+  m_PrefabInternal: {fileID: 160401328}
+--- !u!65 &160401332
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 160401331}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6, y: 20, z: 6}
+  m_Center: {x: 0, y: 5, z: 0}
 --- !u!1 &166430843
 GameObject:
   m_ObjectHideFlags: 0
@@ -1325,6 +1341,7 @@ GameObject:
   - 212: {fileID: 419735919}
   - 95: {fileID: 419735918}
   - 114: {fileID: 419735917}
+  - 65: {fileID: 419735920}
   m_Layer: 0
   m_Name: DavidBerrebi-Sequence-Incredible-768
   m_TagString: Untagged
@@ -1409,6 +1426,18 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!65 &419735920
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 419735915}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.6800003, y: 11.52, z: 0.19999999}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &440041715
 GameObject:
   m_ObjectHideFlags: 0
@@ -1464,10 +1493,10 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 619340044}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.7175736, y: 0.7175736, z: 0.7175736}
-  m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1479983030}
   - {fileID: 149891424}
@@ -2251,8 +2280,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5bf0ef8e81c7974184eadf0ab290fc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Incredible
-  description: David Berrebi
+  title: 
+  description: 'David Berrebi
+
+    <i>Incredible</i>'
 --- !u!114 &1126614864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2466,8 +2497,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5bf0ef8e81c7974184eadf0ab290fc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Incredible
-  description: David Berrebi
+  title: 
+  description: 'David Berrebi
+
+    <i>Beautiful</i>'
+--- !u!1 &1243427218 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000013958613044, guid: 679337fc8d01e9d4a981ea671272286e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1243427215}
+--- !u!65 &1243427219
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1243427218}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 11.52, y: 7.68, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1254550154
 GameObject:
   m_ObjectHideFlags: 0
@@ -3280,6 +3330,7 @@ GameObject:
   - 4: {fileID: 1500831447}
   - 114: {fileID: 1500831449}
   - 114: {fileID: 1500831448}
+  - 65: {fileID: 1500831450}
   m_Layer: 0
   m_Name: 5_NicoleGinelli
   m_TagString: Untagged
@@ -3294,10 +3345,10 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1500831446}
-  m_LocalRotation: {x: 0.006994217, y: 0.79273236, z: -0.00909744, w: 0.60946184}
-  m_LocalPosition: {x: 74.5, y: 2.8999996, z: 80.5}
-  m_LocalScale: {x: 4.566625, y: 4.5666194, z: 4.566624}
-  m_LocalEulerAnglesHint: {x: 1.315, y: 104.893005, z: 0}
+  m_LocalRotation: {x: -0.56252927, y: 0.42844006, z: -0.42844003, w: -0.5625292}
+  m_LocalPosition: {x: 8.66, y: -13.299999, z: 96.16}
+  m_LocalScale: {x: 0.20380497, y: 0.20380472, z: 0.20380491}
+  m_LocalEulerAnglesHint: {x: 90.01898, y: 180, z: -105.10199}
   m_Children:
   - {fileID: 1694730417}
   - {fileID: 285583832}
@@ -3318,8 +3369,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5bf0ef8e81c7974184eadf0ab290fc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: V Hiatus
-  description: Nicole Ginelli
+  title: 
+  description: 'Nicole Ginelli
+
+    <i>V Hiatus</i>'
 --- !u!114 &1500831449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3332,6 +3385,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bb44ccdcf1c0f49900ea40bf308685, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &1500831450
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1500831446}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5, y: 0, z: 8}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1523252879
 Prefab:
   m_ObjectHideFlags: 0
@@ -3410,8 +3475,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5bf0ef8e81c7974184eadf0ab290fc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Pell-Mell Drum None
-  description: Lauren Pelc McArthur
+  title: 
+  description: 'Lauren Pelc McArthur
+
+    <i>Pell-Mell Drum None</i>'
+--- !u!1 &1523252882 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000011616299852, guid: 074484c2ecaa9794d93df27b6a002409,
+    type: 2}
+  m_PrefabInternal: {fileID: 1523252879}
+--- !u!1 &1523252883 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000011525854654, guid: 074484c2ecaa9794d93df27b6a002409,
+    type: 2}
+  m_PrefabInternal: {fileID: 1523252879}
+--- !u!65 &1523252884
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1523252882}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.8000007, y: 7.2, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &1523252885
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1523252883}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.8000007, y: 7.2, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1558381449
 GameObject:
   m_ObjectHideFlags: 0

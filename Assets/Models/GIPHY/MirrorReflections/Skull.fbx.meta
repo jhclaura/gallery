@@ -19,14 +19,17 @@ ModelImporter:
     2300002: Jaw
     2300004: Skull_2
     2300006: Top_Teeth
+    2300008: //RootNode
     3300000: Bottom_Teeth
     3300002: Jaw
     3300004: Skull_2
     3300006: Top_Teeth
+    3300008: //RootNode
     4300000: Skull_2
     4300002: Top_Teeth
     4300004: Bottom_Teeth
     4300006: Jaw
+    4300008: Skull_1
   materials:
     importMaterials: 1
     materialName: 0
@@ -56,19 +59,19 @@ ModelImporter:
     addColliders: 0
     importBlendShapes: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     secondaryUVAngleDistortion: 8
-    secondaryUVAreaDistortion: 15.000001
-    secondaryUVHardAngle: 88
+    secondaryUVAreaDistortion: 15
+    secondaryUVHardAngle: 29
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 0
+    normalImportMode: 1
     tangentImportMode: 3
   importAnimation: 1
   copyAvatar: 0

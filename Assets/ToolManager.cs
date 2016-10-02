@@ -30,7 +30,7 @@ public class ToolManager : MonoBehaviour {
 
         // right controller vibrates!
         // SteamVR_Controller.Input((int)controllerRight.index).TriggerHapticPulse(2000);
-        StartCoroutine(LongVibration(1f, 200));
+        // StartCoroutine(LongVibration(1f, 200));
     }
 
     IEnumerator HapticPulse(float duration, int hapticPulseStrength, float pulseInterval)

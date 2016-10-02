@@ -53,6 +53,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013841144454}
+  - 114: {fileID: 114000012851635784}
+  - 65: {fileID: 65000014120577762}
   m_Layer: 0
   m_Name: Sign
   m_TagString: Untagged
@@ -241,3 +243,28 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010216674036}
   m_Mesh: {fileID: 4300002, guid: 8ff1ecf2b4bee794db35b15574cf1689, type: 3}
+--- !u!65 &65000014120577762
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011923659068}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114000012851635784
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011923659068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5bf0ef8e81c7974184eadf0ab290fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: 
+  description: A sign. Just read it.
