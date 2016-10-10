@@ -12,6 +12,9 @@ ModelImporter:
     100008: Alien_body_MeshPart2
     100010: Alien_eye_left
     100012: Alien_eye_right
+    100014: Alien_Body
+    100016: Left_Eye
+    100018: Right_Eye
     400000: //RootNode
     400002: Alien_body
     400004: Alien_body_MeshPart0
@@ -19,21 +22,33 @@ ModelImporter:
     400008: Alien_body_MeshPart2
     400010: Alien_eye_left
     400012: Alien_eye_right
+    400014: Alien_Body
+    400016: Left_Eye
+    400018: Right_Eye
     2300000: Alien_body_MeshPart0
     2300002: Alien_body_MeshPart1
     2300004: Alien_body_MeshPart2
     2300006: Alien_eye_left
     2300008: Alien_eye_right
+    2300010: Alien_Body
+    2300012: Left_Eye
+    2300014: Right_Eye
     3300000: Alien_body_MeshPart0
     3300002: Alien_body_MeshPart1
     3300004: Alien_body_MeshPart2
     3300006: Alien_eye_left
     3300008: Alien_eye_right
+    3300010: Alien_Body
+    3300012: Left_Eye
+    3300014: Right_Eye
     4300000: Alien_eye_left
     4300002: Alien_eye_right
     4300004: Alien_body_MeshPart0
     4300006: Alien_body_MeshPart1
     4300008: Alien_body_MeshPart2
+    4300010: Alien_Body
+    4300012: Left_Eye
+    4300014: Right_Eye
   materials:
     importMaterials: 1
     materialName: 0
@@ -63,19 +78,19 @@ ModelImporter:
     addColliders: 0
     importBlendShapes: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     secondaryUVAngleDistortion: 8
-    secondaryUVAreaDistortion: 15.000001
-    secondaryUVHardAngle: 88
+    secondaryUVAreaDistortion: 15
+    secondaryUVHardAngle: 180
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 0
+    normalImportMode: 1
     tangentImportMode: 3
   importAnimation: 0
   copyAvatar: 0

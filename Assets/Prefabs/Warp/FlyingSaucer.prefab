@@ -22,6 +22,8 @@ GameObject:
   - 33: {fileID: 33000010703543652}
   - 23: {fileID: 23000010235834800}
   - 95: {fileID: 95000013026487126}
+  - 114: {fileID: 114000010417159410}
+  - 65: {fileID: 65000012861014026}
   m_Layer: 0
   m_Name: FlyingSaucer
   m_TagString: Untagged
@@ -78,6 +80,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012807095780}
   m_Mesh: {fileID: 4300000, guid: 321e0a7011ebeff429f72be921d8c479, type: 3}
+--- !u!65 &65000012861014026
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012807095780}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.38726, y: 3.30234, z: 1.033013}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95000013026487126
 Animator:
   serializedVersion: 3
@@ -95,3 +109,16 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114000010417159410
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012807095780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5bf0ef8e81c7974184eadf0ab290fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: 
+  description: A flying saucer. Freaky stuff...
