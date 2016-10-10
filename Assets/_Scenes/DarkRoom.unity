@@ -6299,7 +6299,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1160345771
 Transform:
   m_ObjectHideFlags: 0
@@ -6327,12 +6327,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_VideoLocation: 2
-  m_VideoPath: VideoGIFs/James_Kerr/james_kerr_right_2.mp4
+  m_VideoPath: VideoGIFs/James_Kerr/james_kerr_right_2.mov
   m_AutoOpen: 1
   m_AutoStart: 1
   m_Loop: 1
   m_Volume: 1
-  m_Muted: 1
+  m_Muted: 0
   m_PlaybackRate: 1
   m_DebugGui: 0
   m_Persistent: 0
@@ -7452,15 +7452,15 @@ GameObject:
   - 33: {fileID: 1394632072}
   - 64: {fileID: 1394632071}
   - 23: {fileID: 1394632070}
-  - 114: {fileID: 1394632069}
   - 114: {fileID: 1394632068}
+  - 114: {fileID: 1394632069}
   m_Layer: 8
   m_Name: JamesKerr-720-Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1394632066
 Transform:
   m_ObjectHideFlags: 0
@@ -7488,12 +7488,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_VideoLocation: 2
-  m_VideoPath: VideoGIFs/James_Kerr/james_kerr_left_2.mp4
+  m_VideoPath: VideoGIFs/James_Kerr/james_kerr_left_2.mov
   m_AutoOpen: 1
   m_AutoStart: 1
   m_Loop: 1
   m_Volume: 1
-  m_Muted: 1
+  m_Muted: 0
   m_PlaybackRate: 1
   m_DebugGui: 0
   m_Persistent: 0
@@ -8039,7 +8039,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1481427321
 Transform:
   m_ObjectHideFlags: 0
@@ -10198,7 +10198,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2038619883
 Transform:
   m_ObjectHideFlags: 0
