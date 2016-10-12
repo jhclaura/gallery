@@ -41,7 +41,7 @@ public class Room : MonoBehaviour {
 
         if (gifData != null)
         {
-            gifData.ShuffeAudio();
+            gifData.ShuffleAudio();
         }
     }
 

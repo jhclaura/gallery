@@ -35,7 +35,7 @@ public class OldRoomGifData : MonoBehaviour {
         radioAudios = room.audios;
         audioCount = radioAudios.Length;
 
-        ShuffeAudio();
+        ShuffleAudio();
     }
 
     void OnDisable()
@@ -45,7 +45,7 @@ public class OldRoomGifData : MonoBehaviour {
 
     void OnEnable()
     {
-        ShuffeAudio();
+        ShuffleAudio();
     }
 
     IEnumerator Autorun()
@@ -66,7 +66,7 @@ public class OldRoomGifData : MonoBehaviour {
 
         SetGifState();
 
-        ShuffeAudio();
+        ShuffleAudio();
     }
 	
 	public void ShowNextGif()
@@ -80,7 +80,7 @@ public class OldRoomGifData : MonoBehaviour {
 
         SetGifState();
 
-        ShuffeAudio();
+        ShuffleAudio();
     }
 
     private void SetGifState()
@@ -139,7 +139,7 @@ public class OldRoomGifData : MonoBehaviour {
         }
     }
 
-    public void ShuffeAudio()
+    public void ShuffleAudio()
     {
         for (int i = 0; i < audioCount; i++)
         {
