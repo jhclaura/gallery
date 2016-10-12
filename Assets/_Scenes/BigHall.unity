@@ -1236,101 +1236,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 200617566}
   m_Mesh: {fileID: 4300020, guid: 8eb3a46e61c92455aa8a5682fcffbd05, type: 3}
---- !u!1 &208137335
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100000, guid: 987b7292d14e1b940859d009c662d61b, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 208137336}
-  - 33: {fileID: 208137338}
-  - 23: {fileID: 208137337}
-  - 64: {fileID: 208137339}
-  - 114: {fileID: 208137340}
-  m_Layer: 0
-  m_Name: Floor_6
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
-  m_IsActive: 0
---- !u!4 &208137336
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400000, guid: 987b7292d14e1b940859d009c662d61b, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 208137335}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.2134655, y: -51.507816, z: -11.941739}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 1063058709}
-  m_RootOrder: 2
---- !u!23 &208137337
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 2300000, guid: 987b7292d14e1b940859d009c662d61b,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 208137335}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 2de2768f8bce63b4f8807379d17defda, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 2
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedWireframeHidden: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
---- !u!33 &208137338
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 3300000, guid: 987b7292d14e1b940859d009c662d61b,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 208137335}
-  m_Mesh: {fileID: 4300000, guid: 987b7292d14e1b940859d009c662d61b, type: 3}
---- !u!64 &208137339
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 208137335}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300000, guid: 987b7292d14e1b940859d009c662d61b, type: 3}
---- !u!114 &208137340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 208137335}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5bf0ef8e81c7974184eadf0ab290fc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: 
-  description: It's a big empty white room. Inside, there are GIFs.
 --- !u!1 &218569100
 GameObject:
   m_ObjectHideFlags: 0
@@ -3625,7 +3530,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1063058709}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!114 &701577456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5264,7 +5169,6 @@ Transform:
   m_Children:
   - {fileID: 2014954817}
   - {fileID: 842085254}
-  - {fileID: 208137336}
   - {fileID: 701577455}
   - {fileID: 1064173248}
   - {fileID: 1488465467}
@@ -5511,7 +5415,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1063058709}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!1 &1074754903
 GameObject:
   m_ObjectHideFlags: 0
@@ -6610,7 +6514,7 @@ Transform:
   - {fileID: 1291155655}
   - {fileID: 1364449416}
   m_Father: {fileID: 1063058709}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!1 &1264007705
 GameObject:
   m_ObjectHideFlags: 0
@@ -7930,7 +7834,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013817075850, guid: aaa4ad77f500ea64d9f0857e9de84795, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4000013817075850, guid: aaa4ad77f500ea64d9f0857e9de84795, type: 2}
       propertyPath: m_LocalScale.x
