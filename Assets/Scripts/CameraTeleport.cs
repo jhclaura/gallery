@@ -111,7 +111,12 @@ public class CameraTeleport : MonoBehaviour {
 
     void DetectFloorAndFall()
     {
+		#if UNITY_STANDALONE_WIN
         Ray ray = new Ray(eyeCamera.transform.position, -transform.up);
+		#else
+		Ray ray = new Ray(eyeCamera.transform.position, new Vector3(0,-1,0));
+		#endif
+
         RaycastHit rayCollidedWith;
         bool rayHit = Physics.Raycast(ray, out rayCollidedWith);
         float eyeCamToFloorDist = rayCollidedWith.distance;

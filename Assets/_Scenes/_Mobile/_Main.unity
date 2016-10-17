@@ -1743,6 +1743,23 @@ MonoBehaviour:
   animationDuration: 2
   animateColorTransitions: 1
   animateAmbientLightTransitions: 1
+--- !u!114 &273351529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 273351527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40795a6ed7a9042698daf46f738fb211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LeftEyeMask:
+    serializedVersion: 2
+    m_Bits: 256
+  RightEyeMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &273351530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16045,7 +16062,7 @@ MonoBehaviour:
   eyeMaskTop: {fileID: 2094277213}
   eyeMaskBottom: {fileID: 1739595186}
   currentFloorNum: 0
-  camHeight: 1
+  camHeight: 2.5
 --- !u!114 &1925985875
 MonoBehaviour:
   m_ObjectHideFlags: 0
