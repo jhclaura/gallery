@@ -46,11 +46,10 @@ public class RoomManager : MonoBehaviour {
 
                 if (roomDataItem.name == room.roomName) {
                     roomDataItem.room = room;
-                    Debug.Log(room.roomName + " " + roomDataItem.name);
+//                    Debug.Log(room.roomName + " " + roomDataItem.name);
                 }
             }
         }
-
        //Debug.Log(roomData);
     }
     

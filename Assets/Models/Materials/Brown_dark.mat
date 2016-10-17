@@ -6,9 +6,9 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Material_003
+  m_Name: Brown_dark
   m_Shader: {fileID: 10755, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: S_SPECULAR_NONE S_UNLIT
+  m_ShaderKeywords: S_RENDER_BACKFACES S_SPECULAR_NONE S_UNLIT
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
   stringTagMap:
@@ -88,7 +88,7 @@ Material:
       second: 1
     - first:
         name: _Cull
-      second: 2
+      second: 0
     - first:
         name: _Cutoff
       second: 0.5
@@ -157,7 +157,7 @@ Material:
       second: 1
     - first:
         name: g_bRenderBackfaces
-      second: 0
+      second: 1
     - first:
         name: g_bUnlit
       second: 1
@@ -182,7 +182,7 @@ Material:
     m_Colors:
     - first:
         name: _Color
-      second: {r: 0.87058824, g: 0.38431373, b: 0.4862745, a: 0}
+      second: {r: 0.46436787, g: 0.35318917, b: 0.093772255, a: 1}
     - first:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}

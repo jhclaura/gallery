@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Black
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Name: Material_red
+  m_Shader: {fileID: 10755, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: S_SPECULAR_NONE S_UNLIT
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
@@ -66,12 +66,6 @@ Material:
         m_Offset: {x: 0, y: 0}
     - first:
         name: _ParallaxMap
-      second:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - first:
-        name: _ReflectionTex
       second:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -188,7 +182,7 @@ Material:
     m_Colors:
     - first:
         name: _Color
-      second: {r: 0.12440514, g: 0.12440514, b: 0.12440514, a: 1}
+      second: {r: 0.87058824, g: 0.38431373, b: 0.4862745, a: 0}
     - first:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}

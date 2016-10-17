@@ -5,19 +5,9 @@ public class ToolManager : MonoBehaviour {
 
     public GameObject[] tools = new GameObject[6];
 
-    public SteamVR_TrackedObject controllerRight;
-
-    void Awake()
-    {
-        //
-    }
-
-    void Update()
-    {
-        //var deviceIndex = SteamVR_Controller.GetDeviceIndex(SteamVR_Controller.DeviceRelation.Leftmost);
-        //if (deviceIndex != -1 && SteamVR_Controller.Input(deviceIndex).GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
-        //    SteamVR_Controller.Input(deviceIndex).TriggerHapticPulse(1000);
-    }
+	#if UNITY_STANDALONE_WIN
+	public SteamVR_TrackedObject controllerRight;
+	#endif
 
     public void SwitchToolOfFloor(int currentFloorIndex)
     {
@@ -33,6 +23,7 @@ public class ToolManager : MonoBehaviour {
         // StartCoroutine(LongVibration(1f, 200));
     }
 
+	#if UNITY_STANDALONE_WIN
     IEnumerator HapticPulse(float duration, int hapticPulseStrength, float pulseInterval)
     {
         if (pulseInterval <= 0)
@@ -47,6 +38,7 @@ public class ToolManager : MonoBehaviour {
             yield return new WaitForSeconds(pulseInterval);
             duration -= pulseInterval;
         }
+
     }
 
     IEnumerator LongVibration(float length, float strength)
@@ -55,6 +47,7 @@ public class ToolManager : MonoBehaviour {
         {
             SteamVR_Controller.Input((int)controllerRight.index).TriggerHapticPulse((ushort)Mathf.Lerp(0, 3999, strength));
             yield return null;
-    }
-}
+	    }
+	}
+	#endif
 }

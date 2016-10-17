@@ -45,8 +45,15 @@ public class CameraTeleport : MonoBehaviour {
     bool cameraAboveWaterPastStatus = true;
     public int currentFloorNum;
 
+	bool amIVive = false;
+	public float camHeight = 2;
+
     IEnumerator Start ()
     {
+		#if UNITY_STANDALONE_WIN
+		amIVive = true;
+		#endif
+
         skyColorManager = GetComponent<SkyColorManager>();
         lightManager = GetComponent<LightManager>();
         toolManager = GetComponent<ToolManager>();
@@ -70,7 +77,8 @@ public class CameraTeleport : MonoBehaviour {
             DetectFloorAndFall();
         }
 
-        if (currentFloorNum == 3)
+		// Vive feature: able to be up or down in the water
+		if (amIVive && currentFloorNum == 3)
         {
             // if camera(head) lower than surface water, turn off surface water, turn on under water. vice versa
             if(eyeCamera.transform.position.y < water.transform.position.y)
@@ -107,9 +115,14 @@ public class CameraTeleport : MonoBehaviour {
         RaycastHit rayCollidedWith;
         bool rayHit = Physics.Raycast(ray, out rayCollidedWith);
         float eyeCamToFloorDist = rayCollidedWith.distance;
-        float eyeCamHeight = eyeCamera.transform.localPosition.y * cameraScale;
-        fallDistance = eyeCamToFloorDist - eyeCamHeight;
 
+		// Camera to floor distance
+		#if UNITY_STANDALONE_WIN
+        float eyeCamHeight = eyeCamera.transform.localPosition.y * cameraScale;
+		#else
+		float eyeCamHeight = camHeight;
+		#endif
+        fallDistance = eyeCamToFloorDist - eyeCamHeight;
         // Debug.Log(rayCollidedWith.transform.gameObject.name);
 
         if (rayHit)
@@ -145,7 +158,6 @@ public class CameraTeleport : MonoBehaviour {
                             {
                                 roomManager.DeactivateRoom(i);
                             }
-
                             Debug.Log("turn off floors[2~6]");
                         }
                         else if (floorNum != 1) // don't need to turn off anything if on floor_1
@@ -195,7 +207,6 @@ public class CameraTeleport : MonoBehaviour {
 
                         /// SKYBOX ////////////////////////////////////////////////////////////////////////////////////
                         skyColorManager.SetFloor(floorNum);
-                        //RenderSettings.ambientLight = skyColorManager.
 
                         /// TOOL ////////////////////////////////////////////////////////////////////////////////////////
                         toolManager.SwitchToolOfFloor(floorNum);
@@ -268,19 +279,14 @@ public class CameraTeleport : MonoBehaviour {
                 }
                 else
                 {
-                    // shouldFall = false;
-
-                    // restart into intro room's fake rabbit hole
-                    // transform.position = restartPoint.transform.position;
-
                     // trigger eye mask fade out
                     if (eyeMaskOn && rabbitHole.isActiveAndEnabled)
                     {
                         Invoke("EyeMaskFadeOut", 2f);
+
                         // AUDIO
                         rabbitHole.enabled = false;
                         fallSpeed = fallSpeedNormal;
-
                     }
                 }
             }

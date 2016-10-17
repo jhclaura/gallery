@@ -6,10 +6,10 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Lime_ Inner
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: S_SPECULAR_NONE S_UNLIT
-  m_LightmapFlags: 5
+  m_Name: Purple_pastel
+  m_Shader: {fileID: 10755, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: S_SPECULAR_NONE S_UNLIT _EMISSION
+  m_LightmapFlags: 1
   m_CustomRenderQueue: -1
   stringTagMap:
     OriginalShader: Standard
@@ -142,7 +142,7 @@ Material:
       second: 1
     - first:
         name: _SpecularMode
-      second: 1
+      second: 2
     - first:
         name: _SrcBlend
       second: 1
@@ -182,7 +182,7 @@ Material:
     m_Colors:
     - first:
         name: _Color
-      second: {r: 0.78682184, g: 1, b: 0.91472876, a: 1}
+      second: {r: 0.49411765, g: 0.42352942, b: 0.90588236, a: 1}
     - first:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}
