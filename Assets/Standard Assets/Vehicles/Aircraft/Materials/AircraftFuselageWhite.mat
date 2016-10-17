@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: AircraftFuselageWhite
-  m_Shader: {fileID: 4800000, guid: 908b379d4818cd64184b95a21123d909, type: 3}
+  m_Shader: {fileID: 45, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: S_OCCLUSION S_RECEIVE_SHADOWS S_SPECULAR_BLINNPHONG _LIGHTMAPPING_STATIC_LIGHTMAPS
     _NORMALMAP _UVPRIM_UV1 _UVSEC_UV1
   m_LightmapFlags: 0
@@ -124,8 +124,14 @@ Material:
         name: _FogMultiplier
       second: 1
     - first:
+        name: _GlossMapScale
+      second: 1
+    - first:
         name: _Glossiness
       second: 0.15
+    - first:
+        name: _GlossyReflections
+      second: 1
     - first:
         name: _Lightmapping
       second: 0
@@ -153,6 +159,12 @@ Material:
     - first:
         name: _Parallax
       second: 0.02
+    - first:
+        name: _SmoothnessTextureChannel
+      second: 0
+    - first:
+        name: _SpecularHighlights
+      second: 1
     - first:
         name: _SpecularMode
       second: 1

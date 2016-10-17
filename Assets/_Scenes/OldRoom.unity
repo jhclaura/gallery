@@ -135,6 +135,14 @@ Prefab:
       propertyPath: oldRoom
       value: 
       objectReference: {fileID: 993869400}
+    - target: {fileID: 1000010649775536, guid: b8d78c0dde48692429c620a189fc7911, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012264727068, guid: b8d78c0dde48692429c620a189fc7911, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b8d78c0dde48692429c620a189fc7911, type: 2}
   m_IsPrefabParent: 0

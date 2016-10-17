@@ -5,19 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/_Scenes/_Main.unity
-  - enabled: 1
-    path: Assets/_Scenes/IntroRoom.unity
-  - enabled: 1
-    path: Assets/_Scenes/DarkRoom.unity
-  - enabled: 1
-    path: Assets/_Scenes/MiniRoom.unity
-  - enabled: 1
-    path: Assets/_Scenes/OceanRoom.unity
-  - enabled: 1
-    path: Assets/_Scenes/OldRoom.unity
-  - enabled: 1
-    path: Assets/_Scenes/MirrorRoom.unity
-  - enabled: 1
-    path: Assets/_Scenes/BigHall.unity
+  - enabled: 0
+    path: Assets/_Scenes/_Mobile/_Main.unity
+  - enabled: 0
+    path: Assets/_Scenes/_Mobile/IntroRoom.unity
+  - enabled: 0
+    path: Assets/_Scenes/_Mobile/DarkRoom.unity
+  - enabled: 0
+    path: Assets/_Scenes/_Mobile/MiniRoom.unity
+  - enabled: 0
+    path: Assets/_Scenes/_Mobile/OceanRoom.unity
+  - enabled: 0
+    path: Assets/_Scenes/_Mobile/OldRoom.unity
+  - enabled: 0
+    path: Assets/_Scenes/_Mobile/MirrorRoom.unity
+  - enabled: 0
+    path: Assets/_Scenes/_Mobile/BigHall.unity
