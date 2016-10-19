@@ -47,6 +47,12 @@ public class CameraTeleport : MonoBehaviour {
 
 	bool amIVive = false;
 	public float camHeight = 2;
+	public LayerMask layersToIgnore;
+	public LayerMask floorLayers;
+	int floorMask;
+	public GameObject menuObject;
+	bool menuObjectIsHidden = false;
+	public MenuManger menuManager;
 
     IEnumerator Start ()
     {
@@ -67,7 +73,13 @@ public class CameraTeleport : MonoBehaviour {
         rabbitHole = GetComponent<AudioSource>();
         rabbitHole.enabled = false;
 
+		menuManager = menuObject.GetComponent<MenuManger> ();
+		menuObject.SetActive (false);
+
+		floorMask = floorLayers;
+
         initialized = true;
+		Debug.Log("fully initialized!");
     }
 	
 	void Update ()
@@ -118,7 +130,7 @@ public class CameraTeleport : MonoBehaviour {
 		#endif
 
         RaycastHit rayCollidedWith;
-        bool rayHit = Physics.Raycast(ray, out rayCollidedWith);
+		bool rayHit = Physics.Raycast(ray, out rayCollidedWith, Mathf.Infinity, floorMask);
         float eyeCamToFloorDist = rayCollidedWith.distance;
 
 		// Camera to floor distance
@@ -130,7 +142,7 @@ public class CameraTeleport : MonoBehaviour {
         fallDistance = eyeCamToFloorDist - eyeCamHeight;
         // Debug.Log(rayCollidedWith.transform.gameObject.name);
 
-        if (rayHit)
+		if (rayHit)
         {
             if (CurrentFloorChanged(rayCollidedWith)) {
                 currentFloor = rayCollidedWith.transform.gameObject;
@@ -139,7 +151,7 @@ public class CameraTeleport : MonoBehaviour {
                 string f_name = currentFloor.name;
                 string[] splitString = f_name.Split('_');
                 
-                if (splitString.Length > 0)
+				if (splitString.Length > 0)
                 {
                     // if hit the floor
                     if (splitString[0] == "Floor")
@@ -215,6 +227,11 @@ public class CameraTeleport : MonoBehaviour {
 
                         /// TOOL ////////////////////////////////////////////////////////////////////////////////////////
                         toolManager.SwitchToolOfFloor(floorNum);
+
+						/// MENU_OBJECT ///
+						menuObject.SetActive(false);
+						menuObjectIsHidden = true;
+//						menuManager.flyerManager.ToggleMode (false);
                     }
                 }
 
@@ -249,6 +266,18 @@ public class CameraTeleport : MonoBehaviour {
                 else
                 {
                     shouldFall = false;
+
+					if (menuObjectIsHidden) {
+						// update menu_object position, and show it
+						menuObject.transform.position = new Vector3(transform.position.x,
+																	transform.position.y - 2.5f,
+																	transform.position.z);
+						menuObject.SetActive(true);
+						menuObjectIsHidden = false;
+
+						if(menuManager.inInfoMode)
+							menuManager.flyerManager.ToggleMode (true);
+					}
                 }
 
                 // WATER
