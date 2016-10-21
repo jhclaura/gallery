@@ -148,6 +148,18 @@ Prefab:
       propertyPath: m_VideoPath
       value: VideoGIFs/10_LeonDeniseDamienRichard/LeonDeniseDamienRichard-400.mp4
       objectReference: {fileID: 0}
+    - target: {fileID: 1000013309923188, guid: b8d78c0dde48692429c620a189fc7911, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012310803486, guid: b8d78c0dde48692429c620a189fc7911, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012833365152, guid: b8d78c0dde48692429c620a189fc7911, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b8d78c0dde48692429c620a189fc7911, type: 2}
   m_IsPrefabParent: 0
@@ -1815,6 +1827,18 @@ Prefab:
     - target: {fileID: 100230, guid: 6f40434c7fac66847a2913870710d4dd, type: 3}
       propertyPath: m_Layer
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 6f40434c7fac66847a2913870710d4dd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100208, guid: 6f40434c7fac66847a2913870710d4dd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100146, guid: 6f40434c7fac66847a2913870710d4dd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6f40434c7fac66847a2913870710d4dd, type: 3}

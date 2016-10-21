@@ -264,6 +264,16 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114000010407937020, guid: 76a81d49f5e8842d1b91a6a2e9c04b3d,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011991235222, guid: 76a81d49f5e8842d1b91a6a2e9c04b3d,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76a81d49f5e8842d1b91a6a2e9c04b3d, type: 2}
   m_IsPrefabParent: 0
@@ -342,7 +352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_VideoLocation: 2
-  m_VideoPath: VideoGIFs/14_MartinOlsson/MartinOlsson-720.mp4
+  m_VideoPath: VideoGIFs/14_MartinOlsson/MartinOlsson-400.mp4
   m_AutoOpen: 1
   m_AutoStart: 1
   m_Loop: 1

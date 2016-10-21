@@ -168,6 +168,10 @@ Prefab:
       propertyPath: m_VideoPath
       value: VideoGIFs/James_Kerr/james_kerr_right_550.mp4
       objectReference: {fileID: 0}
+    - target: {fileID: 1000010212846918, guid: 408215b91f3d1b54aaeaae15ae8b92db, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 408215b91f3d1b54aaeaae15ae8b92db, type: 2}
   m_IsPrefabParent: 0
