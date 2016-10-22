@@ -21,10 +21,6 @@ public class CameraTeleport : MonoBehaviour {
     public float cameraScale = 2f;
     bool toFallIntoWater = false;
 
-    public FloorDataManager floorDataManager;
-    public Text flyerContents;
-    public Text flyerContentDeets;
-
     public GameObject[] floors;
     SkyColorManager skyColorManager;
     LightManager lightManager;
@@ -53,6 +49,11 @@ public class CameraTeleport : MonoBehaviour {
 	public GameObject menuObject;
 	bool menuObjectIsHidden = false;
 	public MenuManger menuManager;
+
+	Vector3 downVec = new Vector3(0,-1,0);
+
+	public Color fadeColor = Color.black;
+	public float fadeTime = 2f;
 
     IEnumerator Start ()
     {
@@ -89,6 +90,7 @@ public class CameraTeleport : MonoBehaviour {
             DetectFloorAndFall();
         }
 
+		#if UNITY_STANDALONE_WIN
 		// Vive feature: able to be up or down in the water
 		if (amIVive && currentFloorNum == 3)
         {
@@ -114,6 +116,7 @@ public class CameraTeleport : MonoBehaviour {
                 }
             }
         }
+		#endif
     }
 
     bool CurrentFloorChanged(RaycastHit collidedObj)
@@ -126,7 +129,7 @@ public class CameraTeleport : MonoBehaviour {
 		#if UNITY_STANDALONE_WIN
         Ray ray = new Ray(eyeCamera.transform.position, -transform.up);
 		#else
-		Ray ray = new Ray(eyeCamera.transform.position, new Vector3(0,-1,0));
+		Ray ray = new Ray(eyeCamera.transform.position, downVec);
 		#endif
 
         RaycastHit rayCollidedWith;
@@ -165,6 +168,7 @@ public class CameraTeleport : MonoBehaviour {
                         if (floorNum == 6) floorToTurnOn = 0;
 
                         roomManager.ActivateRoom(floorToTurnOn);
+						//CameraFade.StartAlphaFadeInOut(fadeColor, fadeTime, 1f, null);
 
                         // v.2
                         // turn off floors
@@ -186,7 +190,7 @@ public class CameraTeleport : MonoBehaviour {
                         }
 
                         /// Audios /////////////////////////////////////////////////////////////////////////////////////
-                        // turn on
+						// turn on floor(+0)
                         // (eg.on floor_2, turn on floor_2)
                         int floorAudioToTurnOn = floorNum;
                         roomManager.ActivateAudio(floorAudioToTurnOn);
@@ -245,8 +249,10 @@ public class CameraTeleport : MonoBehaviour {
                     rabbitHole.enabled = true;
                     fallSpeed = fallSpeedFast;
 
+					#if UNITY_STANDALONE_WIN
                     eyeMaskBottom.SetActive(true);
                     eyeMaskTop.SetActive(true);
+					#endif
                 }
                 else {
                     toRestart = false;
@@ -299,11 +305,15 @@ public class CameraTeleport : MonoBehaviour {
                 /// EyeMasking --------------------------------------------------------
                 if (fallDistance < 5f && !eyeMaskOn)
                 {
+					#if UNITY_STANDALONE_WIN
                     // trigger eye mask fade in
                     eyeMaskOn = true;
                     Debug.Log("eyeMaskOn = true");
                     eyeMaskAnimator.SetTrigger("FadeIn");
                     Debug.Log("fade in eye mask");
+					#else
+					CameraFade.StartAlphaFadeInOut(fadeColor, fadeTime, 2f, null);
+					#endif
                 }
 
                 // Falling ------------------------------------------------------------
@@ -316,7 +326,9 @@ public class CameraTeleport : MonoBehaviour {
                     // trigger eye mask fade out
                     if (eyeMaskOn && rabbitHole.isActiveAndEnabled)
                     {
+						#if UNITY_STANDALONE_WIN
                         Invoke("EyeMaskFadeOut", 2f);
+						#endif
 
                         // AUDIO
                         rabbitHole.enabled = false;

@@ -5,8 +5,12 @@ public class Room : MonoBehaviour {
 
     public string roomName;
     public Light[] lights;
+	#if UNITY_STANDALONE_WIN
     public AudioSource[] audios;
-    public OldRoomGifData gifData;
+	#else
+	public GvrAudioSource[] audios;
+	#endif
+	public OldRoomGifData gifData;
 
 	// Use this for initialization
 	void Start () {
@@ -32,7 +36,11 @@ public class Room : MonoBehaviour {
     {
         if (audios.Length > 0)
         {
+			#if UNITY_STANDALONE_WIN
             foreach (AudioSource audio in audios)
+			#else
+			foreach (GvrAudioSource audio in audios)
+			#endif
             {
                 //audio.UnPause();
                 audio.enabled = true;
@@ -49,7 +57,11 @@ public class Room : MonoBehaviour {
     {
         if (audios.Length > 0)
         {
-            foreach (AudioSource audio in audios)
+			#if UNITY_STANDALONE_WIN
+			foreach (AudioSource audio in audios)
+			#else
+			foreach (GvrAudioSource audio in audios)
+			#endif
             {
                 //audio.Pause();
                 audio.enabled = false;

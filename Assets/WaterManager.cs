@@ -7,7 +7,13 @@ public class WaterManager : MonoBehaviour {
     public GameObject underWater;
 
     public GameObject ocean;
-    AudioSource[] waterAudios;
+
+	#if UNITY_STANDALONE_WIN
+	AudioSource[] waterAudios;
+	#else
+	GvrAudioSource[] waterAudios;
+	#endif
+
     float waterNormalPitch = 0.9f;
     float waterUnderPitch = 0.3f;
 
@@ -26,7 +32,11 @@ public class WaterManager : MonoBehaviour {
         underWater.SetActive(!yeaa);
 
         // under water, muffle the sound, if above, reset the sound
+		#if UNITY_STANDALONE_WIN
         foreach ( AudioSource audio in waterAudios)
+		#else
+		foreach ( GvrAudioSource audio in waterAudios)
+		#endif
         {
             if (yeaa) audio.pitch = waterNormalPitch;
             else audio.pitch = waterUnderPitch;

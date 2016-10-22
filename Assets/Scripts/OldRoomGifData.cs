@@ -18,7 +18,11 @@ public class OldRoomGifData : MonoBehaviour {
     bool roomTextureNormal;
 
     public GameObject oldRoom;
+	#if UNITY_STANDALONE_WIN
     AudioSource[] radioAudios;
+	#else
+	GvrAudioSource[] radioAudios;
+	#endif
     int audioCount;
 
     // Use this for initialization

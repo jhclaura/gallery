@@ -22,7 +22,6 @@ GameObject:
   - 20: {fileID: 20000013727265884}
   - 81: {fileID: 81000010545169668}
   - 114: {fileID: 114000010346479742}
-  - 114: {fileID: 114000010116210204}
   m_Layer: 0
   m_Name: VRCam
   m_TagString: MainCamera
@@ -84,29 +83,6 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013230712772}
   m_Enabled: 1
---- !u!114 &114000010116210204
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013230712772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93c5acf727c4d5d43bc69e892a516630, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_valveShadowTextureWidth: 4096
-  m_valveShadowTextureHeight: 4096
-  m_indirectLightmapsOnly: 0
-  m_adaptiveQualityEnabled: 1
-  m_adaptiveQualityDebugVis: 0
-  m_MSAALevel: 4
-  m_minRenderTargetScale: 0.8
-  m_maxRenderTargetScale: 1.4
-  m_maxRenderTargetDimension: 4096
-  m_cullLightsInSceneEditor: 0
-  m_cullLightsFromEditorCamera: 0
-  m_hideAllValveMaterials: 0
 --- !u!114 &114000010346479742
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -19,13 +19,21 @@ public class HandInteraction : MonoBehaviour {
 
     public GameObject[] logoObjects;
 
+	#if UNITY_STANDALONE_WIN
     AudioSource electricalSound;
+	#else
+	GvrAudioSource electricalSound;
+	#endif
 
     void Start()
     {
         handCollider = GetComponent<Collider>();
 
+		#if UNITY_STANDALONE_WIN
         electricalSound = GetComponent<AudioSource>();
+		#else
+		electricalSound = GetComponent<GvrAudioSource>();
+		#endif
 
         oriColors = new Color[2];
         colorCount = logoColorSets.Length;

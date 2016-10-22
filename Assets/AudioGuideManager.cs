@@ -11,7 +11,14 @@ public class AudioGuideManager : MonoBehaviour {
     Vector3 rightDownAngle = new Vector3(0, 0, 20);
 
     int currentAudioIndex = 0;
+
+	public bool toAnimateButton = false;
+
+	#if UNITY_STANDALONE_WIN
     public AudioSource[] audioGuides = new AudioSource[3];
+	#else
+	public GvrAudioSource[] audioGuides = new GvrAudioSource[3];
+	#endif
 
     public void PressLeftButton()
     {
@@ -25,7 +32,8 @@ public class AudioGuideManager : MonoBehaviour {
 
     public void ReleaseLeftButton()
     {
-        leftButton.transform.localEulerAngles = resetAngle;
+		if(toAnimateButton)
+	        leftButton.transform.localEulerAngles = resetAngle;
 
         currentAudioIndex--;
         SwitchAudios(currentAudioIndex);
@@ -33,7 +41,8 @@ public class AudioGuideManager : MonoBehaviour {
 
     public void ReleaseRightButton()
     {
-        rightButton.transform.localEulerAngles = resetAngle;
+		if(toAnimateButton)
+  	      rightButton.transform.localEulerAngles = resetAngle;
 
         currentAudioIndex++;
         SwitchAudios(currentAudioIndex);
