@@ -11,6 +11,7 @@ public class Gif : MonoBehaviour {
 
         MediaPlayer rootPlayer = GetComponent<MediaPlayer>();
         Animator rootAnimator = GetComponent<Animator>();
+
         if (rootPlayer || rootAnimator)
         {
             targetObjects.Add(transform.gameObject);
@@ -29,6 +30,7 @@ public class Gif : MonoBehaviour {
         foreach (GameObject targetObject in targetObjects) {
             targetObject.AddComponent<GifPlayer>();
         }
+
 	}
 	
 	// Update is called once per frame

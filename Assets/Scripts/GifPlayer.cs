@@ -25,9 +25,11 @@ public class GifPlayer : MonoBehaviour {
         if (renderer && renderer.isVisible)
         {
             OnBecameVisible();
+			Debug.Log ("OnBecameVisible");
         } else
         {
             OnBecameInvisible();
+			Debug.Log ("OnBecameInvisible");
         }
 	}
 
@@ -44,7 +46,7 @@ public class GifPlayer : MonoBehaviour {
     void OnBecameInvisible() {
         if (playerType == GifPlayerType.Video)
         {
-            GetComponent<MediaPlayer>().Pause();
+			GetComponent<MediaPlayer>().Stop(); // Pause()
         } else
         {
             GetComponent<Animator>().enabled = false;
