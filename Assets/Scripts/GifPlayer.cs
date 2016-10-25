@@ -25,11 +25,11 @@ public class GifPlayer : MonoBehaviour {
         if (renderer && renderer.isVisible)
         {
             OnBecameVisible();
-			Debug.Log ("OnBecameVisible");
+//			Debug.Log ("OnBecameVisible");
         } else
         {
             OnBecameInvisible();
-			Debug.Log ("OnBecameInvisible");
+//			Debug.Log ("OnBecameInvisible");
         }
 	}
 

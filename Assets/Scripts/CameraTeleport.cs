@@ -305,15 +305,19 @@ public class CameraTeleport : MonoBehaviour {
                 /// EyeMasking --------------------------------------------------------
                 if (fallDistance < 5f && !eyeMaskOn)
                 {
-					#if UNITY_STANDALONE_WIN
+					
                     // trigger eye mask fade in
-                    eyeMaskOn = true;
-                    Debug.Log("eyeMaskOn = true");
+					eyeMaskOn = true;
+					Debug.Log("eyeMaskOn = true");
+
+					#if UNITY_STANDALONE_WIN
                     eyeMaskAnimator.SetTrigger("FadeIn");
                     Debug.Log("fade in eye mask");
 					#else
 					CameraFade.StartAlphaFadeInOut(fadeColor, fadeTime, 2f, null);
 					#endif
+
+
                 }
 
                 // Falling ------------------------------------------------------------
@@ -326,9 +330,7 @@ public class CameraTeleport : MonoBehaviour {
                     // trigger eye mask fade out
                     if (eyeMaskOn && rabbitHole.isActiveAndEnabled)
                     {
-						#if UNITY_STANDALONE_WIN
                         Invoke("EyeMaskFadeOut", 2f);
-						#endif
 
                         // AUDIO
                         rabbitHole.enabled = false;
@@ -339,7 +341,7 @@ public class CameraTeleport : MonoBehaviour {
         }
         else
         {
-            Debug.Log("ray hits nothing");
+            //Debug.Log("ray hits nothing");
         }
     }
 
@@ -354,16 +356,17 @@ public class CameraTeleport : MonoBehaviour {
     {
         // trigger eye mask fade out
         transform.position = restartPoint.transform.position;
-        eyeMaskAnimator.SetTrigger("FadeOut");
+		eyeMaskOn = false;
+		Debug.Log("eyeMaskOn = false");
 
+		#if UNITY_STANDALONE_WIN
+		eyeMaskAnimator.SetTrigger("FadeOut");
         eyeMaskBottom.SetActive(false);
-
-        eyeMaskOn = false;
-        Debug.Log("eyeMaskOn = false");
 
         Invoke("DisableEyeMask", 3.5f);
 
         Debug.Log("fade out eye mask");
+		#endif
     }
 
     void DisableEyeMask()
