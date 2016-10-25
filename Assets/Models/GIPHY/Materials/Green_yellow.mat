@@ -6,9 +6,9 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Pot_002Mat
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: S_RECEIVE_SHADOWS S_SPECULAR_METALLIC
+  m_Name: Green_yellow
+  m_Shader: {fileID: 10755, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: S_SPECULAR_NONE S_UNLIT
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
   stringTagMap:
@@ -49,7 +49,7 @@ Material:
     - first:
         name: _MainTex
       second:
-        m_Texture: {fileID: 2800000, guid: 0da28046978bfc742a2ea7d01b2e9d2e, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -106,13 +106,13 @@ Material:
       second: 1
     - first:
         name: _Glossiness
-      second: 0.91
+      second: 0.5
     - first:
         name: _GlossyReflections
       second: 1
     - first:
         name: _Metallic
-      second: 0.23
+      second: 0
     - first:
         name: _Mode
       second: 0
@@ -160,7 +160,7 @@ Material:
       second: 0
     - first:
         name: g_bUnlit
-      second: 0
+      second: 1
     - first:
         name: g_bWorldAlignedTexture
       second: 0
@@ -182,7 +182,7 @@ Material:
     m_Colors:
     - first:
         name: _Color
-      second: {r: 1, g: 1, b: 1, a: 1}
+      second: {r: 0.863286, g: 0.9411765, b: 0.5882353, a: 1}
     - first:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}

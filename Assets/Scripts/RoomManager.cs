@@ -28,6 +28,26 @@ public class RoomManager : MonoBehaviour {
        new RoomData("BigHall")
     };
 
+	public void PairRoom() {
+		// Pair up rooms with room objects
+		// Not a great way of doing this...
+		Room[] rooms = GameObject.FindObjectsOfType<Room>();
+
+		for (int i = 0; i < roomData.Length; ++i) {
+			RoomData roomDataItem = roomData[i];
+
+			foreach (Room room in rooms)
+			{
+
+				if (roomDataItem.name == room.roomName) {
+					roomDataItem.room = room;
+					//                    Debug.Log(room.roomName + " " + roomDataItem.name);
+					Debug.Log(room.roomName + " loaded!");
+				}
+			}
+		}
+	}
+
     public IEnumerator LoadAll() {
         foreach (RoomData room in roomData)
         {
@@ -51,7 +71,6 @@ public class RoomManager : MonoBehaviour {
                 }
             }
         }
-       //Debug.Log(roomData);
     }
     
     public void ActivateRoom(int roomIndex)
@@ -73,4 +92,34 @@ public class RoomManager : MonoBehaviour {
     {
         roomData[roomIndex].room.PauseAudios();
     }
+
+	public void ActivateLight(int roomIndex)
+	{
+		roomData[roomIndex].room.ActivateLights();
+	}
+
+	public void DeactivateLight(int roomIndex)
+	{
+		roomData[roomIndex].room.DeactivateLights();
+	}
+
+	public void ActivateWater(int roomIndex)
+	{
+		roomData[roomIndex].room.ActivateWater();
+	}
+
+	public void DeactivateWater(int roomIndex)
+	{
+		roomData[roomIndex].room.DeactivateWater();
+	}
+
+	public void ActivateAnimator(int roomIndex)
+	{
+		roomData[roomIndex].room.ActivateAnimators();
+	}
+
+	public void DeactivateAnimator(int roomIndex)
+	{
+		roomData[roomIndex].room.DeactivateAnimators();
+	}
 }

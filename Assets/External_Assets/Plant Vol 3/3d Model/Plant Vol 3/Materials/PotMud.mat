@@ -6,10 +6,10 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: calla_palustris_TruckMat
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: S_RECEIVE_SHADOWS S_SPECULAR_METALLIC _NORMALMAP
-  m_LightmapFlags: 5
+  m_Name: PotMud
+  m_Shader: {fileID: 10703, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: S_OCCLUSION S_RECEIVE_SHADOWS S_SPECULAR_METALLIC _EMISSION _NORMALMAP
+  m_LightmapFlags: 1
   m_CustomRenderQueue: -1
   stringTagMap:
     OriginalShader: Standard
@@ -19,7 +19,7 @@ Material:
     - first:
         name: _BumpMap
       second:
-        m_Texture: {fileID: 2800000, guid: 6904c999188015b4eaa33a571ca917f5, type: 3}
+        m_Texture: {fileID: 2800000, guid: 177d30bfa4e857847bfe29e42aee94d5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -49,7 +49,7 @@ Material:
     - first:
         name: _MainTex
       second:
-        m_Texture: {fileID: 2800000, guid: a9b66fd1edb048b4e8c34f1f59edad4f, type: 3}
+        m_Texture: {fileID: 2800000, guid: 89929102800f6ee4ca9d0e0314b966c8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -61,7 +61,7 @@ Material:
     - first:
         name: _OcclusionMap
       second:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: b00ca830c4206f848abb3f4d8183cd05, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -106,13 +106,13 @@ Material:
       second: 1
     - first:
         name: _Glossiness
-      second: 0.29
+      second: 0.56
     - first:
         name: _GlossyReflections
       second: 1
     - first:
         name: _Metallic
-      second: 0.29
+      second: 0.3
     - first:
         name: _Mode
       second: 0

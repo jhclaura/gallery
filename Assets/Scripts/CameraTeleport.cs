@@ -55,7 +55,15 @@ public class CameraTeleport : MonoBehaviour {
 	public Color fadeColor = Color.black;
 	public float fadeTime = 2f;
 
-    IEnumerator Start ()
+//	void Awake()
+//	{
+//		roomManager = GetComponent<RoomManager>();
+//		// v.2
+//		roomManager.PairRoom();
+//	}
+
+	// IEnumerator
+	IEnumerator Start ()
     {
 		#if UNITY_STANDALONE_WIN
 		amIVive = true;
@@ -64,11 +72,12 @@ public class CameraTeleport : MonoBehaviour {
         skyColorManager = GetComponent<SkyColorManager>();
         lightManager = GetComponent<LightManager>();
         toolManager = GetComponent<ToolManager>();
-        roomManager = GetComponent<RoomManager>();
 
         cameraScale = transform.localScale.x;
 
-        yield return StartCoroutine(roomManager.LoadAll());
+		// v.1 ( with IEnumerator Start() )
+		roomManager = GetComponent<RoomManager>();
+         yield return StartCoroutine(roomManager.LoadAll());
 
         fallSpeed = fallSpeedNormal;
         rabbitHole = GetComponent<AudioSource>();
@@ -81,6 +90,8 @@ public class CameraTeleport : MonoBehaviour {
 
         initialized = true;
 		Debug.Log("fully initialized!");
+
+//		Invoke ("ToInitialize", 2f);
     }
 	
 	void Update ()
@@ -189,12 +200,13 @@ public class CameraTeleport : MonoBehaviour {
                             roomManager.DeactivateRoom(floorToTurnOff);
                         }
 
-                        /// Audios /////////////////////////////////////////////////////////////////////////////////////
+                        /// Audios & Lights /////////////////////////////////////////////////////////////////////////////////////
 						// turn on floor(+0)
                         // (eg.on floor_2, turn on floor_2)
                         int floorAudioToTurnOn = floorNum;
                         roomManager.ActivateAudio(floorAudioToTurnOn);
-                        Debug.Log("turn on audio floor" + floorAudioToTurnOn);
+						roomManager.ActivateLight(floorAudioToTurnOn);
+                        Debug.Log("turn on audio+light floor" + floorAudioToTurnOn);
 
                         // turn off
                         if (floorNum == 0)
@@ -203,28 +215,33 @@ public class CameraTeleport : MonoBehaviour {
                             for (var i = 1; i < 7; i++)
                             {
                                 roomManager.DeactivateAudio(i);
+								roomManager.DeactivateLight(i);
                             }
-                            Debug.Log("turn off audio floors[1~6]");
+							Debug.Log("turn off audio+light floors[1~6]");
                         }
                         else
                         {
                             //  turn off floor (-1) (eg. on floor_3, turn off floor_2)
                             int floorToTurnOff = floorNum - 1;
                             roomManager.DeactivateAudio(floorToTurnOff);
+							roomManager.DeactivateLight(floorToTurnOff);
                         }
 
                         /// Water //////////////////////////////////////////////////////////////////////////////////////
-                        if (floorNum == 3)
-                        {
-                            if(waterManager==null)
-                            {
-                                waterManager = currentFloor.GetComponent<WaterManager>();
-                                water = waterManager.surfaceWater;
-                            }
+						if (floorNum == 3) {
+							roomManager.ActivateWater (3);
 
-                            // prepare to fall into water
-                            toFallIntoWater = true;
-                        }
+							if (waterManager == null) {
+								waterManager = currentFloor.GetComponent<WaterManager> ();
+								water = waterManager.surfaceWater;
+							}
+
+							// prepare to fall into water
+							toFallIntoWater = true;
+						} else {
+							roomManager.DeactivateWater (3);
+						}
+							
 
                         /// SKYBOX ////////////////////////////////////////////////////////////////////////////////////
                         skyColorManager.SetFloor(floorNum);
@@ -253,6 +270,8 @@ public class CameraTeleport : MonoBehaviour {
                     eyeMaskBottom.SetActive(true);
                     eyeMaskTop.SetActive(true);
 					#endif
+
+					roomManager.ActivateAnimator (6);
                 }
                 else {
                     toRestart = false;
@@ -289,7 +308,7 @@ public class CameraTeleport : MonoBehaviour {
                 // WATER
                 if (toFallIntoWater)
                 {
-                    if(fallDistance < 2.2f)
+                    if(fallDistance < 2.5f)
                     {
                         // decrease fall speed!
                         fallSpeed = fallSpeedSlow;
@@ -313,11 +332,13 @@ public class CameraTeleport : MonoBehaviour {
 					#if UNITY_STANDALONE_WIN
                     eyeMaskAnimator.SetTrigger("FadeIn");
                     Debug.Log("fade in eye mask");
+
 					#else
 					CameraFade.StartAlphaFadeInOut(fadeColor, fadeTime, 2f, null);
+
 					#endif
 
-
+					roomManager.DeactivateAnimator (6);
                 }
 
                 // Falling ------------------------------------------------------------
@@ -344,6 +365,11 @@ public class CameraTeleport : MonoBehaviour {
             //Debug.Log("ray hits nothing");
         }
     }
+
+	void ToInitialize()
+	{
+		initialized = true;
+	}
 
     void FixedUpdate()
     {

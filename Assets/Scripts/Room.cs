@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.Water;
 
 public class Room : MonoBehaviour {
 
@@ -11,6 +12,8 @@ public class Room : MonoBehaviour {
 	public GvrAudioSource[] audios;
 	#endif
 	public OldRoomGifData gifData;
+	public Water water;
+	public Animator[] animators;
 
 	// Use this for initialization
 	void Start () {
@@ -69,19 +72,52 @@ public class Room : MonoBehaviour {
         }
     }
 
-    void ActivateLights()
+	public void ActivateLights()
     {
         foreach (Light light in lights)
         {
-            light.enabled = true;
+			if(!light.isActiveAndEnabled)
+	            light.enabled = true;
         }
     }
 
-    void DeactivateLights()
+	public void DeactivateLights()
     {
         foreach (Light light in lights)
         {
-            light.enabled = false;
+			if(light.isActiveAndEnabled)
+	            light.enabled = false;
         }
     }
+
+	public void ActivateWater()
+	{
+		if(water && !water.isActiveAndEnabled)
+			water.enabled = true;
+	}
+
+	public void DeactivateWater()
+	{
+		if(water && water.isActiveAndEnabled)
+			water.enabled = false;
+	}
+
+	public void ActivateAnimators()
+	{
+		foreach (Animator ani in animators)
+		{
+			if(ani && !ani.isActiveAndEnabled)
+				ani.enabled = true;
+		}
+	}
+
+	public void DeactivateAnimators()
+	{
+		foreach (Animator ani in animators)
+		{
+			if(ani && ani.isActiveAndEnabled)
+				ani.enabled = false;
+		}
+	}
+
 }

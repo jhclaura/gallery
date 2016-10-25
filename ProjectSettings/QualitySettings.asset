@@ -166,7 +166,7 @@ QualitySettings:
     name: moga
     pixelLightCount: 2
     shadows: 0
-    shadowResolution: 3
+    shadowResolution: 2
     shadowProjection: 1
     shadowCascades: 1
     shadowDistance: 120
@@ -176,7 +176,7 @@ QualitySettings:
     blendWeights: 2
     textureQuality: 0
     anisotropicTextures: 1
-    antiAliasing: 4
+    antiAliasing: 2
     softParticles: 0
     softVegetation: 1
     realtimeReflectionProbes: 0
@@ -191,9 +191,9 @@ QualitySettings:
   m_PerPlatformDefaultQuality:
     Android: 6
     BlackBerry: 1
-    Standalone: 3
+    Standalone: 6
     WP8: 1
     Web: 4
-    WebGL: 1
+    WebGL: 6
     Windows Store Apps: 1
     iPhone: 6
