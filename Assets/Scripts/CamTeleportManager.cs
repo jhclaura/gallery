@@ -180,9 +180,7 @@ public class CamTeleportManager : MonoBehaviour {
                         if (floorNum == 6) floorToTurnOn = 0;
 
                         roomManager.ActivateRoom(floorToTurnOn);
-						//CameraFade.StartAlphaFadeInOut(fadeColor, fadeTime, 1f, null);
 
-                        // v.2
                         // turn off floors
                         if (floorNum == 0)
                         {
@@ -202,8 +200,7 @@ public class CamTeleportManager : MonoBehaviour {
                         }
 
                         /// Audios & Lights /////////////////////////////////////////////////////////////////////////////////////
-						// turn on floor(+0)
-                        // (eg.on floor_2, turn on floor_2)
+						// turn on floor(+0) (eg.on floor_2, turn on floor_2)
                         int floorAudioToTurnOn = floorNum;
                         roomManager.ActivateAudio(floorAudioToTurnOn);
 						roomManager.ActivateLight(floorAudioToTurnOn);

@@ -14,7 +14,10 @@ public class Room : MonoBehaviour {
 	#endif
 
 	public OldRoomGifData gifData;
+
 	public Water water;
+	public GameObject dummyWater;
+
 	public Animator[] animators;
 
 	// Use this for initialization
@@ -94,14 +97,18 @@ public class Room : MonoBehaviour {
 
 	public void ActivateWater()
 	{
-		if(water && !water.isActiveAndEnabled)
+		if (water && !water.isActiveAndEnabled) {
+			dummyWater.SetActive (false);
 			water.enabled = true;
+		}
 	}
 
 	public void DeactivateWater()
 	{
-		if(water && water.isActiveAndEnabled)
+		if (water && water.isActiveAndEnabled) {
+			dummyWater.SetActive (true);
 			water.enabled = false;
+		}
 	}
 
 	public void ActivateAnimators()

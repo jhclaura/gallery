@@ -267,9 +267,9 @@ MeshRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013519279330}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_MotionVectors: 0
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
@@ -470,6 +470,7 @@ MonoBehaviour:
   - {fileID: 114000013674754950}
   gifData: {fileID: 0}
   water: {fileID: 0}
+  dummyWater: {fileID: 0}
   animators: []
 --- !u!114 &114000010459298988
 MonoBehaviour:
@@ -693,7 +694,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_VideoLocation: 2
-  m_VideoPath: VideoGIFs/14_MartinOlsson/MartinOlsson-400.mp4
+  m_VideoPath: VideoGIFs/14_MartinOlsson/MartinOlsson-400_2.mp4
   m_AutoOpen: 1
   m_AutoStart: 1
   m_Loop: 1
