@@ -126,7 +126,7 @@ GameObject:
   - 114: {fileID: 114000012329179736}
   - 64: {fileID: 64000012880111670}
   - 114: {fileID: 114000013196865768}
-  - 114: {fileID: 114000012938543348}
+  - 114: {fileID: 114000010459298988}
   m_Layer: 0
   m_Name: ExitRinggg
   m_TagString: Untagged
@@ -471,6 +471,17 @@ MonoBehaviour:
   gifData: {fileID: 0}
   water: {fileID: 0}
   animators: []
+--- !u!114 &114000010459298988
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014252083230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c1e9b51296914ec88ee74511c76ed41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000011047804690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -510,17 +521,6 @@ MonoBehaviour:
   description: 'Martin Onassis
 
     <i>Untitled</i>'
---- !u!114 &114000012938543348
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000014252083230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e53b2e0ef95f4133a7e49a94328d50d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114000013196865768
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -537,7 +537,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114000012938543348}
+        - m_Target: {fileID: 114000010459298988}
           m_MethodName: OnGazeEnter
           m_Mode: 1
           m_Arguments:
@@ -554,7 +554,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114000012938543348}
+        - m_Target: {fileID: 114000010459298988}
           m_MethodName: OnGazeExit
           m_Mode: 1
           m_Arguments:
@@ -571,7 +571,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114000012938543348}
+        - m_Target: {fileID: 114000010459298988}
           m_MethodName: OnGazeTrigger
           m_Mode: 1
           m_Arguments:

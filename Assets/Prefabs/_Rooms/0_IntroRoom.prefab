@@ -78,7 +78,7 @@ GameObject:
   - 114: {fileID: 114000010905277270}
   - 64: {fileID: 64000011737607874}
   - 114: {fileID: 114000012576245714}
-  - 114: {fileID: 114000011189683408}
+  - 114: {fileID: 114000010130726898}
   m_Layer: 0
   m_Name: ExitRing
   m_TagString: Untagged
@@ -615,6 +615,17 @@ Light:
   m_BounceIntensity: 0.5
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114000010130726898
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012010570224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c1e9b51296914ec88ee74511c76ed41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000010182362018
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -675,17 +686,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: 
   description: This ring marks the exit hole! Drop through to see the next room.
---- !u!114 &114000011189683408
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012010570224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e53b2e0ef95f4133a7e49a94328d50d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114000011237038740
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -742,7 +742,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114000011189683408}
+        - m_Target: {fileID: 114000010130726898}
           m_MethodName: OnGazeEnter
           m_Mode: 1
           m_Arguments:
@@ -759,7 +759,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114000011189683408}
+        - m_Target: {fileID: 114000010130726898}
           m_MethodName: OnGazeExit
           m_Mode: 1
           m_Arguments:
@@ -776,7 +776,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114000011189683408}
+        - m_Target: {fileID: 114000010130726898}
           m_MethodName: OnGazeTrigger
           m_Mode: 1
           m_Arguments:

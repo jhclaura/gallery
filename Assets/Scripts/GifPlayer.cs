@@ -39,7 +39,7 @@ public class GifPlayer : MonoBehaviour {
             OnBecameInvisible();
         }
 
-		Debug.Log (playerType);
+//		Debug.Log (playerType);
 	}
 
     void OnBecameVisible() {

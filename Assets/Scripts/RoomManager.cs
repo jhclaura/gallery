@@ -28,7 +28,7 @@ public class RoomManager : MonoBehaviour {
        new RoomData("BigHall")
     };
 
-	public void PairRoom() {
+	public void PairRoomByType() {
 		// Pair up rooms with room objects
 		// Not a great way of doing this...
 		Room[] rooms = GameObject.FindObjectsOfType<Room>();

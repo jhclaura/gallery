@@ -6,11 +6,13 @@ public class Room : MonoBehaviour {
 
     public string roomName;
     public Light[] lights;
+
 	#if UNITY_STANDALONE_WIN
     public AudioSource[] audios;
 	#else
 	public GvrAudioSource[] audios;
 	#endif
+
 	public OldRoomGifData gifData;
 	public Water water;
 	public Animator[] animators;

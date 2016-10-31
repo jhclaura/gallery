@@ -24,7 +24,7 @@ GameObject:
   - 114: {fileID: 114000012102699798}
   - 64: {fileID: 64000012715324068}
   - 114: {fileID: 114000010929216596}
-  - 114: {fileID: 114000012575055704}
+  - 114: {fileID: 114000010969634718}
   m_Layer: 0
   m_Name: ExitRinggg
   m_TagString: Untagged
@@ -109,7 +109,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114000012575055704}
+        - m_Target: {fileID: 114000010969634718}
           m_MethodName: OnGazeEnter
           m_Mode: 1
           m_Arguments:
@@ -126,7 +126,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114000012575055704}
+        - m_Target: {fileID: 114000010969634718}
           m_MethodName: OnGazeExit
           m_Mode: 1
           m_Arguments:
@@ -143,7 +143,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114000012575055704}
+        - m_Target: {fileID: 114000010969634718}
           m_MethodName: OnGazeTrigger
           m_Mode: 1
           m_Arguments:
@@ -208,6 +208,17 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &114000010969634718
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011882594888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c1e9b51296914ec88ee74511c76ed41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000012102699798
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -221,14 +232,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: 
   description: This ring marks the exit hole! Drop through to see the next room.
---- !u!114 &114000012575055704
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011882594888}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e53b2e0ef95f4133a7e49a94328d50d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
