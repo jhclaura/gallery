@@ -6,7 +6,7 @@ public class OldRoomGifData : MonoBehaviour {
 
     public bool autorun;
 
-    int gifIndex = 0;
+    int gifIndex = -1;
     int gifObjectCount;
     int gifSourceCount;
 
@@ -25,37 +25,53 @@ public class OldRoomGifData : MonoBehaviour {
 	#endif
     int audioCount;
 
+	IEnumerator coroutine;
+
     // Use this for initialization
     void Start () {
-        SetGifState();
-
-        if (autorun)
-        {
-            StartCoroutine(Autorun());
-        }
-
-        // AUDIO
-        Room room = oldRoom.GetComponent<Room>();
-        radioAudios = room.audios;
-        audioCount = radioAudios.Length;
-
-        ShuffleAudio();
+		Room room = oldRoom.GetComponent<Room>();
+		radioAudios = room.audios;
+		audioCount = radioAudios.Length;
     }
 
     void OnDisable()
     {
+		Debug.Log ("OnDisable()!");
+		if (autorun)
+		{
+			StopCoroutine(coroutine);
+		}
+			
         ResetMaterial();
+
+		for (int i = 0; i < audioCount; i++)
+		{
+			radioAudios[i].Stop();
+		}
     }
 
     void OnEnable()
     {
-        ShuffleAudio();
+		Debug.Log ("OnEnable()!");
+
+		for (int i = 0; i < audioCount; i++)
+		{
+			radioAudios[i].UnPause();
+			radioAudios[i].Pause();
+		}
+		Debug.Log ("pause all audios! total: " + audioCount);
+
+        if (autorun)
+        {
+			coroutine = Autorun ();
+			StartCoroutine(coroutine);
+        }
     }
 
     IEnumerator Autorun()
     {
-        yield return new WaitForSeconds(3f);
         ShowNextGif();
+		yield return new WaitForSeconds(5f);
         yield return Autorun();
     }
 
@@ -75,6 +91,8 @@ public class OldRoomGifData : MonoBehaviour {
 	
 	public void ShowNextGif()
     {
+		Debug.Log ("show next gif");
+
         gifIndex++;
 
         if (gifIndex > transform.childCount - 1)
@@ -89,12 +107,12 @@ public class OldRoomGifData : MonoBehaviour {
 
     private void SetGifState()
     {
-        if (workingMediaPlayer)
-        {
-            workingMediaPlayer.Events.RemoveAllListeners();
-        }
+//        if (workingMediaPlayer)
+//        {
+//            workingMediaPlayer.Events.RemoveAllListeners();
+//        }
 
-        ResetMaterial();
+//        ResetMaterial();
 
         for (var i = 0; i < transform.childCount; ++i)
         {
@@ -102,32 +120,32 @@ public class OldRoomGifData : MonoBehaviour {
             child.SetActive(i == gifIndex);
         }
 
-        GameObject activeChild = transform.GetChild(gifIndex).gameObject;
-        ApplyToMaterial animationApplier = activeChild.GetComponent<ApplyToMaterial>();
-        
-        if (animationApplier)
-        {
-            // We've got a video gif
-            workingMediaPlayer = activeChild.GetComponent<MediaPlayer>();
-            workingMediaPlayer.Events.AddListener((MediaPlayer mp, MediaPlayerEvent.EventType et, ErrorCode e) => {
-                if (et == MediaPlayerEvent.EventType.Started)
-                {
-                    mp.Events.RemoveAllListeners();
-
-                    Material material = animationApplier._material;
-                    workingMaterial = material;
-                    originalMaterialColor = material.color;
-                    originalMaterialUnlit = material.IsKeywordEnabled("S_UNLIT");
-
-                    material.color = Color.white;
-                    material.EnableKeyword("S_UNLIT");
-                }
-            });
-        }
-        else
-        {
-            // We've got a sprite gif
-        }
+//        GameObject activeChild = transform.GetChild(gifIndex).gameObject;
+//        ApplyToMaterial animationApplier = activeChild.GetComponent<ApplyToMaterial>();
+//        
+//        if (animationApplier)
+//        {
+//            // We've got a video gif
+//            workingMediaPlayer = activeChild.GetComponent<MediaPlayer>();
+//            workingMediaPlayer.Events.AddListener((MediaPlayer mp, MediaPlayerEvent.EventType et, ErrorCode e) => {
+//                if (et == MediaPlayerEvent.EventType.Started)
+//                {
+//                    mp.Events.RemoveAllListeners();
+//
+//                    Material material = animationApplier._material;
+//                    workingMaterial = material;
+//                    originalMaterialColor = material.color;
+//                    originalMaterialUnlit = material.IsKeywordEnabled("S_UNLIT");
+//
+//                    material.color = Color.white;
+//                    material.EnableKeyword("S_UNLIT");
+//                }
+//            });
+//        }
+//        else
+//        {
+//            // We've got a sprite gif
+//        }
     }
 
     private void ResetMaterial()
@@ -145,12 +163,15 @@ public class OldRoomGifData : MonoBehaviour {
 
     public void ShuffleAudio()
     {
+		Debug.Log ("Shuffle Audio, audio count: " + audioCount);
         for (int i = 0; i < audioCount; i++)
         {
-            if (i == (gifIndex % audioCount))
-                radioAudios[i].UnPause();
-            else
-                radioAudios[i].Pause();
+			if (i == gifIndex) {
+				radioAudios[i].UnPause();
+			} else {
+				radioAudios[i].Pause();
+			}
+                
         }
     }
 }

@@ -154,7 +154,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76a81d49f5e8842d1b91a6a2e9c04b3d, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &955211398
+--- !u!1001 &694092974
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -198,19 +198,6 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: ba7a9543e0b043243ab574fb55c5f71e, type: 2}
-    - target: {fileID: 4000010842994484, guid: bab53d491a603420b921ecaaad1ac975, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -7.41
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010842994484, guid: bab53d491a603420b921ecaaad1ac975, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -16.81
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010913351864, guid: bab53d491a603420b921ecaaad1ac975,
-        type: 2}
-      propertyPath: sourceMaxDistance
-      value: 1000
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bab53d491a603420b921ecaaad1ac975, type: 2}
   m_IsPrefabParent: 0

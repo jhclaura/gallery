@@ -40,4 +40,8 @@ public class MenuManger : MonoBehaviour {
 
 		flyerManager.ToggleMode (inInfoMode);
 	}
+
+	public void UpdatePosition( Vector3 newPos ) {
+		transform.position = newPos;
+	}
 }

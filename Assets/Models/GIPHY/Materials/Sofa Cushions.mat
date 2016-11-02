@@ -9,7 +9,6 @@ Material:
   m_Name: Sofa Cushions
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: S_RECEIVE_SHADOWS S_SPECULAR_METALLIC _EMISSION _GLOSSYREFLECTIONS_OFF
-    _SPECULARHIGHLIGHTS_OFF
   m_LightmapFlags: 1
   m_CustomRenderQueue: -1
   stringTagMap:
@@ -107,7 +106,7 @@ Material:
       second: 1
     - first:
         name: _Glossiness
-      second: 0.5
+      second: 0.1
     - first:
         name: _GlossyReflections
       second: 0
@@ -140,7 +139,7 @@ Material:
       second: 0
     - first:
         name: _SpecularHighlights
-      second: 0
+      second: 1
     - first:
         name: _SpecularMode
       second: 2
@@ -183,7 +182,7 @@ Material:
     m_Colors:
     - first:
         name: _Color
-      second: {r: 0.1863433, g: 0.21528438, b: 0.22975492, a: 1}
+      second: {r: 0.21410036, g: 0.28705305, b: 0.32352942, a: 1}
     - first:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}

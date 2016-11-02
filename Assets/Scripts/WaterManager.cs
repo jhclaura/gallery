@@ -20,7 +20,7 @@ public class WaterManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         surfaceWater.SetActive(true);
-        underWater.SetActive(false);
+//        underWater.SetActive(false);
 
         Room room = ocean.GetComponent<Room>();
         waterAudios = room.audios;
@@ -29,7 +29,7 @@ public class WaterManager : MonoBehaviour {
 	public void TurnOnSurfaceWater(bool yeaa)
     {
         surfaceWater.SetActive(yeaa);
-        underWater.SetActive(!yeaa);
+//        underWater.SetActive(!yeaa);
 
         // under water, muffle the sound, if above, reset the sound
 		#if UNITY_STANDALONE_WIN

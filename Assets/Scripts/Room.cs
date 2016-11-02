@@ -20,6 +20,8 @@ public class Room : MonoBehaviour {
 
 	public Animator[] animators;
 
+	public GameObject[] arts;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -52,6 +54,7 @@ public class Room : MonoBehaviour {
             {
                 //audio.UnPause();
                 audio.enabled = true;
+				audio.Play();
             }
         }
 
@@ -126,6 +129,24 @@ public class Room : MonoBehaviour {
 		{
 			if(ani && ani.isActiveAndEnabled)
 				ani.enabled = false;
+		}
+	}
+
+	public void ActivateArts()
+	{
+		foreach (GameObject art in arts)
+		{
+			if(art && !art.activeSelf)
+				art.SetActive(true);
+		}
+	}
+
+	public void DeactivateArts()
+	{
+		foreach (GameObject art in arts)
+		{
+			if(art && art.activeSelf)
+				art.SetActive(false);
 		}
 	}
 

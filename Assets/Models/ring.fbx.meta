@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 0bf56217abc80ac4c9ce49425695a178
-timeCreated: 1474564421
+guid: 95ac1ff02dd174b7d9431bc4ae4288a1
+timeCreated: 1478122421
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,10 +9,9 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Yellow_Block
-    9500000: //RootNode
+    4300000: pTorus1
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:
@@ -35,7 +34,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.7
+    globalScale: 50
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1

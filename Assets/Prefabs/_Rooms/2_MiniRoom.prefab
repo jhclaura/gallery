@@ -301,7 +301,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1000011350339738
 GameObject:
   m_ObjectHideFlags: 1
@@ -876,7 +876,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1000013783702650
 GameObject:
   m_ObjectHideFlags: 0
@@ -1218,7 +1218,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012755331154}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.7, y: 50.798, z: -5.54}
+  m_LocalPosition: {x: -0.25, y: 50.26, z: -4.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -2937,7 +2937,7 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Convex: 0
-  m_Mesh: {fileID: 4300000, guid: 265fb210b56686f4daceeef1edecbab3, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 95ac1ff02dd174b7d9431bc4ae4288a1, type: 3}
 --- !u!64 &64000011215596712
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -3204,7 +3204,7 @@ Light:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011260651192}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 7
   m_Type: 1
   m_Color: {r: 1, g: 0.7794118, b: 0.8661258, a: 1}
@@ -3242,8 +3242,8 @@ Light:
   serializedVersion: 7
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2.7
-  m_Range: 4.77
+  m_Intensity: 1
+  m_Range: 20
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -3433,7 +3433,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomName: MiniRoom
   lights:
-  - {fileID: 108000012326754542}
   - {fileID: 108000013495799920}
   audios:
   - {fileID: 114000011801170118}
@@ -3441,6 +3440,8 @@ MonoBehaviour:
   water: {fileID: 0}
   dummyWater: {fileID: 0}
   animators: []
+  arts:
+  - {fileID: 1000013783702650}
 --- !u!114 &114000013504325256
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -27,7 +27,7 @@ public class MobileRoomManager : MonoBehaviour {
 			MobileRoomData r_data = new MobileRoomData( room[i].roomName );
 			r_data.room = room [i];
 			roomData [i] = r_data;
-			Debug.Log(room[i].roomName + " == " + roomData[i].room.roomName);
+//			Debug.Log(room[i].roomName + " == " + roomData[i].room.roomName);
 		}
 	}
 
@@ -104,5 +104,15 @@ public class MobileRoomManager : MonoBehaviour {
 	public void DeactivateAnimator(int roomIndex)
 	{
 		roomData[roomIndex].room.DeactivateAnimators();
+	}
+
+	public void ActivateArt(int roomIndex)
+	{
+		roomData[roomIndex].room.ActivateArts();
+	}
+
+	public void DeactivateArt(int roomIndex)
+	{
+		roomData[roomIndex].room.DeactivateArts();
 	}
 }

@@ -204,6 +204,7 @@ public class CamTeleportManager : MonoBehaviour {
                         int floorAudioToTurnOn = floorNum;
                         roomManager.ActivateAudio(floorAudioToTurnOn);
 						roomManager.ActivateLight(floorAudioToTurnOn);
+						roomManager.ActivateArt(floorAudioToTurnOn);
                         Debug.Log("turn on audio+light floor" + floorAudioToTurnOn);
 
                         // turn off
@@ -214,6 +215,7 @@ public class CamTeleportManager : MonoBehaviour {
                             {
                                 roomManager.DeactivateAudio(i);
 								roomManager.DeactivateLight(i);
+								roomManager.DeactivateArt(i);
                             }
 							Debug.Log("turn off audio+light floors[1~6]");
                         }
@@ -223,6 +225,7 @@ public class CamTeleportManager : MonoBehaviour {
                             int floorToTurnOff = floorNum - 1;
                             roomManager.DeactivateAudio(floorToTurnOff);
 							roomManager.DeactivateLight(floorToTurnOff);
+							roomManager.DeactivateArt(floorToTurnOff);
                         }
 
                         /// Water //////////////////////////////////////////////////////////////////////////////////////
@@ -250,7 +253,8 @@ public class CamTeleportManager : MonoBehaviour {
 						/// MENU_OBJECT ///
 						menuObject.SetActive(false);
 						menuObjectIsHidden = true;
-//						menuManager.flyerManager.ToggleMode (false);
+
+						menuManager.flyerManager.ToggleMode (false);
                     }
                 }
 
