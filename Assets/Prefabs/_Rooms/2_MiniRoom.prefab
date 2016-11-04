@@ -3342,7 +3342,7 @@ MonoBehaviour:
   sourceMute: 0
   sourcePitch: 1
   sourcePriority: 128
-  sourceVolume: 0.7
+  sourceVolume: 0.5
   sourceMaxDistance: 100
   sourceMinDistance: 0
   hrtfEnabled: 1

@@ -13,12 +13,79 @@ public class AudioGuideManager : MonoBehaviour {
     int currentAudioIndex = 0;
 
 	public bool toAnimateButton = false;
+	public bool autorun = true;
+
+	int audioCount;
+
+	IEnumerator coroutine;
 
 	#if UNITY_STANDALONE_WIN
     public AudioSource[] audioGuides = new AudioSource[3];
 	#else
-	public GvrAudioSource[] audioGuides = new GvrAudioSource[3];
+	public GvrAudioSource[] audioGuides;
 	#endif
+
+	bool[] bePlayed = {false, false, false};
+
+//	void Start()
+//	{
+//		Debug.Log ("Start()!");
+//		for (int i = 0; i < audioGuides.Length; i++)
+//		{
+//			audioGuides[i].Play();
+//			Debug.Log ("play audio guide " + i + " in Start");
+//			//			audioGuides[i].Pause();
+//		}
+//	}
+
+	void OnDisable()
+	{
+		Debug.Log ("OnDisable()!");
+		if (autorun)
+		{
+			StopCoroutine(coroutine);
+		}
+
+		for (int i = 0; i < audioGuides.Length; i++)
+		{
+			audioGuides[i].Pause();
+			bePlayed [i] = false;
+		}
+	}
+
+	void OnEnable()
+	{
+//		Debug.Log ("OnEnable()!");
+//
+//		for (int i = 0; i < audioGuides.Length; i++)
+//		{
+//			audioGuides[i].Play();
+//			Debug.Log ("play audio guide " + i);
+////			audioGuides[i].Pause();
+//		}
+//		Debug.Log ("stop all audio guide audios! amount: " + audioGuides.Length);
+
+		if (autorun)
+		{
+			coroutine = Autorun ();
+			StartCoroutine(coroutine);
+		}
+	}
+
+	IEnumerator Autorun()
+	{
+//		for (int i = 0; i < audioGuides.Length; i++)
+//		{
+////			audioGuides[i].Play();
+////			Debug.Log ("play audio guide " + i);
+//			audioGuides[i].Pause();
+//		}
+		currentAudioIndex++;
+		SwitchAudios(currentAudioIndex);
+		yield return new WaitForSeconds(10f);
+		yield return Autorun();
+	}
+
 
     public void PressLeftButton()
     {
@@ -51,13 +118,21 @@ public class AudioGuideManager : MonoBehaviour {
     void SwitchAudios(int audioIndex)
     {
         int currentOnIndex = Mathf.Abs(audioIndex % 3);
+		Debug.Log ("switch audio guide: " + currentOnIndex);
 
         for (var i = 0; i < audioGuides.Length; i++)
         {
-            if (i == currentOnIndex)
-                audioGuides[i].enabled = true;
-            else
-                audioGuides[i].enabled = false;
+			if (i == currentOnIndex) {
+				if(bePlayed[i]){
+					audioGuides [i].UnPause ();
+				} else {
+					audioGuides [i].Play ();
+					bePlayed [i] = true;
+				}
+			} else {
+				audioGuides[i].Pause();
+			}
+                
         }
     }
 }

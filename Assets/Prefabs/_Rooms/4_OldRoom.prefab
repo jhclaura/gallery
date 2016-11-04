@@ -3484,7 +3484,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000012446538460}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!4 &4000011422008306
 Transform:
   m_ObjectHideFlags: 1
@@ -4020,8 +4020,8 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4000011503639112}
-  - {fileID: 4000012986505512}
   - {fileID: 4000011406115230}
+  - {fileID: 4000012986505512}
   - {fileID: 4000010580929110}
   m_Father: {fileID: 4000013476033202}
   m_RootOrder: 3
@@ -4277,7 +4277,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000012446538460}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!4 &4000013010069410
 Transform:
   m_ObjectHideFlags: 1
@@ -9692,7 +9692,7 @@ MonoBehaviour:
   directivitySharpness: 1
   gainDb: 16
   occlusionEnabled: 0
-  playOnAwake: 1
+  playOnAwake: 0
   rolloffMode: 0
   spread: 20
   sourceClip: {fileID: 8300000, guid: 4fe6f8180f0dd4a2fab5b1d050e29b3b, type: 3}
@@ -9899,7 +9899,7 @@ MonoBehaviour:
   directivitySharpness: 1
   gainDb: 13
   occlusionEnabled: 0
-  playOnAwake: 1
+  playOnAwake: 0
   rolloffMode: 0
   spread: 0
   sourceClip: {fileID: 8300000, guid: 9157089c5e81f7845aec55b02ed1bca1, type: 3}
@@ -9978,6 +9978,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   autorun: 1
   oldRoom: {fileID: 1000011436462662}
+  radioAudios:
+  - {fileID: 114000013873958636}
+  - {fileID: 114000011279293782}
+  - {fileID: 114000010421956122}
+  - {fileID: 114000014148680570}
 --- !u!114 &114000011622495310
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10377,7 +10382,7 @@ MonoBehaviour:
   directivitySharpness: 1
   gainDb: 5
   occlusionEnabled: 0
-  playOnAwake: 1
+  playOnAwake: 0
   rolloffMode: 0
   spread: 0
   sourceClip: {fileID: 8300000, guid: d48ce98b1c259fb49bd5e6c9096d82e5, type: 3}
@@ -10442,7 +10447,7 @@ MonoBehaviour:
   directivitySharpness: 1
   gainDb: 10
   occlusionEnabled: 0
-  playOnAwake: 1
+  playOnAwake: 0
   rolloffMode: 0
   spread: 0
   sourceClip: {fileID: 8300000, guid: 35450a7853ad753418e6c3f0bb9358ca, type: 3}

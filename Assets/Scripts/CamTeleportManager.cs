@@ -202,9 +202,9 @@ public class CamTeleportManager : MonoBehaviour {
                         /// Audios & Lights /////////////////////////////////////////////////////////////////////////////////////
 						// turn on floor(+0) (eg.on floor_2, turn on floor_2)
                         int floorAudioToTurnOn = floorNum;
+						roomManager.ActivateArt(floorAudioToTurnOn);
                         roomManager.ActivateAudio(floorAudioToTurnOn);
 						roomManager.ActivateLight(floorAudioToTurnOn);
-						roomManager.ActivateArt(floorAudioToTurnOn);
                         Debug.Log("turn on audio+light floor" + floorAudioToTurnOn);
 
                         // turn off

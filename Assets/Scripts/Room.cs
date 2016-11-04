@@ -60,7 +60,7 @@ public class Room : MonoBehaviour {
 
         if (gifData != null)
         {
-            gifData.ShuffleAudio();
+			gifData.StartAudios();
         }
     }
 
@@ -78,6 +78,11 @@ public class Room : MonoBehaviour {
                 audio.enabled = false;
             }
         }
+
+		if (gifData != null)
+		{
+			gifData.StopAudios();
+		}
     }
 
 	public void ActivateLights()

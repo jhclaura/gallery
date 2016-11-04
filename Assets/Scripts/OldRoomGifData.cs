@@ -21,53 +21,59 @@ public class OldRoomGifData : MonoBehaviour {
 	#if UNITY_STANDALONE_WIN
     AudioSource[] radioAudios;
 	#else
-	GvrAudioSource[] radioAudios;
+	public GvrAudioSource[] radioAudios;
 	#endif
     int audioCount;
 
 	IEnumerator coroutine;
+	bool inCoroutin;
 
     // Use this for initialization
-    void Start () {
+    void Awake () {
 		Room room = oldRoom.GetComponent<Room>();
-		radioAudios = room.audios;
+		//radioAudios = room.audios;
 		audioCount = radioAudios.Length;
+		inCoroutin = false;
     }
 
-    void OnDisable()
+	public void StopAudios()
     {
-		Debug.Log ("OnDisable()!");
+//		Debug.Log ("StopAudios()!");
 		if (autorun)
 		{
-			StopCoroutine(coroutine);
+			if (inCoroutin) {
+				StopCoroutine(coroutine);
+				inCoroutin = false;
+			}				
 		}
 			
-        ResetMaterial();
+        //ResetMaterial();
 
-		for (int i = 0; i < audioCount; i++)
+		for (int i = 0; i < radioAudios.Length; i++)
 		{
-			radioAudios[i].Stop();
-		}
-    }
-
-    void OnEnable()
-    {
-		Debug.Log ("OnEnable()!");
-
-		for (int i = 0; i < audioCount; i++)
-		{
-			radioAudios[i].UnPause();
 			radioAudios[i].Pause();
 		}
-		Debug.Log ("pause all audios! total: " + audioCount);
+		Debug.Log ("pause all oldroom audios! total: " + radioAudios.Length);
+    }
+
+	public void StartAudios()
+    {
+//		Debug.Log ("StartAudios()!");
+
+		for (int i = 0; i < radioAudios.Length; i++)
+		{
+			radioAudios[i].Pause();
+		}
+		Debug.Log ("pause all oldroom audios! total: " + radioAudios.Length);
 
         if (autorun)
         {
 			coroutine = Autorun ();
+			inCoroutin = true;
 			StartCoroutine(coroutine);
         }
     }
-
+		
     IEnumerator Autorun()
     {
         ShowNextGif();
@@ -86,7 +92,7 @@ public class OldRoomGifData : MonoBehaviour {
 
         SetGifState();
 
-        ShuffleAudio();
+		ShuffleAudio();
     }
 	
 	public void ShowNextGif()
@@ -102,7 +108,7 @@ public class OldRoomGifData : MonoBehaviour {
 
         SetGifState();
 
-        ShuffleAudio();
+		ShuffleAudio();
     }
 
     private void SetGifState()
@@ -161,17 +167,25 @@ public class OldRoomGifData : MonoBehaviour {
         }
     }
 
-    public void ShuffleAudio()
+	public void ShuffleAudio()
     {
-		Debug.Log ("Shuffle Audio, audio count: " + audioCount);
-        for (int i = 0; i < audioCount; i++)
+		for (int i = 0; i < radioAudios.Length; i++)
         {
 			if (i == gifIndex) {
 				radioAudios[i].UnPause();
+//				Debug.Log ("Shuffle Audio, turn on audio: " + gifIndex);
 			} else {
 				radioAudios[i].Pause();
 			}
                 
         }
     }
+
+	public void PauseAllAudios()
+	{
+		for (int i = 0; i < radioAudios.Length; i++)
+		{
+			radioAudios[i].Pause();
+		}
+	}
 }
