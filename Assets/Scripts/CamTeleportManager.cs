@@ -61,6 +61,10 @@ public class CamTeleportManager : MonoBehaviour {
 		//v.2
 		roomManager = GetComponent<MobileRoomManager>();
 		roomManager.PairRoomByType();
+
+		// target frame rate to be 60, both in edior & build
+		QualitySettings.vSyncCount = 0;  // VSync must be disabled
+		Application.targetFrameRate = 60;
 	}
 
 	// IEnumerator
@@ -155,7 +159,6 @@ public class CamTeleportManager : MonoBehaviour {
 		float eyeCamHeight = camHeight;
 		#endif
         fallDistance = eyeCamToFloorDist - eyeCamHeight;
-        // Debug.Log(rayCollidedWith.transform.gameObject.name);
 
 		if (rayHit)
         {
@@ -175,7 +178,8 @@ public class CamTeleportManager : MonoBehaviour {
                         currentFloorNum = floorNum;
 
                         /// LevelManaging /////////////////////////////////////////////////////////////////////////////
-                        // turn on floor(+1) if not already(eg.on floor_2, turn on floor_3)
+                        // turn on floor(+1)
+						// if not already(eg.on floor_2, turn on floor_3)
                         int floorToTurnOn = floorNum+1;
                         if (floorNum == 6) floorToTurnOn = 0;
 
@@ -200,7 +204,8 @@ public class CamTeleportManager : MonoBehaviour {
                         }
 
                         /// Audios & Lights /////////////////////////////////////////////////////////////////////////////////////
-						// turn on floor(+0) (eg.on floor_2, turn on floor_2)
+						// turn on floor(+0)
+						// (eg.on floor_2, turn on floor_2)
                         int floorAudioToTurnOn = floorNum;
 						roomManager.ActivateArt(floorAudioToTurnOn);
                         roomManager.ActivateAudio(floorAudioToTurnOn);
@@ -253,7 +258,6 @@ public class CamTeleportManager : MonoBehaviour {
 						/// MENU_OBJECT ///
 						menuObject.SetActive(false);
 						menuObjectIsHidden = true;
-
 						menuManager.flyerManager.ToggleMode (false);
                     }
                 }
@@ -296,9 +300,10 @@ public class CamTeleportManager : MonoBehaviour {
 
 					if (menuObjectIsHidden) {
 						// update menu_object position, and show it
-						menuObject.transform.position = new Vector3(transform.position.x,
-																	transform.position.y - 2.5f,
-																	transform.position.z);
+						menuObject.transform.position = new Vector3(
+							transform.position.x - 1f,
+							transform.position.y - camHeight,
+							transform.position.z);
 						menuObject.SetActive(true);
 						menuObjectIsHidden = false;
 
@@ -310,7 +315,7 @@ public class CamTeleportManager : MonoBehaviour {
                 // WATER
                 if (toFallIntoWater)
                 {
-                    if(fallDistance < 2.5f)
+					if(fallDistance < (camHeight+.5f) )
                     {
                         // decrease fall speed!
                         fallSpeed = fallSpeedSlow;

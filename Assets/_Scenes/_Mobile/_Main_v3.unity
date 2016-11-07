@@ -982,10 +982,26 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114000010118339726, guid: 76a81d49f5e8842d1b91a6a2e9c04b3d,
+        type: 2}
+      propertyPath: camHeight
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 20000011824792080, guid: 76a81d49f5e8842d1b91a6a2e9c04b3d,
+        type: 2}
+      propertyPath: near clip plane
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010118339726, guid: 76a81d49f5e8842d1b91a6a2e9c04b3d,
+        type: 2}
+      propertyPath: fallSpeedSlow
+      value: 2.5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 82000013483577142, guid: 76a81d49f5e8842d1b91a6a2e9c04b3d, type: 2}
     - {fileID: 82000010391924390, guid: 76a81d49f5e8842d1b91a6a2e9c04b3d, type: 2}
     - {fileID: 82000011078424144, guid: 76a81d49f5e8842d1b91a6a2e9c04b3d, type: 2}
+    - {fileID: 114000014274824764, guid: 76a81d49f5e8842d1b91a6a2e9c04b3d, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 76a81d49f5e8842d1b91a6a2e9c04b3d, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1417685373
@@ -1525,6 +1541,20 @@ Prefab:
         type: 2}
       propertyPath: sourceMaxDistance
       value: 900
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010063447090, guid: de4ac9a370ac341bcac9bb2ea614d82f, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 64000011553722286, guid: de4ac9a370ac341bcac9bb2ea614d82f,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 64000013290576198, guid: de4ac9a370ac341bcac9bb2ea614d82f,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: de4ac9a370ac341bcac9bb2ea614d82f, type: 2}

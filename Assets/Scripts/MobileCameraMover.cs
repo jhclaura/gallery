@@ -6,6 +6,9 @@ public class MobileCameraMover : MonoBehaviour {
 
 	CamTeleportManager c_t;
 	MenuManger m_m;
+
+	public Color noGazedColor = Color.red;
+	public Color gazedAtColor = Color.green;
 	
 	// Use this for initialization
 	void Start () {
@@ -18,7 +21,7 @@ public class MobileCameraMover : MonoBehaviour {
 	}
 
 	void SetGazedAt(bool gazedAt) {
-		GetComponent<Renderer> ().material.color = gazedAt ? Color.green : Color.red;
+		GetComponent<Renderer> ().material.color = gazedAt ? gazedAtColor : noGazedColor;
 	}
 
 	public void OnGazeEnter() {
@@ -31,7 +34,6 @@ public class MobileCameraMover : MonoBehaviour {
 
 	public void OnGazeTrigger(){
 //		Debug.Log ("Be looked and clicked! Camera move to here.");
-//		Debug.Log (Camera.main);
 		Vector3 newLocation = new Vector3 (transform.position.x, Camera.main.transform.position.y, transform.position.z);
 		LeanTween.move (Camera.main.gameObject, newLocation, 2f);
 
@@ -40,17 +42,13 @@ public class MobileCameraMover : MonoBehaviour {
 		if(m_m==null)
 			m_m = c_t.menuManager;
 
-//		Invoke ("UpdateMenuPosition", 2f);
-
 		if (m_m.flyerManager.inInfoMode) {
 			m_m.flyerManager.ToggleMode (false);
-//			Invoke ("ToggleOnFlyer", 2f);
 		}
 	}
 
 	public void OnGazeTriggerHopspot(){
 		//		Debug.Log ("Be looked and clicked! Camera move to here.");
-		//		Debug.Log (Camera.main);
 		Vector3 newLocation = new Vector3 (transform.position.x, Camera.main.transform.position.y, transform.position.z);
 		LeanTween.move (Camera.main.gameObject, newLocation, 2f);
 
@@ -73,9 +71,10 @@ public class MobileCameraMover : MonoBehaviour {
 
 	void UpdateMenuPosition() {
 		Vector3 newPos = new Vector3 (
-			Camera.main.transform.position.x,
-			Camera.main.transform.position.y - 2.5f,
-			Camera.main.transform.position.z);
+			Camera.main.transform.position.x - 1f,
+			Camera.main.transform.position.y - c_t.camHeight,
+			Camera.main.transform.position.z
+		);
 		m_m.UpdatePosition (newPos);
 	}
 		

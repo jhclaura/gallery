@@ -477,6 +477,8 @@ MonoBehaviour:
   - {fileID: 357087836}
   - {fileID: 1808293785}
   - {fileID: 1047888271}
+  emptyObject: {fileID: 0}
+  liftHeight: 0
 --- !u!114 &95206561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2755,6 +2757,7 @@ MonoBehaviour:
   leftButton: {fileID: 1278402105}
   rightButton: {fileID: 44783620}
   toAnimateButton: 0
+  autorun: 1
   audioGuides:
   - {fileID: 0}
   - {fileID: 0}

@@ -67,7 +67,6 @@ public class HandInteraction : MonoBehaviour {
                     logoMaterial[i].SetColor("_Color1", logoColorSets[colorIndex % colorCount].colors[0]);
                     logoMaterial[i].SetColor("_Color2", logoColorSets[colorIndex % colorCount].colors[1]);
                 }
-
                 // logoMaterial.SetColor("_Color1", logoColorSets[colorIndex % colorCount].colors[0]);
                 // logoMaterial.SetColor("_Color2", logoColorSets[colorIndex % colorCount].colors[1]);
 
