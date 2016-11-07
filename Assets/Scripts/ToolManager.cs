@@ -11,7 +11,7 @@ public class ToolManager : MonoBehaviour {
 	float origianlHeight;
 	public float liftHeight;
 	bool toolUpThere = false;
-	int[] floorToolIndex = {0,1,2,3,0,0,4};
+	int[] floorToolIndex = {1,2,3,4,0,0,0};
 
 	#if UNITY_STANDALONE_WIN
 	public SteamVR_TrackedObject controllerRight;
