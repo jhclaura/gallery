@@ -42,14 +42,14 @@ public class MiddleFingerMover : MonoBehaviour {
 
 		LeanTween.move (middleFinger, transform.position, 1f);
 		fingerOut = true;
-		Debug.Log ("move finger out!");
+//		Debug.Log ("move finger out!");
 
 		Invoke ("MoveBackFinger", 2.5f);
 	}
 
 	void MoveBackFinger(){
 		LeanTween.move (middleFinger, tool_finger.transform.position, 1f).setOnComplete( ResetFinger );
-		Debug.Log ("move finger back!");
+//		Debug.Log ("move finger back!");
 	}
 
 	void ResetFinger(){
@@ -58,6 +58,6 @@ public class MiddleFingerMover : MonoBehaviour {
 		middleFinger.transform.localEulerAngles = new Vector3();
 
 		fingerOut = false;
-		Debug.Log ("re-attach finger!");
+//		Debug.Log ("re-attach finger!");
 	}
 }

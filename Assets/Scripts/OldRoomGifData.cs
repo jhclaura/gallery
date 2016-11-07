@@ -53,7 +53,7 @@ public class OldRoomGifData : MonoBehaviour {
 		{
 			radioAudios[i].Pause();
 		}
-		Debug.Log ("pause all oldroom audios! total: " + radioAudios.Length);
+//		Debug.Log ("pause all oldroom audios! total: " + radioAudios.Length);
     }
 
 	public void StartAudios()
@@ -64,7 +64,7 @@ public class OldRoomGifData : MonoBehaviour {
 		{
 			radioAudios[i].Pause();
 		}
-		Debug.Log ("pause all oldroom audios! total: " + radioAudios.Length);
+//		Debug.Log ("pause all oldroom audios! total: " + radioAudios.Length);
 
         if (autorun)
         {
@@ -97,7 +97,7 @@ public class OldRoomGifData : MonoBehaviour {
 	
 	public void ShowNextGif()
     {
-		Debug.Log ("show next gif");
+//		Debug.Log ("show next gif");
 
         gifIndex++;
 

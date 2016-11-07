@@ -336,7 +336,7 @@ public class CamTeleportManager : MonoBehaviour {
 					
                     // trigger eye mask fade in
 					eyeMaskOn = true;
-					Debug.Log("eyeMaskOn = true");
+//					Debug.Log("eyeMaskOn = true");
 
 					#if UNITY_STANDALONE_WIN
                     eyeMaskAnimator.SetTrigger("FadeIn");
@@ -392,7 +392,7 @@ public class CamTeleportManager : MonoBehaviour {
         // trigger eye mask fade out
         transform.position = restartPoint.transform.position;
 		eyeMaskOn = false;
-		Debug.Log("eyeMaskOn = false");
+//		Debug.Log("eyeMaskOn = false");
 
 		#if UNITY_STANDALONE_WIN
 		eyeMaskAnimator.SetTrigger("FadeOut");

@@ -40,7 +40,7 @@ public class AudioGuideManager : MonoBehaviour {
 
 	void OnDisable()
 	{
-		Debug.Log ("OnDisable()!");
+//		Debug.Log ("OnDisable()!");
 		if (autorun)
 		{
 			StopCoroutine(coroutine);
@@ -118,7 +118,7 @@ public class AudioGuideManager : MonoBehaviour {
     void SwitchAudios(int audioIndex)
     {
         int currentOnIndex = Mathf.Abs(audioIndex % 3);
-		Debug.Log ("switch audio guide: " + currentOnIndex);
+//		Debug.Log ("switch audio guide: " + currentOnIndex);
 
         for (var i = 0; i < audioGuides.Length; i++)
         {
