@@ -17,10 +17,14 @@ public class ToolManager : MonoBehaviour {
 	public SteamVR_TrackedObject controllerRight;
 	#endif
 
+	AudioGuideManager audioGuideManager;
+
 	void Start()
 	{
 		toolWheel = tools [0].transform.parent.gameObject;
 		origianlHeight = toolWheel.transform.localPosition.y;
+
+		audioGuideManager = tools [6].GetComponent<AudioGuideManager> ();
 	}
 
     public void SwitchToolOfFloor(int currentFloorIndex)
@@ -96,4 +100,12 @@ public class ToolManager : MonoBehaviour {
 	    }
 	}
 	#endif
+
+	public void AudioGuideVolumeDown(){
+		audioGuideManager.AudioVolumeDown ();
+	}
+
+	public void AudioGuideVolumeReset(){
+		audioGuideManager.AudioVolumeReset ();
+	}
 }

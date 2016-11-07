@@ -271,6 +271,8 @@ public class CamTeleportManager : MonoBehaviour {
                     // AUDIO
                     rabbitHole.enabled = true;
                     fallSpeed = fallSpeedFast;
+					// volume down the audio guides when in rabbit hole
+					toolManager.AudioGuideVolumeDown();
 
 					#if UNITY_STANDALONE_WIN
                     eyeMaskBottom.SetActive(true);
@@ -342,7 +344,6 @@ public class CamTeleportManager : MonoBehaviour {
 
 					#else
 					CameraFade.StartAlphaFadeInOut(fadeColor, fadeTime, 2f, null);
-
 					#endif
 
 					roomManager.DeactivateAnimator (6);
@@ -360,9 +361,10 @@ public class CamTeleportManager : MonoBehaviour {
                     {
                         Invoke("EyeMaskFadeOut", 2f);
 
-                        // AUDIO
-                        rabbitHole.enabled = false;
-                        fallSpeed = fallSpeedNormal;
+//                        // AUDIO
+//                        rabbitHole.enabled = false;
+//                        fallSpeed = fallSpeedNormal;
+//						toolManager.AudioGuideVolumeReset();
                     }
                 }
             }
@@ -400,6 +402,11 @@ public class CamTeleportManager : MonoBehaviour {
 
         Debug.Log("fade out eye mask");
 		#endif
+
+		// AUDIO
+		rabbitHole.enabled = false;
+		fallSpeed = fallSpeedNormal;
+		toolManager.AudioGuideVolumeReset();
     }
 
     void DisableEyeMask()

@@ -25,6 +25,8 @@ public class HandInteraction : MonoBehaviour {
 	GvrAudioSource electricalSound;
 	#endif
 
+	bool electricalSoundPlayed = false;
+
     void Start()
     {
         handCollider = GetComponent<Collider>();
@@ -70,7 +72,12 @@ public class HandInteraction : MonoBehaviour {
                 // logoMaterial.SetColor("_Color1", logoColorSets[colorIndex % colorCount].colors[0]);
                 // logoMaterial.SetColor("_Color2", logoColorSets[colorIndex % colorCount].colors[1]);
 
-                electricalSound.Play();
+				if (!electricalSoundPlayed) {
+					electricalSound.Play ();
+				} else {
+					electricalSound.UnPause ();
+				}
+				electricalSoundPlayed = true;
 
                 colorIndex ++;
             }
@@ -90,7 +97,7 @@ public class HandInteraction : MonoBehaviour {
                     logoMaterial[i].SetColor("_Color2", oriColors[1]);
                 }
 
-                electricalSound.Stop();
+                electricalSound.Pause();
 
                 // logoMaterial.SetColor("_Color1", oriColors[0]);
                 // logoMaterial.SetColor("_Color2", oriColors[1]);

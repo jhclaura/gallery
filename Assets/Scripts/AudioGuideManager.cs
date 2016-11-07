@@ -135,4 +135,16 @@ public class AudioGuideManager : MonoBehaviour {
                 
         }
     }
+
+	public void AudioVolumeDown (){
+		foreach(GvrAudioSource audio in audioGuides){
+			audio.gainDb = -18f;
+		}
+	}
+
+	public void AudioVolumeReset (){
+		foreach(GvrAudioSource audio in audioGuides){
+			audio.gainDb = 0f;
+		}
+	}
 }

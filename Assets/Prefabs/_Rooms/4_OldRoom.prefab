@@ -887,7 +887,8 @@ GameObject:
   - 64: {fileID: 64000011777820832}
   - 114: {fileID: 114000010682879842}
   - 114: {fileID: 114000010298634994}
-  m_Layer: 0
+  - 65: {fileID: 65000010421694906}
+  m_Layer: 12
   m_Name: ExitRinggg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9296,7 +9297,7 @@ MeshCollider:
   m_GameObject: {fileID: 1000011459382914}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: 95ac1ff02dd174b7d9431bc4ae4288a1, type: 3}
@@ -9348,6 +9349,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6999999, y: 2.0929997, z: 2.087753}
   m_Center: {x: 0, y: 0.69999987, z: 0.00087666506}
+--- !u!65 &65000010421694906
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011459382914}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0100001, y: 0.040000007, z: 1.0100002}
+  m_Center: {x: 0.000000059604645, y: -0.00000000372529, z: -0.00000008940697}
 --- !u!65 &65000010519442020
 BoxCollider:
   m_ObjectHideFlags: 1
