@@ -82,7 +82,7 @@ public class AudioGuideManager : MonoBehaviour {
 //		}
 		currentAudioIndex++;
 		SwitchAudios(currentAudioIndex);
-		yield return new WaitForSeconds(10f);
+		yield return new WaitForSeconds(5f);
 		yield return Autorun();
 	}
 
@@ -117,20 +117,26 @@ public class AudioGuideManager : MonoBehaviour {
 
     void SwitchAudios(int audioIndex)
     {
-        int currentOnIndex = Mathf.Abs(audioIndex % 3);
-//		Debug.Log ("switch audio guide: " + currentOnIndex);
+        int currentOnIndex = audioIndex % 3;
+		Debug.Log ("switch audio guide: " + currentOnIndex);
 
         for (var i = 0; i < audioGuides.Length; i++)
         {
 			if (i == currentOnIndex) {
 				if(bePlayed[i]){
 					audioGuides [i].UnPause ();
+					Debug.Log ("UnPause audio guide: " + i);
+
 				} else {
 					audioGuides [i].Play ();
 					bePlayed [i] = true;
+					Debug.Log ("Play audio guide: " + i);
+
 				}
 			} else {
 				audioGuides[i].Pause();
+				Debug.Log ("Pause audio guide: " + i);
+
 			}
                 
         }
